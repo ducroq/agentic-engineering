@@ -11,6 +11,7 @@ Documenting, demonstrating, and researching the use of multi-agent AI systems wi
 
 | When | Read |
 |------|------|
+| Making any factual claim | `claims/claim-registry.md` — check if claim exists, verify confidence tier, use calibrated language |
 | Adding or updating a case study | `case-studies/README.md` — case study template and conventions |
 | Writing research content | `research/README.md` — research questions and methodology |
 | Working on the guide/framework | `guide/README.md` — pattern library structure |
@@ -26,6 +27,7 @@ Documenting, demonstrating, and researching the use of multi-agent AI systems wi
 - **Domain-agnostic**: Patterns must work across mechanical, electrical, software, and systems engineering — don't assume software-only
 - **No company names**: Use generic references ("regional high-tech industry") — industry partners are not confirmed
 - **Show, don't tell**: Case studies before theory — demonstrate, then extract the pattern
+- **Confidence-calibrated language**: Match language to evidence strength — see claim registry for tiers (ESTABLISHED → "shows"; EMERGING → "may"; SPECULATIVE → "warrants investigation")
 
 ## Architecture
 
@@ -77,6 +79,7 @@ The engineer's role: directing, validating, taking responsibility — requiring 
 | `guide/` | Track 3: practical framework |
 | `memory/MEMORY.md` | Session memory index |
 | `memory/gotcha-log.md` | Problem-fix archive |
+| `claims/claim-registry.md` | Verification registry — all claims with evidence status |
 
 ## Writing Style
 

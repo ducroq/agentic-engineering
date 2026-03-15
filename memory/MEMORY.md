@@ -5,6 +5,7 @@
 | File | When to load | Key insight |
 |------|-------------|-------------|
 | `memory/gotcha-log.md` | Stuck or debugging | Problem-fix archive |
+| `claims/claim-registry.md` | Writing any content with factual claims | 17 claims tracked; 59% coverage; P0 at 40% — evidence gaps identified |
 
 ## Current State
 
@@ -32,3 +33,4 @@
 - **Repo name**: `agentic-engineering` chosen over `agent-ready-engineering` — this project is about the *practice*, not just project setup (the agent-ready-* family is toolkit, this is the umbrella)
 - **Three tracks**: Build / Research / Guide — clearly separated but mutually reinforcing
 - **Adopted agent-ready-projects v1.0.0**: Layered memory system for session continuity
+- **Adopted agent-ready-papers claim registry**: Typed verification (CLAIM/ARGUMENT/PROPOSITION) with confidence tiers; full paper-writing apparatus deferred until manuscript stage
