@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import PatternPage from '../../components/PatternPage.astro';
+import IllustrationReproduce from '../../components/IllustrationReproduce.astro';
+---
+
+<Base title="Reproduce, Don't Assess — Agentic Engineering">
+  <PatternPage number="4" title="Reproduce, Don't Assess" subtitle="When checking equations, compute the answer. Don't ask if it looks right.">
+
+    <div class="illustration-wrap">
+      <IllustrationReproduce />
+    </div>
+
+    <p>There are two fundamentally different ways to verify numerical content with an AI:</p>
+
+    <p><strong>Assessment:</strong> "Review these equations for correctness." The agent checks dimensions, evaluates physical plausibility, assesses theoretical consistency. This is what human reviewers do — and what LLMs default to when asked to "review."</p>
+
+    <p><strong>Reproduction:</strong> "Substitute these values into the equation, compute step-by-step, and compare your result to the stated answer." The agent becomes a calculator, not a reviewer.</p>
+
+    <p>The difference matters enormously.</p>
+
+    <h2>The Evidence: Driven Pendulum</h2>
+
+    <p>68 equations governing electromagnetic pendulum synchronization. Three independent reviews:</p>
+
+    <div class="evidence-box">
+      <p><strong>Claude self-review</strong> (assessment mode): "physics soundness" check → <strong>0 errors found</strong></p>
+      <p><strong>Gemini independent review</strong> (assessment mode): "physics soundness" check → <strong>0 errors found</strong></p>
+      <p><strong>Sonnet</strong> (reproduction mode): substitute values, compute step-by-step → <strong>3 errors found</strong></p>
+    </div>
+
+    <p>The three errors:</p>
+
+    <ol>
+      <li><strong>Wrong label.</strong> A table headed "5 degrees amplitude" contained values computed at 1 degree. Coupling strength difference: 5x. The table <em>looked</em> right — values in a reasonable range, correct units.</li>
+      <li><strong>Formula error.</strong> A dwell time formula had a spurious factor of 2 and missing theta_max. Predicted 84ms; table said 43ms. The formula structure looked plausible — correct dimensions, sensible form.</li>
+      <li><strong>Inconsistency.</strong> 3.3 ms/swing × 3600 swings/hr = ~12 s/hr, but the document stated 36 s/hr. Root cause: <code>/6</code> where <code>/2</code> was correct. Each number individually plausible.</li>
+    </ol>
+
+    <p>All three errors share one characteristic: the wrong answer was in the right ballpark. Correct units. Reasonable magnitude. Coherent with surrounding text. They were invisible to assessment and immediately visible to arithmetic.</p>
+
+    <h2>Why This Works</h2>
+
+    <p>LLMs in assessment mode do what human reviewers do: they check if the result "feels right." This catches conceptual errors (wrong model, wrong physics) but misses numerical errors hidden in plausible results.</p>
+
+    <p>LLMs in reproduction mode are forced into step-by-step computation. When Sonnet computed <code>0.5 × 9.81 × 0.0175 = 0.086 N</code>, it immediately saw this matched the 1-degree column, not the 5-degree header. No amount of "does this look right?" reasoning would have caught that.</p>
+
+    <p>This is the same principle behind independent calculation checks in structural engineering. What's specific to AI agents is that you can exploit their computational ability (strong when forced to show work) to compensate for their judgment limitation (weak on holistic "does this seem right?").</p>
+
+    <h2>The Prompt Pattern</h2>
+
+    <pre><code>For each equation:
+1. EXTRACT: Write the equation; list all inputs with values
+2. DIMENSIONAL ANALYSIS: Verify units balance
+3. NUMERICAL REPRODUCTION: Substitute values, compute step-by-step
+4. CONSISTENCY CHECK: Does this value appear elsewhere?
+5. CROSS-REFERENCE: Does it match the source?
+
+RULES:
+- Never skip a calculation. Show all work.
+- Trust nothing. Treat every number as potentially wrong.
+- When checking tables: verify EVERY row.</code></pre>
+
+    <div class="monday-box">
+      <h3>Try This Monday</h3>
+      <ul>
+        <li>Next time you need to verify a calculation, spreadsheet, or derived value: don't ask "is this right?" Ask "compute this from scratch and compare."</li>
+        <li>Use the prompt pattern above. The key instruction: "show all work, skip nothing."</li>
+        <li>Use assessment mode for <em>conceptual</em> review (wrong model? missing physics?) and reproduction mode for <em>numerical</em> verification (wrong coefficient? arithmetic error?). They catch different things.</li>
+        <li>Beware the "remaining rows follow the same pattern..." shortcut. If the model summarizes instead of computing, errors slip through. Enforce row-by-row verification.</li>
+      </ul>
+    </div>
+
+    <div class="caveat-box">
+      <h3>Honest Limitations</h3>
+      <p>The 3/3 detection rate is from one document with one class of errors ("wrong coefficient in the right ballpark"). We don't know the false negative rate — errors the reproduction also missed. The comparison (Gemini: 0, Sonnet: 3) is confounded by different model AND different prompt. A cleaner test would be the same model with both approaches.</p>
+      <p><strong>Shelf life:</strong> Reasoning-augmented models (o1-class, extended thinking) are improving at mathematical judgment. This specific prompting technique may become unnecessary within 18 months. But the underlying principle — "independently verify, don't just review" — is permanent.</p>
+    </div>
+
+  </PatternPage>
+</Base>

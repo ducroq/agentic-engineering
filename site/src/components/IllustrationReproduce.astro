@@ -1,0 +1,76 @@
+---
+// Two paths: eye (assessment, fails) vs calculator (reproduction, succeeds)
+---
+<svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="illustration" role="img" aria-label="Two paths diverging: assessment with an eye (fails) and reproduction with a calculator (succeeds)">
+  <!-- Equation at top center -->
+  <g transform="translate(200, 35)">
+    <text text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="var(--ink)">t_dwell = (2/w) * arccos(...)</text>
+    <text y="20" text-anchor="middle" font-family="Caveat, cursive" font-size="13" fill="var(--pencil)">is this correct?</text>
+  </g>
+
+  <!-- Fork point -->
+  <circle cx="200" cy="80" r="4" fill="var(--ink)"/>
+  <path d="M200 60 L200 76" stroke="var(--ink)" stroke-width="2"/>
+
+  <!-- LEFT PATH: Assessment -->
+  <path d="M200 84 C180 100, 120 120, 100 150" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Eye icon -->
+  <g transform="translate(75, 140)">
+    <path d="M0 20 Q25 0, 50 20 Q25 40, 0 20 Z" stroke="var(--ink)" stroke-width="2.5" fill="var(--paper)"/>
+    <circle cx="25" cy="20" r="9" stroke="var(--ink)" stroke-width="2" fill="var(--paper)"/>
+    <circle cx="25" cy="20" r="4" fill="var(--ink)"/>
+    <circle cx="27" cy="18" r="1.5" fill="var(--paper)"/>
+  </g>
+
+  <text x="100" y="185" text-anchor="middle" font-family="Caveat, cursive" font-size="16" fill="var(--ink)">"looks right..."</text>
+
+  <!-- Thought bubbles showing surface-level checks -->
+  <g transform="translate(40, 195)">
+    <text font-family="Caveat, cursive" font-size="12" fill="var(--pencil)">✓ dimensions check out</text>
+    <text y="18" font-family="Caveat, cursive" font-size="12" fill="var(--pencil)">✓ physically plausible</text>
+    <text y="36" font-family="Caveat, cursive" font-size="12" fill="var(--pencil)">✓ right order of magnitude</text>
+  </g>
+
+  <!-- Result: WRONG (X) -->
+  <g transform="translate(75, 260)">
+    <circle r="25" cx="25" cy="0" stroke="var(--red-pencil)" stroke-width="3" fill="none"/>
+    <path d="M12 -13 L38 13 M38 -13 L12 13" stroke="var(--red-pencil)" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+  <text x="100" y="298" text-anchor="middle" font-family="Caveat, cursive" font-size="16" fill="var(--red-pencil)" font-weight="700">0 errors found</text>
+  <text x="100" y="314" text-anchor="middle" font-family="Caveat, cursive" font-size="12" fill="var(--red-pencil)">(3 were hiding)</text>
+
+  <!-- RIGHT PATH: Reproduction -->
+  <path d="M200 84 C220 100, 280 120, 300 150" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Calculator icon -->
+  <g transform="translate(275, 135)">
+    <rect width="50" height="60" rx="4" stroke="var(--ink)" stroke-width="2.5" fill="var(--paper)"/>
+    <!-- screen -->
+    <rect x="6" y="6" width="38" height="16" rx="2" fill="var(--paper-dark)" stroke="var(--ink)" stroke-width="1"/>
+    <text x="25" y="18" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="var(--ink)">84ms</text>
+    <!-- buttons -->
+    <rect x="7" y="28" width="9" height="8" rx="1" fill="var(--ink-faint)" opacity="0.3"/>
+    <rect x="20" y="28" width="9" height="8" rx="1" fill="var(--ink-faint)" opacity="0.3"/>
+    <rect x="33" y="28" width="9" height="8" rx="1" fill="var(--ink-faint)" opacity="0.3"/>
+    <rect x="7" y="40" width="9" height="8" rx="1" fill="var(--ink-faint)" opacity="0.3"/>
+    <rect x="20" y="40" width="9" height="8" rx="1" fill="var(--ink-faint)" opacity="0.3"/>
+    <rect x="33" y="40" width="9" height="8" rx="1" fill="var(--orange-pencil)" opacity="0.5"/>
+  </g>
+
+  <text x="300" y="210" text-anchor="middle" font-family="Caveat, cursive" font-size="16" fill="var(--ink)">"let me compute..."</text>
+
+  <!-- Step-by-step work -->
+  <g transform="translate(250, 220)">
+    <text font-family="JetBrains Mono, monospace" font-size="10" fill="var(--pencil)">w = 6.28 rad/s</text>
+    <text y="16" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--pencil)">t = (2/6.28)*acos(..)</text>
+    <text y="32" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--red-pencil)" font-weight="bold">= 84ms ≠ 43ms !</text>
+  </g>
+
+  <!-- Result: CORRECT (checkmark) -->
+  <g transform="translate(275, 270)">
+    <circle r="25" cx="25" cy="0" stroke="var(--green-pencil)" stroke-width="3" fill="none"/>
+    <path d="M12 0 L22 10 L40 -10" stroke="var(--green-pencil)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  <text x="300" y="308" text-anchor="middle" font-family="Caveat, cursive" font-size="16" fill="var(--green-pencil)" font-weight="700">3/3 errors found</text>
+</svg>

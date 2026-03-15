@@ -1,0 +1,134 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  subtitle: string;
+}
+const { number, title, subtitle } = Astro.props;
+---
+
+<article class="pattern-page">
+  <div class="pattern-header">
+    <span class="pattern-number">Pattern {number}</span>
+    <h1>{title}</h1>
+    <p class="pattern-subtitle">{subtitle}</p>
+  </div>
+  <slot />
+  <div class="pattern-nav">
+    <a href="/">&larr; Back to all patterns</a>
+  </div>
+</article>
+
+<style>
+  .pattern-page {
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .pattern-header {
+    padding: 2rem 0 1rem;
+  }
+
+  .pattern-number {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: var(--blue-pencil);
+    font-weight: 600;
+  }
+
+  .pattern-header h1 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-top: 0.2rem;
+  }
+
+  .pattern-subtitle {
+    font-size: 1.1rem;
+    color: var(--ink-light);
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  .pattern-page :global(.illustration-wrap) {
+    margin: 2rem -1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pattern-page :global(.illustration-wrap .illustration) {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .pattern-page :global(h2) {
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--ink-faint);
+  }
+
+  .pattern-page :global(.evidence-box) {
+    background: var(--paper-dark);
+    border-left: 4px solid var(--blue-pencil);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.3rem;
+    margin: 1.2rem 0;
+  }
+
+  .pattern-page :global(.evidence-box p) {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .pattern-page :global(.evidence-box strong) {
+    color: var(--blue-pencil);
+  }
+
+  .pattern-page :global(.monday-box) {
+    background: var(--paper);
+    border: 2px solid var(--green-pencil);
+    border-radius: 6px;
+    padding: 1rem 1.3rem;
+    margin: 1.5rem 0;
+  }
+
+  .pattern-page :global(.monday-box h3) {
+    color: var(--green-pencil);
+    margin-bottom: 0.3rem;
+  }
+
+  .pattern-page :global(.monday-box li) {
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+  }
+
+  .pattern-page :global(.caveat-box) {
+    background: var(--paper);
+    border: 2px dashed var(--ink-faint);
+    border-radius: 6px;
+    padding: 1rem 1.3rem;
+    margin: 1.5rem 0;
+  }
+
+  .pattern-page :global(.caveat-box h3) {
+    color: var(--pencil);
+  }
+
+  .pattern-page :global(.caveat-box p),
+  .pattern-page :global(.caveat-box li) {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+  }
+
+  .pattern-nav {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed var(--ink-faint);
+  }
+
+  .pattern-nav a {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+</style>

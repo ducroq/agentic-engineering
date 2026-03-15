@@ -1,0 +1,66 @@
+---
+// Stacked verification layers catching bugs
+---
+<svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="illustration" role="img" aria-label="Five stacked verification layers, each catching bugs the others missed">
+  <!-- Layer 5 (bottom) -->
+  <path d="M50 260 L200 290 L350 260 L200 230 Z" stroke="var(--ink)" stroke-width="2" fill="var(--paper-dark)" opacity="0.5" stroke-linecap="round"/>
+  <text x="200" y="265" text-anchor="middle" font-family="Caveat, cursive" font-size="13" fill="var(--pencil)">+ local datasheets</text>
+
+  <!-- Layer 4 -->
+  <path d="M55 220 L200 250 L345 220 L200 190 Z" stroke="var(--ink)" stroke-width="2" fill="var(--paper)" opacity="0.7" stroke-linecap="round"/>
+  <text x="200" y="225" text-anchor="middle" font-family="Caveat, cursive" font-size="13" fill="var(--pencil)">full P1 campaign</text>
+
+  <!-- Layer 3 -->
+  <path d="M60 180 L200 210 L340 180 L200 150 Z" stroke="var(--ink)" stroke-width="2" fill="var(--paper)" opacity="0.8" stroke-linecap="round"/>
+  <text x="200" y="185" text-anchor="middle" font-family="Caveat, cursive" font-size="13" fill="var(--pencil)">P1 spot-check</text>
+
+  <!-- Layer 2 - audit the auditors -->
+  <path d="M65 140 L200 170 L335 140 L200 110 Z" stroke="var(--blue-pencil)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="200" y="144" text-anchor="middle" font-family="Caveat, cursive" font-size="14" fill="var(--blue-pencil)" font-weight="600">audit the auditors</text>
+
+  <!-- Layer 1 (top) -->
+  <path d="M70 100 L200 130 L330 100 L200 70 Z" stroke="var(--ink)" stroke-width="2" fill="var(--paper)" stroke-linecap="round"/>
+  <text x="200" y="104" text-anchor="middle" font-family="Caveat, cursive" font-size="13" fill="var(--pencil)">P0 verification</text>
+
+  <!-- Bugs caught at each layer -->
+  <!-- Layer 1 bugs -->
+  <g transform="translate(330, 85)">
+    <circle r="8" fill="var(--red-pencil)" opacity="0.8"/>
+    <text x="0" y="4" text-anchor="middle" font-size="10" fill="var(--paper)" font-weight="bold">2</text>
+  </g>
+
+  <!-- Layer 2 bugs -->
+  <g transform="translate(340, 125)">
+    <circle r="8" fill="var(--red-pencil)" opacity="0.8"/>
+    <text x="0" y="4" text-anchor="middle" font-size="10" fill="var(--paper)" font-weight="bold">1</text>
+  </g>
+
+  <!-- Layer 3 bugs -->
+  <g transform="translate(345, 168)">
+    <circle r="8" fill="var(--red-pencil)" opacity="0.8"/>
+    <text x="0" y="4" text-anchor="middle" font-size="10" fill="var(--paper)" font-weight="bold">3</text>
+  </g>
+
+  <!-- Layer 4 bugs -->
+  <g transform="translate(350, 208)">
+    <circle r="8" fill="var(--red-pencil)" opacity="0.8"/>
+    <text x="0" y="4" text-anchor="middle" font-size="10" fill="var(--paper)" font-weight="bold">3</text>
+  </g>
+
+  <!-- Layer 5 bugs -->
+  <g transform="translate(355, 248)">
+    <circle r="8" fill="var(--red-pencil)" opacity="0.8"/>
+    <text x="0" y="4" text-anchor="middle" font-size="10" fill="var(--paper)" font-weight="bold">2</text>
+  </g>
+
+  <!-- Annotation: arrow pointing to total -->
+  <text x="375" y="170" font-family="Caveat, cursive" font-size="22" fill="var(--red-pencil)" font-weight="700" transform="rotate(90, 375, 170)">= 10!</text>
+
+  <!-- "stop here?" annotation at layer 1 -->
+  <path d="M70 90 L30 60" stroke="var(--pencil)" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="25" y="55" text-anchor="end" font-family="Caveat, cursive" font-size="14" fill="var(--pencil)">stop here?</text>
+  <text x="25" y="72" text-anchor="end" font-family="Caveat, cursive" font-size="14" fill="var(--red-pencil)" font-weight="600">miss 8 of 10</text>
+
+  <!-- Title label -->
+  <text x="200" y="40" text-anchor="middle" font-family="Caveat, cursive" font-size="20" fill="var(--ink)" font-weight="700">each layer catches what the others miss</text>
+</svg>

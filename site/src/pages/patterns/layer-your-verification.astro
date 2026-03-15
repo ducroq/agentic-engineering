@@ -1,0 +1,86 @@
+---
+import Base from '../../layouts/Base.astro';
+import PatternPage from '../../components/PatternPage.astro';
+import IllustrationLayers from '../../components/IllustrationLayers.astro';
+---
+
+<Base title="Layer Your Verification — Agentic Engineering">
+  <PatternPage number="2" title="Layer Your Verification" subtitle="V&V became cheap enough to use routinely. Each layer catches what the others miss.">
+
+    <div class="illustration-wrap">
+      <IllustrationLayers />
+    </div>
+
+    <p>Independent verification and validation (IV&V) has existed in systems engineering since the 1970s. In avionics (DO-178C), medical devices (IEC 62304), and nuclear systems, it's mandatory. In most other engineering, it's too expensive — dedicated V&V teams, parallel review infrastructure, months of effort.</p>
+
+    <p>AI agents change the economics. You can now run three, four, five verification passes for the cost of minutes of compute time. This doesn't change the principle (V&V works). It changes the practice (V&V is accessible to everyday engineering, not just safety-critical projects with dedicated budgets).</p>
+
+    <h2>The Evidence: OPAL Design Review</h2>
+
+    <p>A mixed-signal PCB design for a confocal optical instrument. Class 3B laser, five voltage domains, millivolt-level signals. The review generated 725 checklist items across 14 engineering disciplines, classified by risk (P0 safety-critical, P1 design-influencing, P2 best-practice), then verified in layers.</p>
+
+    <div class="evidence-box">
+      <p><strong>The critical finding:</strong> Stopping after the first verification pass would have left 8 of 10 defects undiscovered.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>Found</th><th>Would have been missed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>P0 verification</td><td>Laser boot hazard, LDO undersized</td><td>—</td></tr>
+        <tr><td>V&V audit</td><td>Motor driver logic pin missing</td><td>Yes</td></tr>
+        <tr><td>P1 spot-check</td><td>ADC timing, PWM safety regression, thermal</td><td>Yes</td></tr>
+        <tr><td>Full P1</td><td>Reference impedance, DAC init, firmware safety</td><td>Yes</td></tr>
+        <tr><td>+ local datasheets</td><td>Voltage drop, 10x resistance error</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+
+    <p>The most concerning defect: FIX-06, where an ESP32 PWM resolution limit caused the safety voltage cap from a previous fix to silently map to 4.1V instead of 2.0V. A safety regression hidden inside an apparent safety fix — found only by the third verification layer.</p>
+
+    <h2>The Recursive Step</h2>
+
+    <p>After the first verification pass appeared clean, the engineer asked: <em>"Can we trust our verifiers?"</em> Three parallel audit agents independently checked the verification results. This recursive step — auditing the auditors — discovered a critical defect (motor driver logic supply pin entirely missing from the schematic) that the primary verification had overlooked.</p>
+
+    <p>This is the same principle behind IV&V in safety-critical systems. What's new is the economics: the recursive check cost minutes, not months.</p>
+
+    <div class="monday-box">
+      <h3>Try This Monday</h3>
+      <ul>
+        <li>After your AI generates output, don't review it yourself — have a second AI pass review it with different instructions</li>
+        <li>After that review, ask: "what might both passes have missed?" Run a third pass focused specifically on that question</li>
+        <li>Classify your items by risk. Spend thorough verification on the high-consequence items. Spot-check the rest.</li>
+        <li>The marginal cost of each additional layer is minutes. The marginal benefit is unpredictable but occasionally critical. Err on the side of one more layer.</li>
+      </ul>
+    </div>
+
+    <div class="caveat-box">
+      <h3>Honest Limitations</h3>
+      <p>This evidence comes from one design review of one instrument. "8 of 10 missed by single-pass" is specific to this design — it demonstrates the principle but doesn't quantify a general rate. We don't know the false positive rate across layers, or the precise cost-benefit curve. The open question: when does the nth layer stop finding defects? More data from diverse projects is needed.</p>
+    </div>
+
+  </PatternPage>
+</Base>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.85rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    border-bottom: 1px solid var(--ink-faint);
+  }
+  th {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  td {
+    color: var(--ink-light);
+  }
+</style>

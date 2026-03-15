@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import PatternPage from '../../components/PatternPage.astro';
+import IllustrationMaterial from '../../components/IllustrationMaterial.astro';
+---
+
+<Base title="Learn the Material — Agentic Engineering">
+  <PatternPage number="1" title="Learn the Material" subtitle="LLMs have behavioral properties. Some are permanent. Some are being fixed. Know the difference.">
+
+    <div class="illustration-wrap">
+      <IllustrationMaterial />
+    </div>
+
+    <p>Every engineering substrate has properties you must design around. You don't ask steel to resist fatigue — you design joints that accommodate it. You don't ask concrete to handle tension — you add rebar.</p>
+
+    <p>LLMs have behavioral properties too. The difference from physical materials: some are likely permanent (tied to how LLMs fundamentally work), and some are current limitations under active research. An engineer needs to know which is which.</p>
+
+    <h2>Properties Likely to Persist</h2>
+
+    <p><strong>Confidence inflation.</strong> LLMs default to assertive language — "demonstrates" where "suggests" would be appropriate. This is tied to RLHF training: the models are rewarded for confident, complete answers. Even with calibration improvements, this tendency will persist because the training signal rewards it.</p>
+
+    <div class="evidence-box">
+      <p><strong>From agent-ready-papers:</strong> Six of 22 claims in one paper draft used language more confident than evidence warranted. The fix wasn't better prompting — it was a structural confidence-to-language mapping enforced by the writing process.</p>
+    </div>
+
+    <p><strong>The observation-calibration gap.</strong> LLMs can observe accurately ("this document has a table") but struggle to translate observations into calibrated quantitative conclusions. In vmodel.eu, a model reported <code>has_table=true</code> then scored structure=1.</p>
+
+    <div class="evidence-box">
+      <p><strong>From vmodel.eu:</strong> Five models tested (14B-27B parameters) all scored high-quality documents too low and inflated low-quality documents. Unfixable by prompt engineering. The architectural response: remove scoring from LLMs entirely, use embedding + structural features classifier instead. Recovery: 54.7% → 93.8% within-1 agreement.</p>
+    </div>
+
+    <h2>Properties Under Active Research</h2>
+
+    <p><strong>Plausible-but-wrong outputs.</strong> LLMs generate results with correct units, reasonable magnitude, coherent reasoning — that are wrong. Hallucination rates are declining with each model generation. Reasoning-augmented models show substantially better performance. The failure mode won't disappear, but its frequency is dropping.</p>
+
+    <p><strong>Scoring regression to the mean.</strong> Current 14-27B models can't simultaneously internalize a rubric, evaluate content, and calibrate numeric output. Frontier reasoning models already do better. The "separate scoring from LLMs" pattern may have a shelf life of 12-24 months.</p>
+
+    <h2>What This Means</h2>
+
+    <p>Design around these properties today — but hold the workarounds loosely. The principle "know what your tools are bad at and don't ask them to do it" is permanent. The specific list of what they're bad at is not.</p>
+
+    <div class="monday-box">
+      <h3>Try This Monday</h3>
+      <ul>
+        <li>Before trusting LLM output, ask: is this the kind of task where "looks right" is good enough, or where I need to verify the actual result?</li>
+        <li>If your LLM is scoring or rating things numerically: test on both ends of the quality spectrum. Check if high-quality inputs get compressed and low-quality inputs get inflated.</li>
+        <li>If your LLM is writing: check whether the language confidence matches the evidence strength. "Shows" and "demonstrates" should be earned by strong evidence, not default output.</li>
+        <li>When a task requires both qualitative analysis AND calibrated scoring, split them into separate agents/steps.</li>
+      </ul>
+    </div>
+
+    <div class="caveat-box">
+      <h3>Honest Limitations</h3>
+      <p>The "material properties" framing is an analogy, not a precise mapping. Physical materials have measurable, reproducible, version-independent properties. LLM behaviors are stochastic, version-dependent, and context-sensitive. The analogy is useful for thinking about design-around strategies, but don't over-extend it.</p>
+      <p>The specific observations here come from one researcher's practice with 14B-27B parameter models in 2025-2026. Frontier models may already behave differently. Always test your own stack.</p>
+    </div>
+
+  </PatternPage>
+</Base>

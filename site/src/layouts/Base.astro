@@ -1,0 +1,247 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Lessons from 9 real engineering projects on what happens when engineers work with AI agents." } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="paper-texture"></div>
+    <nav class="site-nav">
+      <a href="/" class="nav-home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M3 14 L14 4 L25 14 M7 13 L7 24 L21 24 L21 13" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span>Agentic Engineering</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#patterns">Patterns</a>
+        <a href="/#projects">Projects</a>
+        <a href="/#about">About</a>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <div class="footer-inner">
+        <p class="footer-institution">2025&ndash;2026</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --paper: #f5f0e8;
+    --paper-dark: #ebe4d6;
+    --ink: #2c2416;
+    --ink-light: #6b5d4d;
+    --ink-faint: #a89a88;
+    --pencil: #8b7d6b;
+    --red-pencil: #c0392b;
+    --blue-pencil: #2471a3;
+    --green-pencil: #1e7a46;
+    --orange-pencil: #d4731a;
+    --highlight: #f7e67a;
+    --graph-line: rgba(160, 145, 125, 0.13);
+    --graph-major: rgba(140, 125, 105, 0.25);
+    --grid-minor: 20px;
+    --grid-major: 100px;
+    --max-width: 54rem;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  .paper-texture {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      /* Major grid lines (every 100px) — thicker, like MATLAB axes */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent calc(var(--grid-major) - 1px),
+        var(--graph-major) calc(var(--grid-major) - 1px),
+        var(--graph-major) var(--grid-major)
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent calc(var(--grid-major) - 1px),
+        var(--graph-major) calc(var(--grid-major) - 1px),
+        var(--graph-major) var(--grid-major)
+      ),
+      /* Minor grid lines (every 20px) — fine, like MATLAB minor grid */
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent calc(var(--grid-minor) - 1px),
+        var(--graph-line) calc(var(--grid-minor) - 1px),
+        var(--graph-line) var(--grid-minor)
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent calc(var(--grid-minor) - 1px),
+        var(--graph-line) calc(var(--grid-minor) - 1px),
+        var(--graph-line) var(--grid-minor)
+      );
+    background-position: 0 0;
+  }
+
+  main, nav, footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.2rem 1.5rem;
+  }
+
+  .nav-home {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--ink-light);
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--ink);
+  }
+
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Caveat', cursive;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  h1 { font-size: 3.2rem; font-weight: 700; }
+  h2 { font-size: 2.2rem; font-weight: 700; margin-top: 3rem; }
+  h3 { font-size: 1.5rem; font-weight: 600; }
+
+  p {
+    margin-top: 0.8rem;
+  }
+
+  a {
+    color: var(--blue-pencil);
+    text-decoration-style: wavy;
+    text-underline-offset: 3px;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    background: var(--paper-dark);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+  }
+
+  pre {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.2rem 1.5rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    border: 2px solid var(--ink-light);
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+  }
+
+  footer {
+    border-top: 2px dashed var(--ink-faint);
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--ink-light);
+    font-size: 0.9rem;
+  }
+
+  .footer-institution {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  @media (max-width: 640px) {
+    html { font-size: 16px; }
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.8rem; }
+    .site-nav { flex-direction: column; gap: 0.5rem; }
+  }
+</style>

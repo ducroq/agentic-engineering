@@ -1,0 +1,351 @@
+---
+import Base from '../layouts/Base.astro';
+import IllustrationMaterial from '../components/IllustrationMaterial.astro';
+import IllustrationLayers from '../components/IllustrationLayers.astro';
+import IllustrationCliff from '../components/IllustrationCliff.astro';
+import IllustrationReproduce from '../components/IllustrationReproduce.astro';
+---
+
+<Base title="Agentic Engineering — What's new when engineers work with AI agents">
+  <header class="hero">
+    <h1>What's new when engineers work with AI agents?</h1>
+    <p class="subtitle">Nine real projects. Four patterns that aren't in any textbook yet. An honest account from one engineer's practice.</p>
+    <div class="thesis-box">
+      <p><strong>The short version:</strong> Systems engineering is a necessary but insufficient foundation for working with AI agents. V&V, decomposition, feedback loops, and risk management all transfer directly. But agents introduce four genuinely novel challenges that existing frameworks don't address.</p>
+    </div>
+  </header>
+
+  <section id="patterns" class="patterns-section">
+    <h2>The Four Patterns</h2>
+    <p class="section-intro">Across nine projects spanning embedded hardware, physics simulation, requirements verification, academic writing, content filtering, community platforms, document retrieval, and news curation — these four things were new.</p>
+
+    <div class="pattern-grid">
+      <a href="/patterns/learn-the-material" class="pattern-card">
+        <div class="pattern-illustration">
+          <IllustrationMaterial />
+        </div>
+        <div class="pattern-text">
+          <h3>1. Learn the Material</h3>
+          <p>LLMs have behavioral properties you must design around — confidence inflation, the observation-calibration gap, plausible-but-wrong outputs. Some are permanent. Some are being fixed.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/patterns/layer-your-verification" class="pattern-card">
+        <div class="pattern-illustration">
+          <IllustrationLayers />
+        </div>
+        <div class="pattern-text">
+          <h3>2. Layer Your Verification</h3>
+          <p>V&V became cheap enough to apply routinely. Five verification layers found 10 defects; stopping at layer one would have missed eight. Audit the auditors.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/patterns/context-is-architecture" class="pattern-card">
+        <div class="pattern-illustration">
+          <IllustrationCliff />
+        </div>
+        <div class="pattern-text">
+          <h3>3. Context Is Architecture</h3>
+          <p>Agents only see what's auto-loaded. Everything below the cliff is invisible. Task-triggered pointers — not descriptive labels — cross the boundary.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/patterns/reproduce-dont-assess" class="pattern-card">
+        <div class="pattern-illustration">
+          <IllustrationReproduce />
+        </div>
+        <div class="pattern-text">
+          <h3>4. Reproduce, Don't Assess</h3>
+          <p>When checking equations, compute the answer independently. Assessment found 0 errors in 68 equations. Reproduction found 3. Arithmetic beats plausibility.</p>
+          <span class="read-more">Read more &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section">
+    <h2>The Nine Projects</h2>
+    <p class="section-intro">Real projects, real engineering, real failures. Each contributed evidence for the patterns above.</p>
+
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><path d="M8 28 L18 8 L28 28 Z" stroke="var(--red-pencil)" stroke-width="2" fill="none"/><circle cx="18" cy="20" r="3" fill="var(--red-pencil)"/></svg>
+        </div>
+        <h3>OPAL</h3>
+        <p class="project-domain">Embedded / Optical</p>
+        <p>AI-augmented PCB design review for a confocal backscatter detector. 14 checklists, 725 items, 10 defects found across 5 verification layers.</p>
+        <p class="project-patterns">Patterns: <em>Layer, Material</em></p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><path d="M6 30 L6 6 L30 6" stroke="var(--blue-pencil)" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M6 24 L14 18 L22 22 L30 10" stroke="var(--blue-pencil)" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <h3>vmodel.eu</h3>
+        <p class="project-domain">Education / Software</p>
+        <p>Multi-agent pipeline reviewing student requirements specs. 93.8% within-1 agreement on 64 blind reports. Seven agents, each with a specialized role.</p>
+        <p class="project-patterns">Patterns: <em>Material, Layer</em></p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><path d="M18 6 L18 24" stroke="var(--ink)" stroke-width="2"/><circle cx="18" cy="28" r="4" stroke="var(--ink)" stroke-width="2" fill="none"/><path d="M10 10 L26 10" stroke="var(--pencil)" stroke-width="1" stroke-dasharray="2 2"/></svg>
+        </div>
+        <h3>Driven Pendulum</h3>
+        <p class="project-domain">Physics / Hardware</p>
+        <p>Electromagnetic clock synchronization. 68 equations verified — assessment found 0 errors, reproduction found 3. The reproduce-don't-assess pattern was born here.</p>
+        <p class="project-patterns">Patterns: <em>Reproduce</em></p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><rect x="6" y="6" width="24" height="24" rx="3" stroke="var(--green-pencil)" stroke-width="2" fill="none"/><path d="M12 14 L24 14 M12 20 L20 20 M12 26 L22 26" stroke="var(--green-pencil)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>agent-ready-projects</h3>
+        <p class="project-domain">Methodology</p>
+        <p>How to structure projects so AI agents work across sessions. The auto-loading cliff, task-triggered pointers, and the self-learning loop.</p>
+        <p class="project-patterns">Patterns: <em>Context</em></p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><path d="M8 6 L28 6 L28 30 L8 30 Z" stroke="var(--orange-pencil)" stroke-width="2" fill="none"/><path d="M12 12 L24 12 M12 18 L20 18" stroke="var(--orange-pencil)" stroke-width="1.5" stroke-linecap="round"/><path d="M12 24 L16 24" stroke="var(--red-pencil)" stroke-width="2" stroke-linecap="round"/><text x="19" y="27" font-size="8" fill="var(--red-pencil)" font-family="Caveat">?</text></svg>
+        </div>
+        <h3>agent-ready-papers</h3>
+        <p class="project-domain">Academic Writing</p>
+        <p>Typed verification for AI-augmented papers. CLAIM/ARGUMENT/PROPOSITION each need different checking. 100% claim coverage on Paper 1.</p>
+        <p class="project-patterns">Patterns: <em>Material</em></p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><path d="M8 18 Q18 6, 28 18 Q18 30, 8 18 Z" stroke="var(--blue-pencil)" stroke-width="2" fill="none"/><path d="M14 18 L22 18 M18 14 L18 22" stroke="var(--blue-pencil)" stroke-width="1.5"/></svg>
+        </div>
+        <h3>llm-distillery</h3>
+        <p class="project-domain">ML / Content Filtering</p>
+        <p>Distill expensive cloud LLMs into fast local models. Six production filters. Oracle consistency matters more than data volume.</p>
+        <p class="project-patterns">Patterns: <em>Material</em></p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><path d="M18 8 C10 8, 6 14, 6 18 C6 26, 14 30, 18 30 C22 30, 30 26, 30 18 C30 14, 26 8, 18 8" stroke="var(--green-pencil)" stroke-width="2" fill="none"/><path d="M18 14 L14 20 L22 20 Z" stroke="var(--green-pencil)" stroke-width="1.5" fill="none"/></svg>
+        </div>
+        <h3>RenkumSpot</h3>
+        <p class="project-domain">Community Platform</p>
+        <p>Digital village square for Renkum municipality. Schema-driven CMS, defensive content loading, procedural flower generation.</p>
+        <p class="project-patterns">Patterns: <em>Context</em></p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="12" stroke="var(--ink)" stroke-width="2" fill="none"/><path d="M12 14 L24 14 L24 24 L12 24 Z" stroke="var(--ink)" stroke-width="1.5" fill="none"/><path d="M15 18 L21 18 M15 21 L19 21" stroke="var(--pencil)" stroke-width="1" stroke-linecap="round"/></svg>
+        </div>
+        <h3>ese_bot</h3>
+        <p class="project-domain">Document Retrieval</p>
+        <p>EU-compliant RAG chatbot — no LangChain, no US services. Chunking strategy matters more than model quality. GDPR by architecture.</p>
+        <p class="project-patterns">Patterns: <em>Material</em></p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36"><path d="M6 12 L18 6 L30 12 L30 24 L18 30 L6 24 Z" stroke="var(--orange-pencil)" stroke-width="2" fill="none"/><circle cx="18" cy="18" r="4" stroke="var(--orange-pencil)" stroke-width="1.5" fill="none"/></svg>
+        </div>
+        <h3>ovr.news</h3>
+        <p class="project-domain">News Curation</p>
+        <p>AI-curated news through evidence-based lenses. Multi-provider tiered fallbacks, predictive budget management, quality gates before expensive calls.</p>
+        <p class="project-patterns">Patterns: <em>Material, Layer</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <h2>About This Work</h2>
+    <div class="about-content">
+      <p>This is one engineer's field notes. Nine projects built over 2025-2026, each using AI agents in some form. The patterns extracted here are hypotheses, not proven principles — grounded in practice, limited by a sample size of one.</p>
+      <p>The evidence is honest about what it is: practice-based, not experimental. No controlled comparison. No multi-researcher validation. Survivorship bias (projects where agents weren't useful aren't here). An ML researcher, cognitive scientist, or software architect looking at the same projects might find different patterns.</p>
+      <p>The patterns are worth trying. The framing is worth debating. Neither is established.</p>
+      <div class="about-cta">
+        <p><strong>Read the full proposition:</strong> <a href="https://github.com/ducroq/agentic-engineering">github.com/ducroq/agentic-engineering</a></p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: 3rem 0 2rem;
+    max-width: 42rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+    color: var(--ink-light);
+    margin-top: 0;
+  }
+
+  .thesis-box {
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    background: var(--paper-dark);
+    border-left: 4px solid var(--blue-pencil);
+    border-radius: 0 6px 6px 0;
+  }
+
+  .thesis-box p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .section-intro {
+    color: var(--ink-light);
+    max-width: 38rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Pattern cards */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .pattern-card {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border: 2px solid var(--ink-faint);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .pattern-card:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  .pattern-illustration {
+    width: 100%;
+    max-height: 220px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pattern-illustration :global(.illustration) {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+  }
+
+  .pattern-text {
+    padding: 0.5rem 0.3rem 0;
+  }
+
+  .pattern-text h3 {
+    margin-bottom: 0.3rem;
+  }
+
+  .pattern-text p {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    margin-top: 0.3rem;
+    line-height: 1.5;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-family: 'Caveat', cursive;
+    font-size: 1.05rem;
+    color: var(--blue-pencil);
+    font-weight: 600;
+  }
+
+  /* Project cards */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .project-card {
+    background: var(--paper);
+    border: 1.5px solid var(--ink-faint);
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+  }
+
+  .project-icon {
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+  }
+
+  .project-domain {
+    font-family: 'Caveat', cursive;
+    font-size: 0.9rem;
+    color: var(--pencil);
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+  }
+
+  .project-card > p {
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    line-height: 1.5;
+    margin-top: 0.3rem;
+  }
+
+  .project-patterns {
+    font-size: 0.78rem !important;
+    color: var(--blue-pencil) !important;
+    margin-top: 0.5rem !important;
+  }
+
+  /* About */
+  .about-section {
+    max-width: 38rem;
+  }
+
+  .about-content p {
+    font-size: 0.95rem;
+  }
+
+  .about-cta {
+    margin-top: 1.5rem;
+    padding: 1rem 1.3rem;
+    background: var(--paper-dark);
+    border-radius: 6px;
+  }
+
+  .about-cta p {
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .pattern-grid { grid-template-columns: 1fr; }
+    .project-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2.4rem; }
+  }
+
+  @media (max-width: 480px) {
+    .project-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import PatternPage from '../../components/PatternPage.astro';
+import IllustrationCliff from '../../components/IllustrationCliff.astro';
+---
+
+<Base title="Context Is Architecture — Agentic Engineering">
+  <PatternPage number="3" title="Context Is Architecture" subtitle="Agents only see what's auto-loaded. Everything else is invisible. Design accordingly.">
+
+    <div class="illustration-wrap">
+      <IllustrationCliff />
+    </div>
+
+    <p>Human engineers browse. They scan directories, open files, follow references, build mental models. They might miss a document, but they'll find it if someone mentions it.</p>
+
+    <p>AI agents don't browse. They load what's auto-loaded (CLAUDE.md, project instructions, memory files) and ignore everything else. A beautifully written runbook sitting in <code>docs/RUNBOOK.md</code>, linked from the project file, has <em>zero impact</em> on agent behavior unless something triggers the agent to open it.</p>
+
+    <p>This is the <strong>auto-loading cliff</strong> — a hard boundary between information the agent sees automatically and information that might as well not exist.</p>
+
+    <h2>What Crosses the Cliff</h2>
+
+    <p>Descriptive labels don't cross it. Task-triggered pointers do.</p>
+
+    <pre><code>Doesn't work:
+| What              | Where              |
+| API troubleshooting | docs/api-quirks.md |
+
+Works:
+| When              | Read               |
+| API returns 422   | docs/api-quirks.md |</code></pre>
+
+    <p>The difference: "API troubleshooting" is a category the agent has to decide is relevant. "API returns 422" is a situation the agent recognizes it's in. The first requires interpretation; the second is a match condition.</p>
+
+    <h2>The Evidence</h2>
+
+    <div class="evidence-box">
+      <p><strong>From agent-ready-projects:</strong> Discovered across 100+ agent sessions. Validated by a multi-agent audit: three independent agents reviewed three different project types (editorial platform, data pipeline, deployment platform) and converged on the same findings about context management. The guide's own example was caught violating its own advice — using descriptive labels instead of task triggers.</p>
+    </div>
+
+    <p>The practical consequence: documentation quality for AI agents is measured by <strong>self-navigation, not accuracy.</strong> A perfectly accurate doc that no agent reads is worse than an approximate pointer that triggers the right lookup at the right time.</p>
+
+    <h2>Is This Really New?</h2>
+
+    <p>Maybe. A systems engineer would argue this is interface management — ICDs, bus protocols, and shared memory maps all deal with what's visible to a component. There's truth to that. But the analogy breaks: ICDs assume a consumer that processes everything it receives. Agent context management deals with a consumer that has soft attention boundaries and actively ignores information that doesn't match its current task.</p>
+
+    <p>We're honestly not sure whether this is a genuinely new architectural concern or a known concern in new clothing. What we do know is that the practical patterns (task-triggered pointers, layered memory with progressive disclosure, the self-learning loop) produce measurably better agent behavior than standard documentation approaches.</p>
+
+    <div class="monday-box">
+      <h3>Try This Monday</h3>
+      <ul>
+        <li>Open your project's CLAUDE.md (or equivalent). Replace every descriptive "what" label with a task-triggered "when" condition.</li>
+        <li>Identify your most important document that sits below the cliff. Add a task-triggered pointer to it from the auto-loaded file.</li>
+        <li>Next time your agent ignores something obvious, ask: was it below the cliff? If yes, the fix is a pointer, not better docs.</li>
+        <li>Keep the auto-loaded file lean. Every line competes for attention. If a constraint hasn't prevented a mistake recently, consider demoting it.</li>
+      </ul>
+    </div>
+
+    <div class="caveat-box">
+      <h3>Honest Limitations</h3>
+      <p>The auto-loading cliff is observed primarily with Claude Code's context system. Other tools (Cursor, Copilot, Codex) have their own boundaries that may behave differently. The principle (agents don't browse) is likely general; the specific patterns (task-triggered pointers, progressive disclosure) are tested on one tool family by one researcher. The concept is consistent with cognitive science work on environmental cues and information foraging (Pirolli & Card, 1999), which provides some external grounding.</p>
+    </div>
+
+  </PatternPage>
+</Base>

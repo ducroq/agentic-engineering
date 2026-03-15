@@ -1,0 +1,58 @@
+---
+// Tensile test machine with "LLM" sample being tested
+---
+<svg viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="illustration" role="img" aria-label="A tensile test machine stretching a sample labeled LLM, revealing material properties">
+  <!-- Machine frame - hand-drawn wobbly -->
+  <path d="M80 40 C82 38, 318 37, 320 40 L322 280 C321 283, 79 282, 78 280 Z" stroke="var(--ink)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Base -->
+  <path d="M60 280 C62 278, 340 277, 342 280 L345 300 C344 303, 57 302, 56 300 Z" stroke="var(--ink)" stroke-width="2.5" fill="var(--paper-dark)" stroke-linecap="round"/>
+
+  <!-- Top clamp -->
+  <path d="M160 70 L240 70 L240 95 L160 95 Z" stroke="var(--ink)" stroke-width="2.5" fill="var(--ink-faint)" stroke-linecap="round" opacity="0.3"/>
+  <path d="M162 72 L238 71 L239 94 L161 95 Z" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- clamp bolts -->
+  <circle cx="170" cy="82" r="4" stroke="var(--ink)" stroke-width="1.5" fill="var(--paper)"/>
+  <circle cx="230" cy="82" r="4" stroke="var(--ink)" stroke-width="1.5" fill="var(--paper)"/>
+
+  <!-- Bottom clamp -->
+  <path d="M160 205 L240 205 L240 230 L160 230 Z" stroke="var(--ink)" stroke-width="2.5" fill="var(--ink-faint)" stroke-linecap="round" opacity="0.3"/>
+  <path d="M161 206 L239 205 L240 229 L160 230 Z" stroke="var(--ink)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <circle cx="170" cy="218" r="4" stroke="var(--ink)" stroke-width="1.5" fill="var(--paper)"/>
+  <circle cx="230" cy="218" r="4" stroke="var(--ink)" stroke-width="1.5" fill="var(--paper)"/>
+
+  <!-- The LLM sample - stretched, showing stress -->
+  <path d="M185 95 C183 110, 178 130, 176 150 C174 170, 180 190, 185 205" stroke="var(--red-pencil)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M215 95 C217 110, 222 130, 224 150 C226 170, 220 190, 215 205" stroke="var(--red-pencil)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- necking in the middle -->
+  <path d="M176 150 C180 148, 220 148, 224 150" stroke="var(--red-pencil)" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+
+  <!-- LLM label on sample -->
+  <text x="200" y="155" text-anchor="middle" font-family="Caveat, cursive" font-size="22" font-weight="700" fill="var(--red-pencil)">LLM</text>
+
+  <!-- Stress arrows -->
+  <path d="M200 55 L200 70" stroke="var(--blue-pencil)" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <path d="M200 245 L200 230" stroke="var(--blue-pencil)" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="200" y="50" text-anchor="middle" font-family="Caveat, cursive" font-size="14" fill="var(--blue-pencil)">stress</text>
+  <text x="200" y="260" text-anchor="middle" font-family="Caveat, cursive" font-size="14" fill="var(--blue-pencil)">stress</text>
+
+  <!-- Properties callouts -->
+  <path d="M224 120 L290 100" stroke="var(--pencil)" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="294" y="98" font-family="Caveat, cursive" font-size="13" fill="var(--pencil)">confidence inflation</text>
+  <path d="M226 150 L290 145" stroke="var(--pencil)" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="294" y="143" font-family="Caveat, cursive" font-size="13" fill="var(--pencil)">calibration gap</text>
+  <path d="M224 180 L290 190" stroke="var(--pencil)" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="294" y="188" font-family="Caveat, cursive" font-size="13" fill="var(--pencil)">plausible-but-wrong</text>
+
+  <!-- Dial/gauge -->
+  <circle cx="120" cy="160" r="30" stroke="var(--ink)" stroke-width="2" fill="var(--paper)"/>
+  <path d="M120 160 L108 142" stroke="var(--red-pencil)" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="120" cy="160" r="3" fill="var(--ink)"/>
+  <text x="120" y="200" text-anchor="middle" font-family="Caveat, cursive" font-size="12" fill="var(--pencil)">yield point?</text>
+
+  <defs>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0 0 L8 3 L0 6" fill="none" stroke="var(--blue-pencil)" stroke-width="1.5"/>
+    </marker>
+  </defs>
+</svg>
