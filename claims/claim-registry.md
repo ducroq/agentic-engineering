@@ -65,8 +65,8 @@
 
 | ID | Statement | Type | Priority | Confidence | Source | Source Tier | Status |
 |----|-----------|------|----------|------------|--------|-------------|--------|
-| T-1 | Structured feedback loops (generate→review→validate→oversee) improve the quality and reliability of agent-generated engineering outputs | PROPOSITION | P0 | EMERGING | OWN WORK: case studies (OPAL, driven-pendulum, vmodel.eu) | E | [ ] |
-| T-2 | Multi-agent architectures (separate generate/review/validate agents) produce better results than single-agent approaches | CLAIM | P0 | EMERGING | OWN WORK: vmodel.eu (multi-agent vs single-agent comparison); driven-pendulum (equation-checker vs standard review) | E | [ ] |
+| T-1 | Structured feedback loops (generate→review→validate→oversee) improve the quality and reliability of agent-generated engineering outputs | PROPOSITION | P0 | EMERGING | OWN WORK: case studies (OPAL, driven-pendulum, vmodel.eu); driven-pendulum 2026-03-16: 6-agent parallel review found 14 issues that single-pass work missed | E | [ ] |
+| T-2 | Multi-agent architectures (separate generate/review/validate agents) produce better results than single-agent approaches | CLAIM | P0 | EMERGING | OWN WORK: vmodel.eu (multi-agent vs single-agent comparison); driven-pendulum (equation-checker vs standard review); driven-pendulum 2026-03-16: 6 specialized agents in parallel found 14 cross-cutting issues | E | [ ] |
 | T-3 | Human-in-the-loop oversight remains necessary — agents cannot fully self-validate engineering outputs | ARGUMENT | P0 | SUPPORTED | OWN WORK: case studies show agents miss domain-specific issues; aligned with validation competency research (Digital Engineers) | E+F | [~] |
 
 **T-3 warrant:** Engineering outputs have safety, regulatory, and physics constraints that require domain judgment to evaluate. Case studies show agents generating plausible-but-incorrect outputs that pass agent-level review but fail human inspection.
@@ -82,15 +82,15 @@
 
 | ID | Statement | Type | Priority | Confidence | Source | Source Tier | Status |
 |----|-----------|------|----------|------------|--------|-------------|--------|
-| C-1 | Effective oversight of agentic engineering requires domain expertise — general AI literacy is insufficient | ARGUMENT | P1 | SUPPORTED | Digital Engineers research (proposition P2: Domain Prerequisite); OPAL case study (optical/analog domain knowledge needed to evaluate checklists) | E | [~] |
-| C-2 | Validation capability (critical assessment of AI outputs) matters more than tool proficiency for effective agentic engineering | ARGUMENT | P1 | SUPPORTED | Digital Engineers research (proposition P1: Validation Primacy); vmodel.eu (scoring quality depends on understanding requirements, not LLM operation) | E | [~] |
+| C-1 | Effective oversight of agentic engineering requires domain expertise — general AI literacy is insufficient | ARGUMENT | P1 | SUPPORTED | Digital Engineers research (proposition P2: Domain Prerequisite); OPAL case study (optical/analog domain knowledge needed to evaluate checklists); driven-pendulum 2026-03-16: human caught "pancake coil" terminology error that 6 review agents + equation-checker all missed — requires knowing what the physical component is | E | [~] |
+| C-2 | Validation capability (critical assessment of AI outputs) matters more than tool proficiency for effective agentic engineering | ARGUMENT | P1 | SUPPORTED | Digital Engineers research (proposition P1: Validation Primacy); vmodel.eu (scoring quality depends on understanding requirements, not LLM operation); driven-pendulum 2026-03-16: physics V&V passed but domain expert caught naming error | E | [~] |
 | C-3 | Engineering competencies for working with AI agents transfer across specific AI tools | ARGUMENT | P1 | EMERGING | Digital Engineers research (Tool Agnosticism Principle); limited direct evidence from case studies | E+F | [ ] |
 
 ### Evidence from Case Studies
 
 | ID | Statement | Type | Priority | Confidence | Source | Source Tier | Status |
 |----|-----------|------|----------|------------|--------|-------------|--------|
-| E-1 | Mechanical equation verification (reproduce-don't-assess) catches numerical errors that plausibility-based LLM review misses: 3/3 errors caught in driven-pendulum that Gemini missed | CLAIM | P1 | SUPPORTED | OWN WORK: driven-pendulum equation-checker audit; agent-ready-papers driven-pendulum-retrofit audit | E | [x] |
+| E-1 | Mechanical equation verification (reproduce-don't-assess) catches numerical errors that plausibility-based LLM review misses: 5/5 errors caught in formal docs + 5/5 in informal messages (driven-pendulum) that standard review missed | CLAIM | P1 | SUPPORTED | OWN WORK: driven-pendulum equation-checker audit; agent-ready-papers driven-pendulum-retrofit audit; 2026-03-16 WhatsApp message V&V (5 errors in informal comms) | E | [x] |
 | E-2 | Multi-agent requirements review (vmodel.eu) achieves ≥80% within-1 agreement with human grading on a 64-report blind validation set | CLAIM | P1 | SUPPORTED | OWN WORK: vmodel.eu held-out validation | E | [x] |
 | E-3 | AI-augmented design review (OPAL) produced 14 discipline-specific checklists totaling 725 items, covering disciplines beyond the lead engineer's expertise | CLAIM | P1 | ESTABLISHED | OWN WORK: OPAL design_review_checklists/ — directly verifiable in repo | E | [x] |
 

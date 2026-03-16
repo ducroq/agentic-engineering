@@ -14,6 +14,7 @@
 - **Five case studies written** (pattern-first, loosely coupled to claim registry)
 - **Website built** (`site/`): Astro static site with hand-drawn SVG illustrations, graph-paper background
 - **Four additional source projects explored**: llm-distillery, RenkumSpot, ese_bot, ovr.news (not yet case studies, but evidence in proposition)
+- **Driven-pendulum case study updated** (2026-03-16): Session 7 added — V&V on informal messages (5 errors caught in WhatsApp drafts), 6-agent parallel review (14 issues), human-in-the-loop "short solenoid" terminology catch. Claims E-1, T-1, T-2, C-1, C-2 evidence updated.
 - **Guide track scaffolded** but not populated (patterns/, anti-patterns/, by-phase/)
 - **Research track scaffolded** with README (questions + methodology statement)
 
