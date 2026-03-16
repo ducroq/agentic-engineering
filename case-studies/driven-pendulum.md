@@ -105,3 +105,44 @@ The 3/3 (or 5/5 with the follow-up) error detection rate is specific to this doc
 The comparison between Gemini (0 errors found) and Sonnet (3 errors found) is suggestive but confounded — different model, different prompt, different session. A cleaner test would be the same model with assessment-prompt vs. reproduction-prompt. The project has informal evidence of this (Claude's self-review also found 0 errors) but not a controlled comparison.
 
 The "reproduce, don't assess" principle is well-established in engineering verification practice (independent calculation checks are standard in structural engineering, for instance). What's new here is applying it as an LLM prompting strategy. This aligns with but does not independently validate the broader principle.
+
+---
+
+## 7. Session Update: 2026-03-16
+
+### V&V on informal messages
+
+The reproduce-don't-assess pattern was applied to **WhatsApp messages** drafted for stakeholder Bas Hodzelmans — informal technical communication, not formal documentation. V&V caught 5 errors before sending:
+
+1. **Unit confusion (NUMERICAL):** Stated "4.3 ms/hr" correction rate; actual value 180 ms/hr (≈ 4.3 s/day). Factor ~42 error. Skipped the intermediate step ΔT/T = ½·Δg/g.
+2. **Material property overestimate (NUMERICAL):** Ferrite rod μr stated as ~1000–3000; actual value for rod-type ferrite is ~100–400. Confused rod antennas with MnZn toroids.
+3. **Missing force formula (ASSUMPTION):** Only the coaxial dipole-dipole formula was used; the recommended configuration (magnet swinging laterally past coil) requires the broadside formula, which gives half the force.
+4. **Wrong coil orientation (ASSUMPTION):** Advised coil axis horizontal perpendicular to swing plane; for a vertical magnet dipole this gives weak coupling. Correct: vertical axis.
+5. **Incorrect terminology (LABEL):** Called the coil a "pancake coil" when it's a short solenoid with a removable rod core. The physics was correct but the name was wrong — caught by the human, not by V&V.
+
+This extends the pattern's applicability: it works for back-of-envelope calculations in informal messages, not just formal 68-equation theory documents. Error #5 is notable as a **human-in-the-loop catch** — V&V verified the physics but didn't flag that the component name was wrong for the geometry described.
+
+### 6-agent parallel review
+
+After updating the project documentation, six specialized review agents ran in parallel:
+
+| Agent | Scope | Issues found |
+|-------|-------|-------------|
+| Doc quality | CLAUDE.md, RUNBOOK, gotcha-log | 7 (broken refs, duplication, dead pointers) |
+| Theory consistency | Equation numbering, cross-refs | 5 (missing EQ-26b/c in index, ambiguous ranges) |
+| Prototype plan | Force calcs, BOM, practicality | 9 (wrong force value, winding conflicts, missing guidance) |
+| Audit completeness | C1–C22 sequential, DONE verification | 3 (stale metadata, cosmetic) |
+| Memory system | MEMORY.md structure, duplication | 3 (stale promoted entries, N52 moment rounding) |
+| Requirements traceability | FR/NFR coverage, orphans | 6 (NFR-04 orphaned, V0 untraced, Ch 10 missing) |
+
+**Total: 14 unique issues found across 6 agents in ~2 minutes.** All 14 were subsequently fixed. This is evidence for the multi-agent verification pattern: specialized agents running in parallel catch cross-cutting issues that a single broad reviewer would miss.
+
+### Human-in-the-loop moment
+
+After all V&V was complete, all 14 review findings fixed, and two commits pushed, the human caught that "pancake coil" was incorrect terminology for a short solenoid with a rod core. The physics was correct everywhere — the force mechanism (∂B_z/∂x gradient from a vertical-axis coil) was accurately described. But the *name* was wrong for the physical object being built.
+
+This is evidence for claims C-1/C-2: domain expertise catches errors that formal verification cannot. The equation-checker verifies arithmetic; the 6-agent review checks structural consistency; but knowing that "a coil with a 50-75mm rod core is not a pancake" requires understanding what these components physically are.
+
+### agent-ready-projects adoption
+
+The project adopted the agent-ready-projects v1.0.0 framework during this session, creating CLAUDE.md (Layer 1), RUNBOOK.md (Layer 2), and gotcha-log.md (Layer 4). This provided immediate structure for the curation loop. Five operational patterns were fed back as [issue #1](https://github.com/ducroq/agent-ready-projects/issues/1).

@@ -57,10 +57,7 @@ const { title, description = "Lessons from 9 real engineering projects on what h
     --green-pencil: #1e7a46;
     --orange-pencil: #d4731a;
     --highlight: #f7e67a;
-    --graph-line: rgba(160, 145, 125, 0.13);
-    --graph-major: rgba(140, 125, 105, 0.25);
-    --grid-minor: 20px;
-    --grid-major: 100px;
+    --graph-line: rgba(160, 145, 125, 0.15);
     --max-width: 54rem;
   }
 
@@ -90,37 +87,21 @@ const { title, description = "Lessons from 9 real engineering projects on what h
     pointer-events: none;
     z-index: 0;
     background-image:
-      /* Major grid lines (every 100px) — thicker, like MATLAB axes */
       repeating-linear-gradient(
         0deg,
         transparent,
-        transparent calc(var(--grid-major) - 1px),
-        var(--graph-major) calc(var(--grid-major) - 1px),
-        var(--graph-major) var(--grid-major)
+        transparent 1.7rem,
+        var(--graph-line) 1.7rem,
+        var(--graph-line) calc(1.7rem + 1px)
       ),
       repeating-linear-gradient(
         90deg,
         transparent,
-        transparent calc(var(--grid-major) - 1px),
-        var(--graph-major) calc(var(--grid-major) - 1px),
-        var(--graph-major) var(--grid-major)
-      ),
-      /* Minor grid lines (every 20px) — fine, like MATLAB minor grid */
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent calc(var(--grid-minor) - 1px),
-        var(--graph-line) calc(var(--grid-minor) - 1px),
-        var(--graph-line) var(--grid-minor)
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent calc(var(--grid-minor) - 1px),
-        var(--graph-line) calc(var(--grid-minor) - 1px),
-        var(--graph-line) var(--grid-minor)
+        transparent 1.7rem,
+        var(--graph-line) 1.7rem,
+        var(--graph-line) calc(1.7rem + 1px)
       );
-    background-position: 0 0;
+    opacity: 0.6;
   }
 
   main, nav, footer {

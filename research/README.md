@@ -69,7 +69,7 @@ These limitations are real but do not invalidate the research. They constrain th
 
 ## Connection to Digital Engineers Research
 
-This project operationalizes concepts from the Digital Engineers research initiative (HAN University of Applied Sciences, 2024-2026):
+This project operationalizes concepts from the Digital Engineers research initiative (2024-2026):
 
 | Digital Engineers Concept | How It Appears Here |
 |--------------------------|-------------------|

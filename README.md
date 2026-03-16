@@ -1,84 +1,60 @@
 # Agentic Engineering
 
-**Agentic AI becomes powerful in engineering when we build structured feedback loops that let agents improve each other — with the engineer firmly in the loop.**
+**What's new when engineers work with AI agents?**
 
-This repository documents, demonstrates, and researches the emerging practice of agentic engineering: using multi-agent AI systems with structured feedback loops across the full engineering V-model.
+Systems engineering is a necessary but insufficient foundation. V&V, decomposition, feedback loops, and risk management all transfer directly. But AI agents introduce four genuinely novel challenges that existing frameworks don't address.
 
-## Three Tracks
+## The Four Patterns
 
-### Track 1: Build
-Working demonstrations of agentic engineering across domains — from embedded hardware to requirements verification.
+1. **Learn the Material** — LLMs have behavioral properties (confidence inflation, observation-calibration gap, plausible-but-wrong outputs). Some are permanent. Some are being fixed.
+2. **Layer Your Verification** — V&V became cheap enough to apply routinely. Five layers found 10 defects; stopping at one would have missed eight.
+3. **Context Is Architecture** — Agents only see what's auto-loaded. Task-triggered pointers cross the cliff.
+4. **Reproduce, Don't Assess** — When checking equations, compute the answer independently. Assessment found 0/3 errors. Reproduction found 3/3.
 
-**Case studies:**
-- **OPAL** — AI-augmented design review of a confocal backscatter detector (PCB, firmware, analog, optical physics). 14 checklists, 725 items, multi-discipline V&V.
-- **Driven Pendulum** — Agentic workflow for electromagnetic clock synchronization: claim registries, equation-checking agents, requirements-to-prototype V&V.
-- **vmodel.eu** — Multi-agent pipeline (Gemma 3 + Phi-4) reviewing student requirements documents against IEEE 29148 and V-model standards. Production deployment.
-- **agent-ready-projects** — Framework for structuring any project for effective AI agent collaboration (layered memory, auto-loading cliff, task-triggered pointers).
-- **agent-ready-papers** — Verification infrastructure for AI-augmented academic writing (typed claims, anti-hallucination, confidence calibration).
+## Nine Projects
 
-### Track 2: Research
-Empirical investigation of what makes agentic engineering effective.
-
-Key questions:
-- What feedback loop structures produce reliable engineering outputs?
-- Where does human-in-the-loop oversight actually matter vs. where can agents self-validate?
-- What domain expertise is required to oversee agent-generated engineering work?
-- How do validation competencies transfer across tools and domains?
-
-### Track 3: Guide
-A practical framework for designing agentic engineering workflows.
-
-- Pattern library: which V-model phases, which loop architectures
-- Anti-patterns: where agents fail without proper oversight
-- The feedback loop thesis: generate → review → validate → human oversees
-
-## The V-Model Mapping
-
-Agentic feedback loops are emerging across the entire product development lifecycle:
-
-| V-Model Phase | Agent Capabilities | Case Study |
-|---------------|-------------------|------------|
-| **Requirements** | Consistency checks, testability analysis, conflict detection, standards compliance | vmodel.eu |
-| **Architecture** | Interface verification, design rule checking, performance estimation | OPAL (design review checklists) |
-| **Detailed Design** | Equation verification, parameter validation, claim tracking | Driven Pendulum |
-| **Implementation** | Code generation with verification, firmware development | OPAL (ESP32 firmware) |
-| **Testing** | Coverage analysis, test case generation, V&V automation | OPAL, vmodel.eu |
-| **Documentation** | Claim registries, anti-hallucination checks, confidence calibration | agent-ready-papers |
-
-## The Core Thesis
-
-The pattern that makes agentic AI work in engineering is not "AI does a task" but structured feedback loops:
-
-```
-AI generates → AI reviews → AI validates → Human oversees
-```
-
-This is the same dynamic that transformed software engineering — constant learning from failures, debugging, reviewing constraints — now applied to mechanical, electrical, and systems engineering.
-
-The engineer's role shifts from doing to directing, validating, and taking responsibility. This requires **domain expertise** (to know what's right), **validation capability** (to catch what's wrong), and **context awareness** (to judge what matters).
-
-## Origin
-
-This project grows from two years of research into AI-augmented engineering at HAN University of Applied Sciences, including:
-- Empirical research on how professional engineers use AI tools
-- Development of a conceptual framework for the "AI-augmented engineer"
-- Hands-on experience building agentic systems for real engineering problems
+| Project | Domain | Key pattern |
+|---------|--------|-------------|
+| OPAL | Embedded/optical | Recursive V&V across 5 layers |
+| vmodel.eu | Education/software | Role specialization, separated scoring |
+| Driven Pendulum | Physics/hardware | Reproduce-don't-assess |
+| agent-ready-projects | Methodology | Auto-loading cliff, task-triggered pointers |
+| agent-ready-papers | Academic writing | Typed verification (CLAIM/ARGUMENT/PROPOSITION) |
+| llm-distillery | ML/content filtering | Config-driven generics, oracle output discipline |
+| RenkumSpot | Community platform | Schema as source of truth |
+| ese_bot | Document retrieval | EU sovereignty as architecture constraint |
+| ovr.news | News curation | Multi-provider tiered fallbacks |
 
 ## Repository Structure
 
 ```
 agentic-engineering/
-├── README.md               # This file
-├── case-studies/            # Track 1: Documented case studies
-├── research/                # Track 2: Research materials
-├── guide/                   # Track 3: Practical framework
-└── CLAUDE.md                # Agent orientation
+├── PROPOSITION.md          # The core argument (read this first)
+├── REVIEW-SYNTHESIS.md     # Six critical reviews + action plan
+├── case-studies/           # Five detailed case studies
+├── research/               # Research questions + methodology
+├── guide/                  # Pattern library (planned)
+├── claims/                 # Claim registry (17 claims, 59% coverage)
+├── site/                   # Astro website (the public output)
+│   └── src/
+│       ├── pages/          # Landing page + 4 pattern pages
+│       └── components/     # Hand-drawn SVG illustrations
+└── .claude/agents/         # Review agent prompts (6 perspectives)
 ```
+
+## Website
+
+The site is built with Astro and features hand-drawn SVG illustrations on a graph-paper background. It presents the four patterns with evidence from the nine projects.
+
+To run locally:
+```bash
+cd site && npm install && npx astro dev
+```
+
+## The Evidence Base
+
+Nine projects, one researcher, 2025-2026. Practice-based evidence — not experimental. The patterns are worth trying. The framing is worth debating. Neither is established. See `PROPOSITION.md` for the full argument and `REVIEW-SYNTHESIS.md` for critical review.
 
 ## License
 
 TBD
-
-## Contact
-
-HAN University of Applied Sciences — Academy for Engineering Applications

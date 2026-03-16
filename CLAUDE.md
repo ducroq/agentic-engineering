@@ -1,89 +1,96 @@
 # Agentic Engineering
 
-Documenting, demonstrating, and researching the use of multi-agent AI systems with structured feedback loops across the engineering V-model.
+What's new when engineers work with AI agents? Four patterns from nine real projects.
 
-- **Type**: Research + case studies + practical guide (three tracks)
-- **Status**: Initial setup (March 2026)
-- **Institution**: HAN University of Applied Sciences
+- **Type**: Proposition + case studies + website
+- **Status**: Active (March 2026)
 - **agent-ready-projects**: v1.0.0
 
 ## Before You Start
 
 | When | Read |
 |------|------|
-| Making any factual claim | `claims/claim-registry.md` — check if claim exists, verify confidence tier, use calibrated language |
-| Adding or updating a case study | `case-studies/README.md` — case study template and conventions |
-| Writing research content | `research/README.md` — research questions and methodology |
-| Working on the guide/framework | `guide/README.md` — pattern library structure |
-| Stuck or debugging something weird | `memory/gotcha-log.md` — problem-fix archive |
-| Understanding a related repo | See "Related Repositories" below — read that repo's CLAUDE.md first |
+| Understanding the core argument | `PROPOSITION.md` — the four patterns and what's genuinely new |
+| Reviewing critical feedback | `REVIEW-SYNTHESIS.md` — six reviews + priority action plan |
+| Making any factual claim | `claims/claim-registry.md` — 17 claims, confidence tiers, calibrated language |
+| Working on a case study | `case-studies/README.md` — template and conventions |
+| Working on research content | `research/README.md` — research questions and methodology |
+| Working on the guide | `guide/README.md` — pattern library structure |
+| Working on the website | `site/` — Astro static site, `npm run dev` to preview |
+| Stuck or debugging | `memory/gotcha-log.md` — problem-fix archive |
 
 ## Hard Constraints
 
-- **Evidence-based**: Every claim must be backed by a case study or cited source — no speculation presented as fact
-- **V-model grounded**: Map all patterns and examples to engineering lifecycle phases
-- **Engineer-in-the-loop**: Agents augment, never replace, engineering judgment — never frame agents as autonomous replacements
-- **Tool-agnostic**: Competencies transcend specific AI tools — don't write patterns that only work with one tool
-- **Domain-agnostic**: Patterns must work across mechanical, electrical, software, and systems engineering — don't assume software-only
-- **No company names**: Use generic references ("regional high-tech industry") — industry partners are not confirmed
-- **Show, don't tell**: Case studies before theory — demonstrate, then extract the pattern
-- **Confidence-calibrated language**: Match language to evidence strength — see claim registry for tiers (ESTABLISHED → "shows"; EMERGING → "may"; SPECULATIVE → "warrants investigation")
+- **Pattern-first**: Lead with the transferable pattern, not with thesis/framework evidence
+- **Evidence-based**: Claims backed by case studies or cited sources — no speculation as fact
+- **Tool-agnostic**: Patterns work with any AI system — mention tools used but don't require them
+- **Honest about limitations**: N=1 researcher, no controlled comparison, survivorship bias — say so
+- **Confidence-calibrated**: Match language to evidence strength (ESTABLISHED → "shows"; EMERGING → "may")
+- **No institutional references**: This is a personal project, not institutional
+
+## The Four Patterns
+
+1. **Learn the Material** — LLM behavioral properties (some persistent, some transient)
+2. **Layer Your Verification** — Cheap V&V enables routine multi-layer verification
+3. **Context Is Architecture** — Auto-loading cliff, task-triggered pointers
+4. **Reproduce, Don't Assess** — Compute instead of reasoning about equations
 
 ## Architecture
 
-Three tracks, one thesis:
-
 ```
 agentic-engineering/
-├── CLAUDE.md                # This file (Layer 1: identity + orientation)
-├── README.md                # Public-facing project overview
-├── case-studies/            # Track 1: Build — working demonstrations
-│   └── [per-project case study documents]
-├── research/                # Track 2: Research — empirical investigation
-│   └── [research questions, methodology, findings]
-├── guide/                   # Track 3: Guide — practical framework
-│   └── [pattern library, anti-patterns, V-model mapping]
-└── memory/                  # Layers 3-4: session memory + gotcha log
-    ├── MEMORY.md            # Memory index (auto-loaded)
-    └── gotcha-log.md        # Problem-fix archive
+├── PROPOSITION.md           # Core argument — read first
+├── REVIEW-SYNTHESIS.md      # Critical reviews from 6 perspectives
+├── case-studies/            # Five case studies (pattern-first)
+│   ├── README.md            # Template + conventions
+│   ├── opal.md              # Recursive V&V
+│   ├── vmodel-eu.md         # Role specialization
+│   ├── driven-pendulum.md   # Reproduce, don't assess
+│   ├── agent-ready-projects.md  # Auto-loading cliff
+│   └── agent-ready-papers.md    # Typed verification
+├── research/                # Research questions + methodology
+├── guide/                   # Pattern library (scaffolded, not populated)
+│   ├── patterns/
+│   ├── anti-patterns/
+│   └── by-phase/
+├── claims/
+│   └── claim-registry.md    # 17 claims, 59% coverage
+├── site/                    # Astro website
+│   └── src/
+│       ├── layouts/         # Base layout with graph-paper grid
+│       ├── components/      # SVG illustrations + pattern page template
+│       └── pages/           # Landing + 4 pattern pages
+├── .claude/agents/          # Review agent prompts
+│   ├── review-systems-engineer.md
+│   ├── review-ml-researcher.md
+│   ├── review-practitioner.md
+│   ├── review-epistemologist.md
+│   ├── review-educator.md
+│   ├── review-devil.md
+│   └── review-orchestrator.md
+└── memory/
+    ├── MEMORY.md
+    └── gotcha-log.md
 ```
 
-## Related Repositories (Case Studies)
+## Nine Source Projects
 
-These external repos provide the empirical evidence. Each is an independent project; this repo synthesizes and analyzes them.
-
-| Repo | Domain | What it demonstrates |
-|------|--------|---------------------|
-| `C:\local_dev\agent-ready-projects` | Meta/methodology | How to structure projects for effective AI agent collaboration |
-| `C:\local_dev\agent-ready-papers` | Academic writing | Verification infrastructure for AI-augmented papers |
-| `C:\local_dev\driven-pendulum` | Hardware/physics | Agentic V&V for electromagnetic pendulum sync (68 equations, claim registry) |
-| `C:\local_dev\vmodel.eu` | Education/software | Multi-agent pipeline reviewing requirements docs (Gemma + Phi-4) |
-| OPAL (BR head) | Embedded/optical | AI-augmented PCB design review (14 checklists, 725 items) |
-
-## The Core Thesis
-
-Agentic AI works in engineering through structured feedback loops:
-```
-AI generates → AI reviews → AI validates → Human oversees
-```
-
-The engineer's role: directing, validating, taking responsibility — requiring domain expertise × validation capability × context awareness.
-
-## Key Paths
-
-| Path | What it is |
-|------|-----------|
-| `README.md` | Public-facing overview with V-model mapping |
-| `case-studies/` | Track 1: case study documents |
-| `research/` | Track 2: research materials |
-| `guide/` | Track 3: practical framework |
-| `memory/MEMORY.md` | Session memory index |
-| `memory/gotcha-log.md` | Problem-fix archive |
-| `claims/claim-registry.md` | Verification registry — all claims with evidence status |
+| Repo | Domain | Pattern |
+|------|--------|---------|
+| OPAL | Embedded/optical | Recursive V&V, layered verification |
+| vmodel.eu | Education/software | Role specialization, separated scoring |
+| Driven Pendulum | Physics/hardware | Reproduce-don't-assess |
+| agent-ready-projects | Methodology | Auto-loading cliff, context architecture |
+| agent-ready-papers | Academic writing | Typed verification, confidence calibration |
+| llm-distillery | ML/content filtering | Config-driven generics, oracle discipline |
+| RenkumSpot | Community platform | Schema as source of truth |
+| ese_bot | Document retrieval | Sovereignty as architecture constraint |
+| ovr.news | News curation | Multi-provider fallbacks, quality gates |
 
 ## Writing Style
 
-- Accessible but rigorous — practitioners and researchers both in audience
-- Show, don't tell — case studies before theory
-- Honest about limitations — where agents fail matters as much as where they succeed
+- Pattern-first: the pattern is what matters, engineering narrative serves it
+- Practitioner-accessible: a working engineer should try the pattern Monday morning
+- Honest about failures: where agents failed matters as much as where they succeeded
+- Loosely coupled to claim registry: note evidence naturally, don't force claim IDs into every paragraph
 - No emojis unless explicitly requested
