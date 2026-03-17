@@ -5,7 +5,7 @@
      Every factual claim, argument, and proposition tracked here. -->
 
 **Project:** Agentic Engineering
-**Last Updated:** 2026-03-15
+**Last Updated:** 2026-03-17
 **Thesis:** Agentic AI becomes powerful in engineering when we build structured feedback loops that let agents improve each other — with the engineer firmly in the loop.
 
 ---

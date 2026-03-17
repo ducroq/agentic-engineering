@@ -6,7 +6,6 @@
 |------|-------------|-------------|
 | `memory/gotcha-log.md` | Stuck or debugging | Problem-fix archive |
 | `claims/claim-registry.md` | Writing any content with factual claims | 17 claims tracked; 59% coverage; P0 at 40% |
-| `feedback_echo_chamber.md` | Proposing case studies or evaluating evidence | Avoid circular evidence — framework verifying itself isn't independent |
 
 ## Current State
 
@@ -16,7 +15,8 @@
 - **Website built** (`site/`): Astro static site with hand-drawn SVG illustrations, graph-paper background
 - **Four additional source projects explored**: llm-distillery, RenkumSpot, ese_bot, ovr.news (not yet case studies, but evidence in proposition)
 - **Driven-pendulum case study updated** (2026-03-16): Session 7 added — V&V on informal messages (5 errors caught in WhatsApp drafts), 6-agent parallel review (14 issues), human-in-the-loop "short solenoid" terminology catch. Claims E-1, T-1, T-2, C-1, C-2 evidence updated.
-- **Guide track scaffolded** but not populated (patterns/, anti-patterns/, by-phase/)
+- **Guide by-phase/ populated** (2026-03-17): V-model phase mapping with feedback loop framing and evidence links
+- **Guide patterns/ and anti-patterns/ scaffolded** but not yet populated
 - **Research track scaffolded** with README (questions + methodology statement)
 
 ## Related Repos — Quick Reference
@@ -41,3 +41,4 @@
 - **Personal project**: No institutional references (HAN removed from all public-facing docs)
 - **Adopted agent-ready-projects v1.1.0**: Layered memory system for session continuity (v1.1.0: tool-agnostic, agent-assisted, worked examples, adoption feedback loop)
 - **Adopted agent-ready-papers claim registry**: Typed verification with confidence tiers
+- **Feedback loop framing adopted** (2026-03-17): "agent generates → agent reviews → agent validates → engineer decides" — borrowed from practitioner discourse, grounded in our evidence

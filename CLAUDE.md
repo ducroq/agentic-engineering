@@ -49,10 +49,10 @@ agentic-engineering/
 │   ├── agent-ready-projects.md  # Auto-loading cliff
 │   └── agent-ready-papers.md    # Typed verification
 ├── research/                # Research questions + methodology
-├── guide/                   # Pattern library (scaffolded, not populated)
-│   ├── patterns/
-│   ├── anti-patterns/
-│   └── by-phase/
+├── guide/                   # Pattern library
+│   ├── patterns/            # Scaffolded, not yet populated
+│   ├── anti-patterns/       # Scaffolded, not yet populated
+│   └── by-phase/            # V-model phase mapping (populated)
 ├── claims/
 │   └── claim-registry.md    # 17 claims, 59% coverage
 ├── site/                    # Astro website

@@ -1,4 +1,4 @@
-# Review Synthesis: "Agentic Engineering Is Systems Engineering"
+# Review Synthesis: "What's New When Engineers Work with AI Agents"
 
 Six review agents with distinct perspectives reviewed `PROPOSITION.md`. This document compiles convergent criticism, divergent views, and a priority action plan.
 
