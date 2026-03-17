@@ -4,7 +4,7 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 
 - **Type**: Proposition + case studies + website
 - **Status**: Active (March 2026)
-- **agent-ready-projects**: v1.0.0
+- **agent-ready-projects**: v1.1.0
 
 ## Before You Start
 
@@ -86,6 +86,10 @@ agentic-engineering/
 | RenkumSpot | Community platform | Schema as source of truth |
 | ese_bot | Document retrieval | Sovereignty as architecture constraint |
 | ovr.news | News curation | Multi-provider fallbacks, quality gates |
+
+## Cross-Repo Evidence
+
+This repo is the synthesis layer for nine source projects. When working in a source project and you discover evidence relevant to the four patterns (verification findings, context architecture lessons, reproduce-don't-assess examples, LLM behavioral properties), file an issue at `ducroq/agentic-engineering` with the pattern name, quantified results, and which claims it supports.
 
 ## Writing Style
 

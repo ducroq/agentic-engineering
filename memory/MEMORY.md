@@ -6,6 +6,7 @@
 |------|-------------|-------------|
 | `memory/gotcha-log.md` | Stuck or debugging | Problem-fix archive |
 | `claims/claim-registry.md` | Writing any content with factual claims | 17 claims tracked; 59% coverage; P0 at 40% |
+| `feedback_echo_chamber.md` | Proposing case studies or evaluating evidence | Avoid circular evidence — framework verifying itself isn't independent |
 
 ## Current State
 
@@ -38,5 +39,5 @@
 - **Case study style**: Pattern-first, loosely coupled to claim registry — not thesis chapters
 - **Material properties split**: Persistent (confidence inflation, observation-calibration gap) vs. transient (scoring regression, plausible-but-wrong severity)
 - **Personal project**: No institutional references (HAN removed from all public-facing docs)
-- **Adopted agent-ready-projects v1.0.0**: Layered memory system for session continuity
+- **Adopted agent-ready-projects v1.1.0**: Layered memory system for session continuity (v1.1.0: tool-agnostic, agent-assisted, worked examples, adoption feedback loop)
 - **Adopted agent-ready-papers claim registry**: Typed verification with confidence tiers

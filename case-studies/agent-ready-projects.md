@@ -30,6 +30,8 @@ This case study is different from the others — the "agentic workflow" here is 
 
 All feedback was applied to v1.0.0.
 
+**Phase 4: Adoption feedback loop.** Real-world adoption (driven-pendulum, agent-ready-papers) generated concrete feedback that drove v1.1.0. Key changes: tool-agnostic framing (no longer Claude Code-specific), agent-assisted retirement/audits, worked examples, Cursor `.mdc` support, and template refinements (immediate retirement of promoted entries, ADR nudges for persistent decisions, session-end curation row). The adoption-feedback-release cycle itself is an instance of the self-learning loop operating at the framework level.
+
 ---
 
 ## 3. What Worked
