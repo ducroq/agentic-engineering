@@ -11,9 +11,28 @@ import IllustrationLayers from '../../components/IllustrationLayers.astro';
       <IllustrationLayers />
     </div>
 
-    <p>Independent verification and validation (IV&V) has existed in systems engineering since the 1970s. In avionics (DO-178C), medical devices (IEC 62304), and nuclear systems, it's mandatory. In most other engineering, it's too expensive — dedicated V&V teams, parallel review infrastructure, months of effort.</p>
+    <p>The pattern is simple: <strong>agent generates &rarr; agent reviews &rarr; agent validates &rarr; engineer decides.</strong> Each layer catches what the others miss. Independent verification and validation (IV&V) has existed in systems engineering since the 1970s — mandatory in avionics (DO-178C), medical devices (IEC 62304), and nuclear systems. In most other engineering, it's been too expensive: dedicated V&V teams, parallel review infrastructure, months of effort.</p>
 
     <p>AI agents change the economics. You can now run three, four, five verification passes for the cost of minutes of compute time. This doesn't change the principle (V&V works). It changes the practice (V&V is accessible to everyday engineering, not just safety-critical projects with dedicated budgets).</p>
+
+    <h2>Where This Applies Across the V-Model</h2>
+
+    <p>Layered verification isn't limited to detailed design. Practitioners are applying it at every phase of product development:</p>
+
+    <table>
+      <thead>
+        <tr><th>V-Model Phase</th><th>What Agents Verify</th><th>Source Evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Requirements</td><td>Consistency checks, testability analysis, conflict detection</td><td>vmodel.eu (93.8% agreement)</td></tr>
+        <tr><td>Architecture</td><td>Interface checks, performance estimation, verification workflows</td><td>OPAL (recursive V&V)</td></tr>
+        <tr><td>Detailed Design</td><td>Equation reproduction, safety analysis, manufacturability</td><td>Driven Pendulum (3 errors found)</td></tr>
+        <tr><td>Testing</td><td>Coverage checks, test case generation, log mining</td><td>vmodel.eu, OPAL</td></tr>
+        <tr><td>Documentation</td><td>Claim-evidence tracing, confidence calibration, compliance</td><td>agent-ready-papers (100% coverage)</td></tr>
+      </tbody>
+    </table>
+
+    <p>The same feedback loop — generate, review, validate, decide — works at each phase. What changes is what you're verifying and which agents are specialized for the task.</p>
 
     <h2>The Evidence: OPAL Design Review</h2>
 
