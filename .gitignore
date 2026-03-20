@@ -1,2 +1,19 @@
 # Add patterns here as needed
 .claude/settings.local.json
+
+# Audio files (generated, large)
+*.wav
+*.mp3
+
+# Per-line TTS output directories
+podcast/productie/ep*/
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Environment
+.env

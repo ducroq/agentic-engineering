@@ -1,0 +1,192 @@
+Sven: So Thursday night. Eleven PM. I'm finishing a feature branch. The agent is helping me refactor the data layer. And it deletes the audit log.
+# [OVERLAP] Lisa's "The audit log?" cuts in before Sven finishes "audit log"
+
+Lisa: The audit log?
+
+Sven: The entire table. Dropped it. Said it was "cleaning up unused schema." We'd spent three sessions — no, wait. Four sessions. Three where I explicitly told it, and one where it figured it out from the tests. Four sessions establishing that log is sacred. Append-only. Required for compliance.
+
+Marc: What happened next?
+
+Sven: I caught it before the migration ran. But if I hadn't been watching? That's a compliance violation. That's the kind of thing that gets escalated.
+
+Lisa: And you'd told the agent not to touch it.
+
+Sven: Four times. In four different sessions. Each time it understood. Each time it agreed. And then Thursday night, blank slate. Like we'd never spoken.
+
+Marc: Because you hadn't. Not in that session.
+
+Sven: What do you mean?
+# [OVERLAP] Marc starts immediately, almost stepping on Sven's "mean?"
+
+Marc: Those four conversations happened in four separate context windows. Each one closed when the session ended. The agent on Thursday night had no access to any of them. It wasn't ignoring you. It never received the instruction.
+
+Sven: That's... worse, actually.
+
+Marc: It is. Because it means the failure isn't the agent's judgment. It's the information architecture. You had critical knowledge that existed only in your head and in closed sessions.
+
+Lisa: So every session really does start from zero?
+
+Marc: Every session. No memory of your decisions, your architecture, the bugs you already solved together.
+
+Lisa: And Sven's not alone. McKinsey surveyed organizations globally last year. Forty-seven percent reported negative consequences from AI use. And only twenty percent can actually measure whether AI is helping or hurting.
+
+Sven: So most companies have no idea if this is working.
+
+Marc: They know things go wrong. They don't know why.
+
+Lisa: This reminds me of something on my team. We hired a contractor for three weeks. Smart person. Good developer. But every Monday she'd ask the same questions because our onboarding doc was a two-hundred-page Confluence space. We eventually wrote her a one-page cheat sheet. Three rules, five links. That's what actually worked.
+
+Marc: That's exactly — yes. The question is whether you give that cheat sheet to your agent or make it figure everything out alone. Every session.
+
+Sven: Okay. So write a README. We've been told to write docs for thirty years. Nobody does it.
+
+Marc: A README is the right instinct. But it won't fix this.
+
+Sven: Why not?
+
+Marc: Because agents don't just read files. They have loading mechanics. There's a hard boundary — I call it the auto-loading cliff — between what the agent sees automatically at the start of every session and what's invisible unless the agent is told to go find it.
+
+Sven: Invisible how? It's right there in the repo.
+
+Marc: Right there and never opened. Your five-hundred-line README sits below the cliff. The agent doesn't know it should read it. Meanwhile, there's a specific file — different name depending on the tool — that gets loaded automatically. Every session. No action required.
+
+Sven: Which tools?
+
+Marc: Claude Code loads CLAUDE dot M D. Cursor uses M D C files in a dot cursor rules folder. Codex reads AGENTS dot M D. Windsurf has its own format. Different filenames, same mechanism.
+
+Sven: And that's where "never delete the audit log" goes.
+
+Marc: "The audit log is append-only. Required for compliance. Never drop, truncate, or modify existing entries."
+
+Sven: Fourteen words.
+# [OVERLAP] Marc echoes "Fourteen words" immediately, overlapping the tail of Sven's line
+
+Marc: Fourteen words that would have saved your Thursday night.
+
+Lisa: But you can't fit everything in one file. What about deployment procedures, environment setup?
+
+Marc: That's the cliff at work. Above the cliff means auto-loaded, visible every session. Below means on-demand, invisible until triggered. You trigger it with pointers in the auto-loaded file. Not "see docs." Task-triggered pointers. "When debugging the data layer, read the gotcha log first."
+
+Sven: So the file is a navigation layer.
+
+Marc: A fifty-line navigation layer. What this project is. What you must never do. And when to read what.
+
+Lisa: What lives below the cliff?
+
+Marc: A runbook for deployment. A memory index — topics organized by concern, each in its own file. And a gotcha log. Structured journal of problems and fixes.
+
+Sven: A gotcha log sounds like something that grows forever and nobody reads.
+
+Marc: It does if you let it. That's why it has a lifecycle. Capture when a problem happens. Promote to a topic file when it recurs. Promote again to the project file if it's truly universal. Retire when the root cause is fixed.
+
+Sven: But won't the tools just handle this eventually? Memory is getting better. Context windows are getting bigger. In a year this might all be automated.
+
+Marc: Maybe. Context windows are growing. Some tools are adding persistent memory. But right now, today, the cliff exists in every tool I've tested. And even with longer context windows, you still face the curation problem. A million tokens of uncurated context isn't better than fifty lines of the right context. Bigger windows don't solve the architecture question — they just give you more room to get it wrong.
+
+Sven: Fair. But I'm watching that space.
+
+Marc: You should. If the tools solve this natively, the framework becomes unnecessary. I'd be happy with that outcome. But until then —
+
+Lisa: Until then, you need the briefing.
+
+Marc: And here's something I learned the hard way. If you can't see the memory, you won't maintain it. I originally stored all this in a hidden directory — the tool's auto-memory. Out of sight, not in git. After a few months I had seventy-five files across twenty-eight projects that I didn't even know existed.
+
+Sven: Seventy-five?
+
+Marc: Stale entries. Wrong assumptions. Gotchas that should have been promoted weeks ago. I moved everything into the repo. Visible in the editor. Version controlled. If I can see it next to my code, I maintain it.
+
+Lisa: We had the same thing with a team wiki. Nobody read it until we moved the critical pages into the repo as markdown. Then they showed up in pull requests. People actually maintained them.
+
+Marc: Visibility forces curation.
+
+Sven: Okay. Real objection. I put rules in my README six months ago. "Don't modify migration files." "Run the test suite before committing." The agent ignored half of them.
+
+Marc: Was it in the auto-loaded file?
+
+Sven: The README.
+# [OVERLAP] Marc's "Below the cliff" lands fast on Sven's trailing "README"
+
+Marc: Below the cliff. The agent never opened it.
+
+Sven: But even in the right file — agents skip constraints. They're not deterministic.
+
+Marc: You can't guarantee compliance. That's honest. Agents miss instructions, especially when the context window fills up and older content gets summarized or dropped — that's what compression means. Without the project file, zero chance the agent knows your constraints. With it, high chance. Not perfect.
+
+Lisa: So what do you do about the gap?
+
+Marc: Keep critical constraints short and near the top. Content that appears early survives compression better. And layer your verification. But that's a whole other episode.
+
+Sven: Second objection. The code should speak for itself.
+
+Marc: The code tells the agent what is. Not what must never be. "This table is append-only for compliance" isn't in any test. It's in your head.
+
+Sven: Some of that is in comments.
+
+Marc: Scattered across the codebase. The agent doesn't read every comment at the start of a session. It reads the auto-loaded file. That's the difference between context that's scattered and context that's structured.
+
+Sven: Third objection. My project is two thousand lines. This is enterprise overhead.
+
+Marc: Three constraints. Empty gotcha log. Two minutes.
+
+Sven: That's... fine, actually.
+
+Marc: You add more when you feel the pain. Not before.
+
+Lisa: But what about teams? I manage eight developers. If everyone writes their own project file with their own constraints, we'll have eight different versions of the truth.
+
+Marc: That's — yeah. I don't have a clean answer for teams yet. The framework I'm describing is individual practice. Team governance — who owns the project file, how do you review changes to it, what happens when constraints conflict across developers — that's a different problem. I think the principles transfer. Visibility, curation, the cliff. But the organizational layer? I haven't built that. I'd be making it up.
+
+Lisa: That's honest.
+
+Marc: It's a real gap. If you figure it out before I do, I want to hear about it.
+
+Sven: Did he just admit he doesn't know something?
+
+Lisa: Mark the date.
+
+Marc: What I can tell you is what happens when context engineering goes wrong for individuals. I built a project file that was three hundred lines. The agent loaded all of it every session and got cautious. Started asking permission on routine changes. The file became a cage instead of a briefing.
+
+Sven: So more context isn't always better.
+
+Marc: The skill is knowing what goes where. And you get it wrong at first. The system is self-correcting — but only if you review it. Two minutes at the end of a session. Maybe ten at the end of a week.
+
+Lisa: There's something deeper here. This isn't just about AI. It's about structuring knowledge for someone who needs to be productive without your full context. We do this for new hires. We do it badly, usually, but we do it.
+
+Marc: Agents expose what was always invisible. Humans fill gaps by asking questions. Agents can't. They make the cliff visible.
+
+Sven: Where do I start? Tomorrow morning.
+
+Marc: Open the auto-loaded file for your tool. Write one line describing the project. Three to five hard constraints. A small table mapping common tasks to relevant docs.
+
+Sven: And the gotcha log?
+
+Marc: Empty file. In your repo. Next time the agent breaks something, write it down.
+
+Lisa: The memory index? The runbook?
+
+Marc: You won't need them yet. Start with the briefing and the log.
+
+Sven: I'm doing it tonight.
+
+Lisa: Not at eleven PM this time?
+
+Sven: No promises. But at least when the agent opens my project tomorrow, it'll know what not to delete.
+
+Marc: That's the beginning. But context is just one of the things that's genuinely new. Knowing what to tell the agent is necessary. It's not sufficient.
+
+Lisa: What do you mean?
+
+Marc: What happens when the agent reads all your instructions, understands your constraints, and still produces work that's confidently, fluently wrong?
+# [OVERLAP] Sven's "That's happened" starts over Marc's trailing "wrong?"
+
+Sven: That's happened to me too.
+
+Marc: That's a different problem. Not about context. It's about the material itself.
+
+Lisa: The material?
+
+Marc: The AI. Its properties. What it's good at, what it's bad at, and how to design around both. That's next time.
+
+Sven: I'll bring my gotcha log.
+
+Lisa: Agentic Engineering. We'll see you then.

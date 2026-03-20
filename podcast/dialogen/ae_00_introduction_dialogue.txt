@@ -1,0 +1,102 @@
+Lisa: So we've been talking about AI agents for a while now. Autonomous systems, culture, identity. But there's a question we keep circling back to.
+
+Marc: What's genuinely new?
+
+Lisa: Right. Because half of what people call "new" is just... old engineering with a language model stapled on.
+
+Sven: And the other half might actually be new but nobody can tell because everyone's too busy shipping demos.
+
+Marc: That's the problem. The hype cycle moves faster than the understanding cycle. Teams adopt agents, hit walls, and either blame the tool or blame themselves. Neither is useful.
+
+Lisa: And it's not a niche thing anymore. Nine out of ten software development teams use AI tools daily. Three independent surveys, ninety thousand respondents combined. This happened in about eighteen months.
+
+Sven: But do they trust it?
+
+Lisa: Three to eight percent fully trust the output. Depending on which survey you read.
+
+Sven: Wait. Nine out of ten use it. Less than one in ten trusts it.
+
+Lisa: That's the gap.
+
+Marc: And here's the counterintuitive part. The more experience you have, the less you trust it. Senior developers with ten-plus years show sixty-one percent low trust. Juniors are at forty-eight. Experience doesn't build confidence with this tool. It reveals problems.
+
+Lisa: So what do you do instead?
+
+Marc: You look at the work. Not the pitch decks. Not the Twitter threads. The actual engineering. What breaks? What surprises you? What doesn't work the way twenty years of software engineering said it should?
+
+Sven: And you think there are real answers there? Not just "it depends"?
+
+Marc: Some. I've been working with AI agents across — I think it's nine now — nine different projects over the past year. Hardware verification, academic writing, news curation, embedded systems, education platforms. Different domains, different tools, different stakes.
+
+Lisa: And patterns emerged?
+
+Marc: Four. Four things that I genuinely couldn't explain with existing engineering frameworks. Everything else transferred. Requirements analysis, verification, testing, architecture. The fundamentals hold. But these four kept showing up and they didn't fit any textbook I knew.
+
+Sven: So what are they?
+
+Marc: That's what this series is about.
+
+Sven: You're not going to tell us right now?
+
+Marc: I'll give you the headlines. First, the AI itself has material properties you need to design around. Not bugs. Properties. Like how every database has latency. You don't complain about it. You design for it.
+
+Lisa: What do you mean by properties?
+
+Marc: It's more confident than it should be. It produces work that looks right and reads well but is sometimes wrong in ways that are — how do I put this — hard to catch precisely because the prose is so fluent. And it can observe accurately but struggles to draw calibrated conclusions from what it sees.
+
+Sven: That sounds like a bad employee.
+# [OVERLAP] Marc starts "It sounds like" over the tail of "employee"
+
+Marc: It sounds like a new material. You wouldn't build a bridge out of a metal you've never tested. But that's what most teams do with agents. They assume the material behaves like a human junior developer and then act surprised when it doesn't.
+
+Sven: Okay, what's the second one?
+
+Marc: Verification economics changed. Checking work used to be expensive. With agents, it's almost free. That means you can layer five verification passes where you used to afford one. And when I tried that on a real project, five layers found ten defects. Stopping at one layer would have caught two.
+
+Sven: Eight defects missed by a single review?
+# [OVERLAP] Marc's "Eight." lands on the last syllable of "review?"
+
+Marc: Eight. And these weren't obscure edge cases. They were the kind of thing that ships to production and breaks quietly three months later.
+
+Lisa: I manage a team that uses agents. We do one review pass. Sometimes none. You're saying we're catching maybe twenty percent of the problems?
+
+Marc: I'm saying one pass catches what one pass catches. I can't give you a universal number. But in this case, one layer found two out of ten. The other eight needed a different set of eyes.
+
+Lisa: That's terrifying. What's the third?
+
+Marc: Context is architecture. Agents don't just need good instructions. They need the right information loaded at the right moment through mechanisms that most developers don't even know exist. There's a hard boundary in every tool between what the agent sees automatically and what's invisible. Get that wrong and the agent makes confident decisions based on incomplete information.
+
+Sven: That one I've felt. My agent deleted something last week that I'd explicitly told it to protect. In a previous session.
+
+Marc: Previous session. Exactly. The context window closed. Your instruction vanished. The agent wasn't ignoring you. It never received the message.
+
+Lisa: And the fourth?
+
+Marc: For anything with numbers — equations, calculations, financial models — you have to reproduce the work. Not assess it. Not eyeball it. Actually redo the computation independently. I had a document with sixty-eight equations. Asked an agent to review them for soundness. It said they looked fine. Asked a different agent to reproduce every calculation from scratch. It found three errors.
+
+Sven: The review found zero and the reproduction found three?
+
+Marc: Zero versus three. Same model. Same — well, different prompt, same model. The difference between "does this look right" and "compute this yourself" is the difference between catching nothing and catching everything.
+
+Lisa: So that's the series. But I have to push back on something. It sounds like you're describing your own work. Nine projects, one engineer. How do we know this isn't just how you work?
+
+Marc: We don't. That's the honest answer. This is one engineer's experience. I can't tell you these patterns are universal. I can tell you they're real, grounded in specific evidence, and they kept showing up across very different domains.
+
+Sven: So what, we just take your word for it?
+
+Marc: No. We test it. We bring in other people. We look at their projects, their failures, their surprises. The question isn't whether my four patterns are the final answer. The question is bigger than that.
+
+Lisa: What's genuinely new when humans and AI agents build things together.
+
+Marc: And what's just engineering we already knew, wearing a new hat.
+
+Sven: I'll be the one checking whether the hat is actually new.
+
+Lisa: That's literally your job on this podcast.
+# [OVERLAP] Sven's "Someone" starts over the tail of "podcast"
+
+Sven: Someone has to do it.
+
+Marc: Next episode, we start with context. What happens when your agent starts every session as a complete stranger. And what you can do about it in about fifteen minutes.
+
+Lisa: Agentic Engineering. Let's figure this out.

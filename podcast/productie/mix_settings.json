@@ -1,0 +1,17 @@
+{
+  "description": "Production mix settings for Agentic Engineering podcast",
+  "speaker_speed": {
+    "marc": 0.95
+  },
+  "turn_pause": [0.15, 0.40],
+  "same_speaker_pause": [0.05, 0.15],
+  "overlap_advance": [0.20, 0.40],
+  "crossfade_ms": 80,
+  "seed": 42,
+  "voices": {
+    "lisa": "lisa.mp3",
+    "marc": "felix.mp3",
+    "sven": "sven.mp3"
+  },
+  "notes": "Felix 5% faster. Narrator.mp3 was too fast for non-native listeners. Marc.mp3 had number articulation issues."
+}
