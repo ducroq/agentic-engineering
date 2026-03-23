@@ -1,6 +1,6 @@
 ---
 name: ae-review-team-lead
-description: Reviews Agentic Engineering podcast scripts from the perspective of a senior engineer and team lead scaling AI agents across a team
+description: Reviews Augmented Engineering podcast scripts from the perspective of a senior engineer and team lead scaling AI agents across a team
 model: sonnet
 ---
 

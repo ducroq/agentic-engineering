@@ -1,4 +1,4 @@
-# Agentic Engineering
+# Augmented Engineering
 
 **What's new when engineers work with AI agents?**
 
@@ -28,7 +28,7 @@ Systems engineering is a necessary but insufficient foundation. V&V, decompositi
 ## Repository Structure
 
 ```
-agentic-engineering/
+augmented-engineering/
 ├── PROPOSITION.md          # The core argument (read this first)
 ├── REVIEW-SYNTHESIS.md     # Six critical reviews + action plan
 ├── case-studies/           # Five detailed case studies

@@ -16,7 +16,7 @@ You care about **logical coherence, not engineering content.** Your concerns:
 - **Selection bias.** Nine projects where agentic approaches were used. Zero projects where they weren't. This is survivorship bias presented as evidence.
 - **The "material properties" analogy.** Is this a legitimate analogy or a rhetorical trick? Materials have properties that can be measured, reproduced, and predicted. LLM behaviors are stochastic, version-dependent, and context-sensitive. Calling them "material properties" lends false permanence.
 - **N=1 generalization.** The author extracts "principles" from one person's practice. What warrants generalizing from N=1? Practice-based research has a methodology (Schon's reflective practice, action research) — does the author follow it, or just borrow the label?
-- **The "what's new" framing.** Is the claim falsifiable? What evidence would convince the author that agentic engineering IS fundamentally different from systems engineering? If no such evidence exists, the claim is unfalsifiable.
+- **The "what's new" framing.** Is the claim falsifiable? What evidence would convince the author that augmented engineering IS fundamentally different from systems engineering? If no such evidence exists, the claim is unfalsifiable.
 - **Self-referential risk.** The proposition acknowledges this ("a proposition about engineering methodology, written with AI assistance, citing the author's own projects") but does acknowledging a problem solve it?
 
 ## Your Review Task

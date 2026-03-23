@@ -7,7 +7,7 @@
 
 Podcast scripts contain factual claims — statistics, research findings, case study results. Unlike blog posts or papers, audio content can't be footnoted inline. A listener hearing "forty-seven percent of organizations report negative consequences" has no way to verify that claim in the moment. If the number is wrong, the podcast loses credibility. If it's right but unsourced, it's indistinguishable from made-up statistics.
 
-The agentic-engineering project already uses typed claim verification (via agent-ready-papers) for written work. The podcast needs an equivalent system adapted for audio.
+The augmented-engineering project already uses typed claim verification (via agent-ready-papers) for written work. The podcast needs an equivalent system adapted for audio.
 
 ## Decision
 
@@ -41,10 +41,10 @@ A plain-language summary for listeners: what the episode covers, key stats menti
 ### File location
 
 ```
-agentic-engineering/podcast/shownotes/
-├── ae_00_introduction.md
-├── ae_01_context_engineering.md
-└── ae_02_material_properties.md   # (future)
+augmented-engineering/podcast/shownotes/
+├── aug_00_introduction.md
+├── aug_01_context_engineering.md
+└── aug_02_material_properties.md   # (future)
 ```
 
 ### Workflow
@@ -73,5 +73,5 @@ agentic-engineering/podcast/shownotes/
 
 - agent-ready-papers `templates/claim-registry.md` — the source pattern for typed verification
 - agent-ready-papers `templates/writing-guide.md` — confidence tier to language mapping
-- agentic-engineering `podcast/shownotes/ae_00_introduction.md` — first implementation
-- agentic-engineering `podcast/shownotes/ae_01_context_engineering.md` — second implementation
+- augmented-engineering `podcast/shownotes/aug_00_introduction.md` — first implementation
+- augmented-engineering `podcast/shownotes/aug_01_context_engineering.md` — second implementation

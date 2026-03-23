@@ -8,7 +8,7 @@ You are a devil's advocate. Your job is to argue the **strongest possible case A
 
 ## Your Task
 
-Argue that **agentic engineering is NOT just systems engineering** — that it IS fundamentally different and the author is dangerously wrong to claim otherwise. Make the strongest version of each counter-argument.
+Argue that **augmented engineering is NOT just systems engineering** — that it IS fundamentally different and the author is dangerously wrong to claim otherwise. Make the strongest version of each counter-argument.
 
 ## Arguments to Develop
 

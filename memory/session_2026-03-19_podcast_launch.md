@@ -8,14 +8,14 @@ type: project
 
 Single marathon session that covered podcast creation, framework evolution, and infrastructure cleanup.
 
-### Podcast: Agentic Engineering — the craft, not the hype
+### Podcast: Augmented Engineering — the craft, not the hype
 
 1. **Explored both repos** (agent-ready-projects + podcast-generator) to scope the podcast
 2. **Wrote ADR-001** for podcast-generator: dialogue writing style for local TTS engines (28 rules covering sentence structure, word choice, emotion through structure, LLM anti-patterns, overlap markers, self-corrections)
 3. **Wrote episode 0** (introduction, ~8 min) and **episode 1** (context engineering, ~19 min)
 4. **Ran 5-persona review battery** (first round): fact-check, ADR-001 compliance, narrative design, TTS readability, persuasiveness
 5. **Rewrote both episodes** based on feedback — added Lisa's team perspective, Sven's harder objections, the "turn" (Marc's 300-line cage), self-corrections, overlap markers
-6. **Created series identity**: "Agentic Engineering: the craft, not the hype"
+6. **Created series identity**: "Augmented Engineering: the craft, not the hype"
 7. **Explored TADA (HumeAI)** as potential new TTS engine
 8. **Mined Digital Engineers research** for podcast stats — extracted ~30 usable findings with sources
 9. **Wrote show notes with claim verification** for both episodes (8 + 11 claims, 100% verified)
@@ -31,7 +31,7 @@ Single marathon session that covered podcast creation, framework evolution, and 
 2. **Wrote ADR-001**: in-repo memory over auto-memory
 3. **Updated README**: Layer 3 location, new in-repo vs auto-memory table, global file cliff section
 4. **Updated CHANGELOG**: v1.2.0 entry
-5. **Fed back into agentic-engineering**: case study updated, gotcha log entry, memory index updated
+5. **Fed back into augmented-engineering**: case study updated, gotcha log entry, memory index updated
 
 ### Infrastructure: memory migration
 
@@ -49,16 +49,16 @@ Single marathon session that covered podcast creation, framework evolution, and 
 
 ## Files created/modified
 
-### agentic-engineering repo
-- `podcast/dialogen/ae_00_introduction_dialogue.txt` — created + 3 revisions
-- `podcast/dialogen/ae_01_context_engineering_dialogue.txt` — created + 3 revisions
-- `podcast/shownotes/ae_00_introduction.md` — claim verification + references
-- `podcast/shownotes/ae_01_context_engineering.md` — claim verification + references
+### augmented-engineering repo
+- `podcast/dialogen/aug_00_introduction_dialogue.txt` — created + 3 revisions
+- `podcast/dialogen/aug_01_context_engineering_dialogue.txt` — created + 3 revisions
+- `podcast/shownotes/aug_00_introduction.md` — claim verification + references
+- `podcast/shownotes/aug_01_context_engineering.md` — claim verification + references
 - `.claude/agents/ae-review-*.md` — 8 persona agents + orchestrator (9 files)
 - `case-studies/agent-ready-projects.md` — Phase 5 added
 - `memory/gotcha-log.md` — auto-memory entry added
 - `memory/MEMORY.md` — updated with podcast + ADR-001 + decisions
-- `memory/project_ae_podcast_marketing.md` — created + updated
+- `memory/project_aug_podcast_marketing.md` — created + updated
 - `memory/reference_tandemize.md` — created
 - `memory/session_2026-03-19_podcast_launch.md` — this file
 

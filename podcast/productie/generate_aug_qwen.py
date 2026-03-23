@@ -1,8 +1,8 @@
-"""Generate Agentic Engineering podcast episode using Qwen3-TTS.
+"""Generate Augmented Engineering podcast episode using Qwen3-TTS.
 
 Usage:
-    scp podcast/productie/generate_ae_qwen.py gpu-server:~/
-    ssh gpu-server "source ~/podcast-generator/qwen-tts-env/bin/activate && python3 ~/generate_ae_qwen.py ~/ae_00_dialogue.txt -o ~/ae_00_qwen.wav"
+    scp podcast/productie/generate_aug_qwen.py gpu-server:~/
+    ssh gpu-server "source ~/podcast-generator/qwen-tts-env/bin/activate && python3 ~/generate_aug_qwen.py ~/aug_00_dialogue.txt -o ~/aug_00_qwen.wav"
 """
 
 import torch
@@ -38,11 +38,11 @@ def parse_script(path):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python generate_ae_qwen.py script.txt [-o output.wav]")
+        print("Usage: python generate_aug_qwen.py script.txt [-o output.wav]")
         sys.exit(1)
 
     script_path = sys.argv[1]
-    output_path = sys.argv[3] if len(sys.argv) > 3 and sys.argv[2] == "-o" else "ae_qwen_output.wav"
+    output_path = sys.argv[3] if len(sys.argv) > 3 and sys.argv[2] == "-o" else "aug_qwen_output.wav"
 
     lines = parse_script(script_path)
     print(f"Parsed {len(lines)} dialogue lines")

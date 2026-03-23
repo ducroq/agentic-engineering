@@ -1,6 +1,6 @@
 ---
 name: ae-review-educator
-description: Reviews Agentic Engineering podcast scripts from the perspective of a CS lecturer integrating AI agents into curriculum
+description: Reviews Augmented Engineering podcast scripts from the perspective of a CS lecturer integrating AI agents into curriculum
 model: sonnet
 ---
 

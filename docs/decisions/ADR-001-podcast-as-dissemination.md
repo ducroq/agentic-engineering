@@ -5,7 +5,7 @@
 
 ## Context
 
-The agentic-engineering project contains a research proposition ("what's genuinely new when engineers work with AI agents"), five case studies, a claim registry, and a six-agent review synthesis. The work is grounded in nine real projects but limited to one practitioner (N=1). It needs to reach practitioners, educators, and teams — not just readers of long markdown documents.
+The augmented-engineering project contains a research proposition ("what's genuinely new when engineers work with AI agents"), five case studies, a claim registry, and a six-agent review synthesis. The work is grounded in nine real projects but limited to one practitioner (N=1). It needs to reach practitioners, educators, and teams — not just readers of long markdown documents.
 
 Options considered:
 1. **Blog posts** — Addy Osmani's approach. Good reach, but saturated space and lacks the conversational depth to explore nuance.
@@ -15,7 +15,7 @@ Options considered:
 
 ## Decision
 
-Create a podcast series: **Agentic Engineering: the craft, not the hype.**
+Create a podcast series: **Augmented Engineering: the craft, not the hype.**
 
 ### Format: three voices
 
@@ -32,10 +32,10 @@ Create a podcast series: **Agentic Engineering: the craft, not the hype.**
 
 ### Scripts live in this repo, not podcast-generator
 
-The scripts are part of the agentic-engineering project — they're a way of presenting the research, not a separate podcast project. Production tooling (TTS engines, voice library, mastering pipeline) lives in podcast-generator. Content (scripts, show notes, claim verification, research) lives here.
+The scripts are part of the augmented-engineering project — they're a way of presenting the research, not a separate podcast project. Production tooling (TTS engines, voice library, mastering pipeline) lives in podcast-generator. Content (scripts, show notes, claim verification, research) lives here.
 
 ```
-agentic-engineering/
+augmented-engineering/
 ├── podcast/
 │   ├── dialogen/      # Scripts
 │   ├── shownotes/     # Claim verification + references + listener-facing notes
@@ -45,7 +45,7 @@ agentic-engineering/
 
 ### Funnel for tandemize.ai
 
-The podcast serves as top-of-funnel for tandemize.ai, a planned consulting business around agentic engineering. The funnel is natural, not forced: episodes that expose problems individuals can't solve alone (team scaling, verification at scale) lead listeners toward wanting professional help.
+The podcast serves as top-of-funnel for tandemize.ai, a planned consulting business around augmented engineering. The funnel is natural, not forced: episodes that expose problems individuals can't solve alone (team scaling, verification at scale) lead listeners toward wanting professional help.
 
 ### Growth path
 
@@ -73,7 +73,7 @@ The podcast serves as top-of-funnel for tandemize.ai, a planned consulting busin
 
 ## References
 
-- agentic-engineering `PROPOSITION.md` — the research this podcast disseminates
-- agentic-engineering `memory/project_ae_podcast_marketing.md` — positioning and competitive landscape
+- augmented-engineering `PROPOSITION.md` — the research this podcast disseminates
+- augmented-engineering `memory/project_aug_podcast_marketing.md` — positioning and competitive landscape
 - podcast-generator ADR-001: Dialogue writing style for local TTS
-- podcast-generator ADR-002: Local TTS for Agentic Engineering series
+- podcast-generator ADR-002: Local TTS for Augmented Engineering series

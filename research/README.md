@@ -1,6 +1,6 @@
 # Research — Track 2: Research
 
-Empirical investigation of what makes agentic engineering effective, grounded in case study evidence from Track 1.
+Empirical investigation of what makes augmented engineering effective, grounded in case study evidence from Track 1.
 
 ## Primary Research Question
 
@@ -14,7 +14,7 @@ Empirical investigation of what makes agentic engineering effective, grounded in
 | RQ2 | Does multi-agent review outperform single-agent, and when? | T-2 | Formalized comparison (vmodel.eu ADR-016 is starting point) |
 | RQ3 | Where in the V-model do feedback loops add the most value? | V-1, V-2 | Cross-case analysis by engineering lifecycle phase |
 | RQ4 | What domain expertise does effective human oversight require? | C-1, C-2 | Code "human intervention moments" across case studies |
-| RQ5 | Do agentic engineering patterns transfer across engineering domains? | V-2, S-1 | Cross-domain comparison (weakest — needs external validation) |
+| RQ5 | Do augmented engineering patterns transfer across engineering domains? | V-2, S-1 | Cross-domain comparison (weakest — needs external validation) |
 
 ## Methodology
 

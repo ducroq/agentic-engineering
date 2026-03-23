@@ -1,6 +1,6 @@
 # Episode 00: Introduction — What's Genuinely New?
 
-**Series:** Agentic Engineering: the craft, not the hype
+**Series:** Augmented Engineering: the craft, not the hype
 **Duration:** ~8 minutes
 **Cast:** Lisa (host), Marc (expert), Sven (skeptic)
 
@@ -16,8 +16,8 @@ The series opener. Three voices introduce the central question: what's genuinely
 | C2 | Only three to eight percent fully trust AI output | Lisa | ~new | ESTABLISHED | Stack Overflow 2025: 3% "highly trust"; JetBrains 2025: 8% "trust completely". |
 | C3 | Senior developers trust AI less than juniors | Marc | ~new | SUPPORTED | JetBrains 2025: seniors (10+ yr) 61% low trust vs juniors (0-2 yr) 48%. Stack Overflow trend: trust declining from 52% (2023) to 46% (2025). |
 | C4 | AI material properties: more confident than warranted | Marc | 33 | SUPPORTED | Documented across multiple domains. Chemical HAZOP: >86% textual similarity but 19-37% semantic validity (Park et al. 2025). Structural: 0% on core design questions (Naser et al. 2023). |
-| C5 | Five verification layers found ten defects, one layer found two | Marc | 42 | ESTABLISHED | OPAL case study (Veen 2026), HAN University. Five-layer review of ESP32-based optical instrument. Documented in agentic-engineering case-studies/opal.md. |
-| C6 | Sixty-eight equations reviewed, three errors found only by reproduction | Marc | 59 | ESTABLISHED | Driven-pendulum case study (Veen 2026). Same model, different prompt (assess vs reproduce). Documented in agentic-engineering case-studies/driven-pendulum.md. |
+| C5 | Five verification layers found ten defects, one layer found two | Marc | 42 | ESTABLISHED | OPAL case study (Veen 2026), HAN University. Five-layer review of ESP32-based optical instrument. Documented in augmented-engineering case-studies/opal.md. |
+| C6 | Sixty-eight equations reviewed, three errors found only by reproduction | Marc | 59 | ESTABLISHED | Driven-pendulum case study (Veen 2026). Same model, different prompt (assess vs reproduce). Documented in augmented-engineering case-studies/driven-pendulum.md. |
 | C7 | Nine projects across different domains | Marc | 17 | ESTABLISHED | Author's own work. Projects enumerated in PROPOSITION.md: OPAL, vmodel.eu, driven-pendulum, agent-ready-projects, agent-ready-papers, llm-distillery, RenkumSpot, ese_bot, ovr.news. |
 | C8 | Forty-seven percent of organizations report negative consequences from AI | Lisa | ~new | ESTABLISHED | McKinsey Global Survey 2025. |
 

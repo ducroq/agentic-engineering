@@ -98,7 +98,7 @@ All three errors produced plausible results with correct units and reasonable ma
 
 A proposition that can't be wrong isn't useful. Here's what would challenge these claims:
 
-- **A successful agentic engineering approach that works better WITHOUT established engineering principles** — e.g., a team that achieves superior results by ignoring V&V, decomposition, and risk classification in favor of a genuinely novel methodology. This would challenge the "SE is necessary" claim.
+- **A successful augmented engineering approach that works better WITHOUT established engineering principles** — e.g., a team that achieves superior results by ignoring V&V, decomposition, and risk classification in favor of a genuinely novel methodology. This would challenge the "SE is necessary" claim.
 - **Evidence that the "material properties" are pure artifacts of model scale** — if a 10x larger model exhibits none of the four behavioral properties listed above, they aren't substrate properties but limitations of current scale. The scoring regression and mathematical assessment limitations are the most vulnerable to this.
 - **A demonstration that context architecture is fully handled by existing interface management methods** — if standard ICDs and configuration management, applied without modification, produce equivalent agent behavior to task-triggered pointers and cliff-aware design. This would challenge the "genuinely new" claim for context architecture.
 - **Evidence that the patterns don't transfer beyond this researcher** — if other engineers applying these patterns in different domains find them unhelpful or misleading. N=1 is acknowledged; N=10 from different practitioners with different training would either strengthen or falsify the claims.
@@ -161,7 +161,7 @@ Nine projects, one researcher, 2025-2026. Practice-based evidence (documenting o
 
 These are not hedges. They define the boundary of what this document can claim:
 
-- **N=1 researcher.** All nine projects share one practitioner and one set of methodological commitments. The proposition cannot distinguish "these patterns work for agentic engineering" from "this engineer applies these patterns to everything." External validation from engineers with different training is required before generalizing.
+- **N=1 researcher.** All nine projects share one practitioner and one set of methodological commitments. The proposition cannot distinguish "these patterns work for augmented engineering" from "this engineer applies these patterns to everything." External validation from engineers with different training is required before generalizing.
 
 - **No controlled comparison.** There is no baseline. We don't know that alternative approaches (no SE framing, different framing, pure intuition) would have performed worse. The patterns produced good results — but so might others.
 

@@ -1,6 +1,6 @@
 ---
 name: ae-review-indie-hacker
-description: Reviews Agentic Engineering podcast scripts from the perspective of a solo indie hacker building products with AI agents
+description: Reviews Augmented Engineering podcast scripts from the perspective of a solo indie hacker building products with AI agents
 model: sonnet
 ---
 

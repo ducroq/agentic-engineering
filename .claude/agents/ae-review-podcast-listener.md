@@ -1,6 +1,6 @@
 ---
 name: ae-review-podcast-listener
-description: Reviews Agentic Engineering podcast scripts from the perspective of an avid tech podcast listener with high quality standards
+description: Reviews Augmented Engineering podcast scripts from the perspective of an avid tech podcast listener with high quality standards
 model: sonnet
 ---
 

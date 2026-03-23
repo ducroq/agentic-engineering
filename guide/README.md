@@ -1,6 +1,6 @@
 # Guide — Track 3: Practical Framework
 
-A pattern library for designing agentic engineering workflows. Every pattern is extracted from a real case study (Track 1) and mapped to the engineering V-model.
+A pattern library for designing augmented engineering workflows. Every pattern is extracted from a real case study (Track 1) and mapped to the engineering V-model.
 
 ## Pattern Library Structure
 

@@ -1,11 +1,11 @@
 """Mix per-line WAVs into a podcast episode with overlaps and natural timing.
 
-Reads the manifest.json produced by generate_ae_chatterbox.py (or generate_ae_qwen.py),
+Reads the manifest.json produced by generate_aug_chatterbox.py (or generate_aug_qwen.py),
 layers audio with overlap markers, adds random pauses between speakers, and outputs
 the final mixed WAV.
 
 Usage:
-    python mix_episode.py ae_00_lines/ -o ae_00_mixed.wav
+    python mix_episode.py aug_00_lines/ -o aug_00_mixed.wav
 
 Timing model:
     - Same speaker continues: 80-200ms pause (thinking gap)

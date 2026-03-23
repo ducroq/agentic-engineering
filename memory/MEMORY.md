@@ -19,7 +19,7 @@
 - **Guide patterns/ and anti-patterns/ scaffolded** but not yet populated
 - **Research track scaffolded** with README (questions + methodology statement)
 - **ADR-001 written in agent-ready-projects** (2026-03-19): In-repo memory over auto-memory — moved 28 projects (~75 files) from hidden auto-memory to visible in-repo `memory/` directories. Framework guidance updated.
-- **Agentic Engineering podcast created** (2026-03-19): Series "Agentic Engineering: the craft, not the hype" — ep 0 (introduction) and ep 1 (context engineering) scripted. 8-persona review battery created. ADR-001 written for dialogue writing style in podcast-generator.
+- **Augmented Engineering podcast created** (2026-03-19): Series "Augmented Engineering: the craft, not the hype" — ep 0 (introduction) and ep 1 (context engineering) scripted. 8-persona review battery created. ADR-001 written for dialogue writing style in podcast-generator.
 - **Global CLAUDE.md cliff discovered and fixed** (2026-03-19): Project-specific content (voice library, TTS engines) moved from global instructions to podcast-generator's CLAUDE.md. Added "global file cliff" guidance to framework.
 
 ## Related Repos — Quick Reference
@@ -36,12 +36,12 @@
 | ese_bot | `docs/ARCHITECTURE.md` + `docs/decisions/` |
 | ovr.news | `CLAUDE.md` + `docs/decisions/` |
 
-## Podcast — Agentic Engineering: the craft, not the hype
+## Podcast — Augmented Engineering: the craft, not the hype
 
 | File | Contents |
 |------|----------|
-| `memory/project_ae_podcast_marketing.md` | Series identity, competitive landscape, proposition, growth path, cognitive load insight, tandemize.ai funnel strategy |
-| `memory/reference_tandemize.md` | Friend's planned agentic engineering business, potential podcast synergy |
+| `memory/project_aug_podcast_marketing.md` | Series identity, competitive landscape, proposition, growth path, cognitive load insight, tandemize.ai funnel strategy |
+| `memory/reference_tandemize.md` | Friend's planned augmented engineering business, potential podcast synergy |
 | `memory/feedback_echo_chamber.md` | Circular evidence risk — case studies verifying themselves |
 | `memory/session_2026-03-19_podcast_launch.md` | Marathon session: podcast creation, memory migration, framework v1.2.0, personal insights |
 
@@ -53,7 +53,7 @@
 
 ## Active Decisions
 
-- **Framing**: "SE is necessary but insufficient" (not "agentic engineering IS systems engineering") — per review feedback
+- **Framing**: "SE is necessary but insufficient" (not "augmented engineering IS systems engineering") — per review feedback
 - **Case study style**: Pattern-first, loosely coupled to claim registry — not thesis chapters
 - **Material properties split**: Persistent (confidence inflation, observation-calibration gap) vs. transient (scoring regression, plausible-but-wrong severity)
 - **Personal project**: No institutional references (HAN removed from all public-facing docs)

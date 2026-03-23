@@ -1,10 +1,10 @@
 # Claim Registry
 
-<!-- Verification registry for the Agentic Engineering project.
+<!-- Verification registry for the Augmented Engineering project.
      Adapted from agent-ready-papers v1.0.0.
      Every factual claim, argument, and proposition tracked here. -->
 
-**Project:** Agentic Engineering
+**Project:** Augmented Engineering
 **Last Updated:** 2026-03-17
 **Thesis:** Agentic AI becomes powerful in engineering when we build structured feedback loops that let agents improve each other — with the engineer firmly in the loop.
 
@@ -82,8 +82,8 @@
 
 | ID | Statement | Type | Priority | Confidence | Source | Source Tier | Status |
 |----|-----------|------|----------|------------|--------|-------------|--------|
-| C-1 | Effective oversight of agentic engineering requires domain expertise — general AI literacy is insufficient | ARGUMENT | P1 | SUPPORTED | Digital Engineers research (proposition P2: Domain Prerequisite); OPAL case study (optical/analog domain knowledge needed to evaluate checklists); driven-pendulum 2026-03-16: human caught "pancake coil" terminology error that 6 review agents + equation-checker all missed — requires knowing what the physical component is | E | [~] |
-| C-2 | Validation capability (critical assessment of AI outputs) matters more than tool proficiency for effective agentic engineering | ARGUMENT | P1 | SUPPORTED | Digital Engineers research (proposition P1: Validation Primacy); vmodel.eu (scoring quality depends on understanding requirements, not LLM operation); driven-pendulum 2026-03-16: physics V&V passed but domain expert caught naming error | E | [~] |
+| C-1 | Effective oversight of augmented engineering requires domain expertise — general AI literacy is insufficient | ARGUMENT | P1 | SUPPORTED | Digital Engineers research (proposition P2: Domain Prerequisite); OPAL case study (optical/analog domain knowledge needed to evaluate checklists); driven-pendulum 2026-03-16: human caught "pancake coil" terminology error that 6 review agents + equation-checker all missed — requires knowing what the physical component is | E | [~] |
+| C-2 | Validation capability (critical assessment of AI outputs) matters more than tool proficiency for effective augmented engineering | ARGUMENT | P1 | SUPPORTED | Digital Engineers research (proposition P1: Validation Primacy); vmodel.eu (scoring quality depends on understanding requirements, not LLM operation); driven-pendulum 2026-03-16: physics V&V passed but domain expert caught naming error | E | [~] |
 | C-3 | Engineering competencies for working with AI agents transfer across specific AI tools | ARGUMENT | P1 | EMERGING | Digital Engineers research (Tool Agnosticism Principle); limited direct evidence from case studies | E+F | [ ] |
 
 ### Evidence from Case Studies

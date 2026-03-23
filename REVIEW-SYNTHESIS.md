@@ -34,7 +34,7 @@ Six review agents with distinct perspectives reviewed `PROPOSITION.md`. This doc
 
 ### P0 — Must address (changes the core argument)
 
-1. **Invert the framing.** Lead with what's genuinely new (the four novel patterns). Treat the SE parallels as expected background, not the headline. The current structure buries the contribution behind a tautology. The Devil's steel man nails it: **"SE is a necessary but insufficient foundation for agentic engineering."**
+1. **Invert the framing.** Lead with what's genuinely new (the four novel patterns). Treat the SE parallels as expected background, not the headline. The current structure buries the contribution behind a tautology. The Devil's steel man nails it: **"SE is a necessary but insufficient foundation for augmented engineering."**
 
 2. **Split material properties into persistent vs. transient.** Create two categories:
    - *Likely persistent:* confidence inflation (tied to RLHF), auto-loading cliff (structural to agent architecture), observation-calibration gap (working memory limitation)
@@ -73,6 +73,6 @@ The proposition contains a genuine insight trapped inside the wrong framing. The
 
 The Devil's steel man states the proposition better than the proposition states itself:
 
-> **SE is a necessary but insufficient foundation for agentic engineering. The engineering principles you already know transfer directly and provide a strong starting framework. But AI agents also introduce genuinely novel challenges — context architecture, reproduction-based verification, cheap layered V&V, and substrate-specific failure modes — that existing SE frameworks do not address.**
+> **SE is a necessary but insufficient foundation for augmented engineering. The engineering principles you already know transfer directly and provide a strong starting framework. But AI agents also introduce genuinely novel challenges — context architecture, reproduction-based verification, cheap layered V&V, and substrate-specific failure modes — that existing SE frameworks do not address.**
 
 Revise around this framing, split persistent from transient properties, add metrics, and compress the "What's the Same" section. The result would be worth publishing — as a practitioner reflection, not as an academic claim, given the N=1 evidence base.

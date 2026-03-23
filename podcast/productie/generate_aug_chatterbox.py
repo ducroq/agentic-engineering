@@ -1,11 +1,11 @@
-"""Generate Agentic Engineering podcast — per-line WAVs with Chatterbox.
+"""Generate Augmented Engineering podcast — per-line WAVs with Chatterbox.
 
 Outputs individual WAV files per dialogue line for mixing with overlap markers.
 
 Usage:
-    scp podcast/productie/generate_ae_chatterbox.py gpu-server:~/
+    scp podcast/productie/generate_aug_chatterbox.py gpu-server:~/
     ssh gpu-server "HF_HUB_OFFLINE=1 source ~/podcast-generator/vox-env/bin/activate && \
-        python3 ~/generate_ae_chatterbox.py ~/ae_00_dialogue.txt -o ~/ae_00_lines/"
+        python3 ~/generate_aug_chatterbox.py ~/aug_00_dialogue.txt -o ~/aug_00_lines/"
 """
 
 import argparse
@@ -64,7 +64,7 @@ def parse_script(path):
 def main():
     parser = argparse.ArgumentParser(description="Generate per-line WAVs with Chatterbox")
     parser.add_argument("script", help="Dialogue script path")
-    parser.add_argument("-o", "--output-dir", default="./ae_lines", help="Output directory for WAVs")
+    parser.add_argument("-o", "--output-dir", default="./aug_lines", help="Output directory for WAVs")
     parser.add_argument("--test", type=int, help="Only generate first N lines")
     args = parser.parse_args()
 

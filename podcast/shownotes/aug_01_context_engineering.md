@@ -1,6 +1,6 @@
 # Episode 01: Context Engineering — It Didn't Forget. It Never Knew.
 
-**Series:** Agentic Engineering: the craft, not the hype
+**Series:** Augmented Engineering: the craft, not the hype
 **Duration:** ~22 minutes
 **Cast:** Lisa (host), Marc (expert), Sven (skeptic)
 

@@ -1,6 +1,6 @@
 ---
 name: ae-review-junior-dev
-description: Reviews Agentic Engineering podcast scripts from the perspective of a junior developer using AI agents daily
+description: Reviews Augmented Engineering podcast scripts from the perspective of a junior developer using AI agents daily
 model: sonnet
 ---
 

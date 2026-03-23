@@ -5,7 +5,7 @@
 
 ## Context
 
-Podcast scripts need feedback before production. A single reviewer catches what a single perspective sees. The agentic-engineering proposition used a six-agent parallel review (systems engineer, ML researcher, practitioner, epistemologist, educator, devil's advocate) and found that convergent criticism — where multiple independent reviewers flag the same issue — is the strongest signal for what actually needs fixing.
+Podcast scripts need feedback before production. A single reviewer catches what a single perspective sees. The augmented-engineering proposition used a six-agent parallel review (systems engineer, ML researcher, practitioner, epistemologist, educator, devil's advocate) and found that convergent criticism — where multiple independent reviewers flag the same issue — is the strongest signal for what actually needs fixing.
 
 The podcast has a broader audience than the proposition. A script that satisfies a senior engineer may lose a junior developer. A script that excites a content creator may bore a podcast purist. The review process needs to represent the actual listener base.
 
@@ -48,7 +48,7 @@ After all eight reviews complete, the orchestrator:
 ### Agent locations
 
 ```
-agentic-engineering/.claude/agents/
+augmented-engineering/.claude/agents/
 ├── ae-review-orchestrator.md
 ├── ae-review-junior-dev.md
 ├── ae-review-team-lead.md
@@ -68,7 +68,7 @@ agentic-engineering/.claude/agents/
 
 ### Invocation
 
-From the agentic-engineering repo: `run ae-review-orchestrator on podcast/dialogen/ae_01_context_engineering_dialogue.txt`
+From the augmented-engineering repo: `run ae-review-orchestrator on podcast/dialogen/aug_01_context_engineering_dialogue.txt`
 
 ## Consequences
 
@@ -98,5 +98,5 @@ Key finding: convergent criticism was the strongest editing signal. Issues flagg
 
 ## References
 
-- agentic-engineering `.claude/agents/review-orchestrator.md` — the proposition review orchestrator (6 agents) that inspired this pattern
-- agentic-engineering `REVIEW-SYNTHESIS.md` — evidence that parallel review produces high-signal feedback
+- augmented-engineering `.claude/agents/review-orchestrator.md` — the proposition review orchestrator (6 agents) that inspired this pattern
+- augmented-engineering `REVIEW-SYNTHESIS.md` — evidence that parallel review produces high-signal feedback

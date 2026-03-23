@@ -1,12 +1,12 @@
 ---
-name: Agentic Engineering Podcast — Marketing & Positioning
+name: Augmented Engineering Podcast — Marketing & Positioning
 description: Podcast series positioning, competitive landscape, proposition, tagline, growth path, and tandemize.ai funnel strategy
 type: project
 ---
 
 ## Series Identity
 
-**Title**: Agentic Engineering: the craft, not the hype
+**Title**: Augmented Engineering: the craft, not the hype
 **Core question**: What's genuinely new when humans and AI agents build things together?
 **Format**: Three-voice scripted podcast (Lisa/Marc/Sven) targeting local TTS (Chatterbox, Qwen3-TTS, TADA)
 **Term origin**: "Agentic engineering" coined by Andrej Karpathy (Feb 8 2026), popularized by Addy Osmani. Generic descriptor, not trademarked. Widely used.
@@ -89,7 +89,7 @@ The *topic* is getting crowded. The *angle* is wide open.
 
 ## Tandemize.ai Funnel Strategy
 
-**Concept**: The podcast serves as top-of-funnel for tandemize.ai — a business being started by a friend around agentic engineering consulting/services.
+**Concept**: The podcast serves as top-of-funnel for tandemize.ai — a business being started by a friend around augmented engineering consulting/services.
 
 **Funnel flow**:
 1. **Podcast** builds credibility and audience ("the craft, not the hype")

@@ -1,4 +1,4 @@
-# Agentic Engineering
+# Augmented Engineering
 
 What's new when engineers work with AI agents? Four patterns from nine real projects.
 
@@ -38,7 +38,7 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 ## Architecture
 
 ```
-agentic-engineering/
+augmented-engineering/
 ├── PROPOSITION.md           # Core argument — read first
 ├── REVIEW-SYNTHESIS.md      # Critical reviews from 6 perspectives
 ├── case-studies/            # Five case studies (pattern-first)
@@ -89,7 +89,7 @@ agentic-engineering/
 
 ## Cross-Repo Evidence
 
-This repo is the synthesis layer for nine source projects. When working in a source project and you discover evidence relevant to the four patterns (verification findings, context architecture lessons, reproduce-don't-assess examples, LLM behavioral properties), file an issue at `ducroq/agentic-engineering` with the pattern name, quantified results, and which claims it supports.
+This repo is the synthesis layer for nine source projects. When working in a source project and you discover evidence relevant to the four patterns (verification findings, context architecture lessons, reproduce-don't-assess examples, LLM behavioral properties), file an issue at `ducroq/augmented-engineering` with the pattern name, quantified results, and which claims it supports.
 
 ## Writing Style
 

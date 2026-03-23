@@ -1,6 +1,6 @@
 ---
 name: ae-review-skeptic
-description: Reviews Agentic Engineering podcast scripts from the perspective of a senior engineer deeply skeptical of AI coding agents
+description: Reviews Augmented Engineering podcast scripts from the perspective of a senior engineer deeply skeptical of AI coding agents
 model: sonnet
 ---
 

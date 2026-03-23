@@ -1,6 +1,6 @@
 ---
 name: ae-review-non-technical-manager
-description: Reviews Agentic Engineering podcast scripts from the perspective of a non-technical manager overseeing teams that use AI agents
+description: Reviews Augmented Engineering podcast scripts from the perspective of a non-technical manager overseeing teams that use AI agents
 model: sonnet
 ---
 
