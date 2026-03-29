@@ -10,7 +10,7 @@
 | `memory/feedback_echo_chamber.md` | Adding new evidence | Circular evidence risk — case studies verifying themselves |
 | `memory/reference_tandemize.md` | Discussing external partnerships | Tandemize.ai potential synergy |
 | `memory/session_2026-03-19_podcast_launch.md` | Context on podcast creation decisions | Marathon session: memory migration, framework v1.2.0 |
-| `docs/decisions/README.md` | Making an architectural decision | ADR index — 3 decisions on podcast dissemination |
+| `docs/decisions/README.md` | Making an architectural decision | ADR index — 4 decisions (podcast + site reframe) |
 
 ## Recently Promoted
 
@@ -33,6 +33,9 @@
 - **ADR-001 written in agent-ready-projects** (2026-03-19): In-repo memory over auto-memory — moved 28 projects (~75 files) from hidden auto-memory to visible in-repo `memory/` directories. Framework guidance updated.
 - **Augmented Engineering podcast created** (2026-03-19): Series "Augmented Engineering: the craft, not the hype" — ep 0 (introduction) and ep 1 (context engineering) scripted. 8-persona review battery created. ADR-001 written for dialogue writing style in podcast-generator.
 - **Global CLAUDE.md cliff discovered and fixed** (2026-03-19): Project-specific content (voice library, TTS engines) moved from global instructions to podcast-generator's CLAUDE.md. Added "global file cliff" guidance to framework.
+- **Full agent-ready-projects adoption** (2026-03-28): Upgraded v1.1.0 → v1.3.4. Added decision framework, ground truth designations, negative-results constraint, ADR index with README, /curate skill. CLAUDE.md architecture tree updated to match actual repo.
+- **Site reframed as pattern library** (2026-03-28): Per ADR-004. Leads with reader's problem, quick reference decision table, pattern pages restructured. Nine-projects section removed.
+- **Site base path links fixed** (2026-03-29): All internal hrefs now use import.meta.env.BASE_URL. See gotcha-log.
 
 ## Related Repos — Quick Reference
 
@@ -73,3 +76,4 @@
 - **Adopted agent-ready-papers claim registry**: Typed verification with confidence tiers
 - **Feedback loop framing adopted** (2026-03-17): "agent generates → agent reviews → agent validates → engineer decides" — borrowed from practitioner discourse, grounded in our evidence
 - **In-repo memory by default**: Memory files live in `memory/` inside the repo, not in tool auto-memory. Exception only for content that should never be committed. Per ADR-001 in agent-ready-projects.
+- **Site is a pattern library, not research portfolio** (ADR-004): Lead with the reader's problem, not the research journey. Evidence supports but doesn't lead. Nine projects are attribution, not content.

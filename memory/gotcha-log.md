@@ -27,6 +27,11 @@
 **Root cause**: Auto-memory is stored in path-mangled directories outside the repo. Files don't appear in the editor, aren't version controlled, and aren't searchable. The design assumed a clean split between agent-facing (auto-memory) and human-facing (committed) content — but in practice, all memory benefits from human review.
 **Fix**: Moved all memory files in-repo to visible `memory/` directories. Documented as ADR-001 in agent-ready-projects. Updated the framework to recommend in-repo memory by default. Also discovered and fixed a "global file cliff" — project-specific content in the global CLAUDE.md burning context tokens in every repo.
 
+### Astro base path missing from internal links (2026-03-29)
+**Problem**: All internal links on the site gave 404s on GitHub Pages. Links like `/patterns/context-is-architecture` resolved to `ducroq.github.io/patterns/...` instead of `ducroq.github.io/augmented-engineering/patterns/...`.
+**Root cause**: Hardcoded `href="/..."` paths in .astro files don't include the `base` configured in astro.config.mjs. Astro doesn't rewrite hrefs automatically — only asset paths through its build pipeline.
+**Fix**: Use `import.meta.env.BASE_URL` in all components and pages. Normalize with trailing slash since Astro returns `/augmented-engineering` (no trailing slash) which concatenates wrong with `patterns/...`.
+
 ## Promoted
 
 | Entry | Promoted to | Date |
