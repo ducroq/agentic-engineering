@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Four patterns for working effectively with AI coding agents. Actionable, evidence-backed, honest about limitations." } = Astro.props;
+const { title, description = "Durable tools and patterns for engineers working with AI agents." } = Astro.props;
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 ---
@@ -18,15 +18,11 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="paper-texture"></div>
     <nav class="site-nav">
       <a href={base} class="nav-home">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M3 14 L14 4 L25 14 M7 13 L7 24 L21 24 L21 13" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
         <span>Augmented Engineering</span>
       </a>
       <div class="nav-links">
@@ -40,7 +36,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     </main>
     <footer>
       <div class="footer-inner">
-        <p class="footer-institution">2025&ndash;2026</p>
+        <p>2025&ndash;2026</p>
       </div>
     </footer>
   </body>
@@ -48,18 +44,15 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
 <style is:global>
   :root {
-    --paper: #f5f0e8;
-    --paper-dark: #ebe4d6;
-    --ink: #2c2416;
-    --ink-light: #6b5d4d;
-    --ink-faint: #a89a88;
-    --pencil: #8b7d6b;
-    --red-pencil: #c0392b;
-    --blue-pencil: #2471a3;
-    --green-pencil: #1e7a46;
-    --orange-pencil: #d4731a;
-    --highlight: #f7e67a;
-    --graph-line: rgba(160, 145, 125, 0.15);
+    --text: #1a1a1a;
+    --text-secondary: #555;
+    --text-muted: #888;
+    --border: #e0e0e0;
+    --surface: #ffffff;
+    --surface-alt: #f7f7f7;
+    --action: #16803c;
+    --evidence: #1d6fa5;
+    --caution: #b45309;
     --max-width: 54rem;
   }
 
@@ -70,45 +63,20 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   }
 
   html {
-    font-size: 18px;
+    font-size: 17px;
     scroll-behavior: smooth;
   }
 
   body {
-    font-family: 'Source Serif 4', Georgia, serif;
-    color: var(--ink);
-    background: var(--paper);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--surface);
     line-height: 1.7;
-    position: relative;
     overflow-x: hidden;
-  }
-
-  .paper-texture {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 1.7rem,
-        var(--graph-line) 1.7rem,
-        var(--graph-line) calc(1.7rem + 1px)
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 1.7rem,
-        var(--graph-line) 1.7rem,
-        var(--graph-line) calc(1.7rem + 1px)
-      );
-    opacity: 0.6;
   }
 
   main, nav, footer {
     position: relative;
-    z-index: 1;
   }
 
   .site-nav {
@@ -118,6 +86,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
   }
 
   .nav-home {
@@ -125,10 +94,10 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: var(--ink);
-    font-family: 'Caveat', cursive;
-    font-size: 1.3rem;
+    color: var(--text);
+    font-size: 1rem;
     font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
   .nav-links {
@@ -138,15 +107,14 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
   .nav-links a {
     text-decoration: none;
-    color: var(--ink-light);
-    font-family: 'Caveat', cursive;
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: color 0.2s;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.15s;
   }
 
   .nav-links a:hover {
-    color: var(--ink);
+    color: var(--text);
   }
 
   main {
@@ -156,36 +124,43 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Caveat', cursive;
+    font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.2;
-    color: var(--ink);
+    color: var(--text);
+    letter-spacing: -0.02em;
   }
 
-  h1 { font-size: 3.2rem; font-weight: 700; }
-  h2 { font-size: 2.2rem; font-weight: 700; margin-top: 3rem; }
-  h3 { font-size: 1.5rem; font-weight: 600; }
+  h1 { font-size: 2.4rem; font-weight: 700; }
+  h2 { font-size: 1.6rem; font-weight: 700; margin-top: 2.5rem; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
 
   p {
     margin-top: 0.8rem;
   }
 
   a {
-    color: var(--blue-pencil);
-    text-decoration-style: wavy;
-    text-underline-offset: 3px;
+    color: var(--evidence);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
   }
 
   code {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85em;
-    background: var(--paper-dark);
+    background: var(--surface-alt);
     padding: 0.15em 0.4em;
     border-radius: 3px;
+    border: 1px solid var(--border);
   }
 
   pre {
-    background: var(--ink);
-    color: var(--paper);
+    background: #1a1a1a;
+    color: #e0e0e0;
     padding: 1.2rem 1.5rem;
     border-radius: 6px;
     overflow-x: auto;
@@ -193,38 +168,32 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.82rem;
     line-height: 1.6;
-    border: 2px solid var(--ink-light);
   }
 
   pre code {
     background: none;
     padding: 0;
+    border: none;
   }
 
   footer {
-    border-top: 2px dashed var(--ink-faint);
+    border-top: 1px solid var(--border);
     margin-top: 4rem;
   }
 
   .footer-inner {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
     text-align: center;
-    color: var(--ink-light);
-    font-size: 0.9rem;
-  }
-
-  .footer-institution {
-    font-family: 'Caveat', cursive;
-    font-size: 1rem;
-    margin-top: 0.3rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
   }
 
   @media (max-width: 640px) {
     html { font-size: 16px; }
-    h1 { font-size: 2.4rem; }
-    h2 { font-size: 1.8rem; }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.4rem; }
     .site-nav { flex-direction: column; gap: 0.5rem; }
   }
 </style>

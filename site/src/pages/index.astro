@@ -1,102 +1,86 @@
 ---
 import Base from '../layouts/Base.astro';
-import IllustrationMaterial from '../components/IllustrationMaterial.astro';
-import IllustrationLayers from '../components/IllustrationLayers.astro';
-import IllustrationCliff from '../components/IllustrationCliff.astro';
-import IllustrationReproduce from '../components/IllustrationReproduce.astro';
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 ---
 
-<Base title="Augmented Engineering — Patterns for working with AI agents">
+<Base title="Augmented Engineering — Tools for engineers working with AI agents">
   <header class="hero">
-    <h1>Your AI agent keeps making the same mistakes.</h1>
-    <p class="subtitle">It sounds confident but gets the numbers wrong. It ignores your docs. It forgets what you told it yesterday. These aren't bugs — they're material properties you can design around.</p>
-    <p class="subtitle">Four patterns, each one something you can try Monday morning.</p>
+    <h1>Tools for engineers working with AI agents.</h1>
+    <p class="subtitle">Durable patterns that don't depend on which model you're using or how fast they improve. Built from practice across nine real projects.</p>
   </header>
 
   <section id="patterns" class="patterns-section">
-    <h2>The Patterns</h2>
+    <h2>Core Patterns</h2>
+    <p class="section-intro">Structural patterns tied to how tools and verification work — not to current model limitations.</p>
 
     <div class="pattern-grid">
-      <a href={`${base}patterns/learn-the-material`} class="pattern-card">
-        <div class="pattern-illustration">
-          <IllustrationMaterial />
-        </div>
-        <div class="pattern-text">
-          <h3>1. Learn the Material</h3>
-          <p class="pattern-problem">Your LLM says "demonstrates" when the evidence only "suggests." It scores good work low and bad work high.</p>
-          <p class="pattern-fix">These are material properties — design around them instead of fighting them. Know which ones are permanent and which are being fixed.</p>
-          <span class="read-more">The pattern &rarr;</span>
-        </div>
+      <a href={`${base}patterns/context-is-architecture`} class="pattern-card">
+        <div class="pattern-label">Tool</div>
+        <h3>Context Is Architecture</h3>
+        <p class="pattern-problem">Your agent ignores your docs. You explain the same thing three sessions in a row.</p>
+        <p class="pattern-fix">There's a hard cliff between what agents load automatically and what's invisible. Task-triggered pointers cross it. Descriptive labels don't.</p>
+        <p class="pattern-tool">Implemented in <strong>agent-ready-projects</strong></p>
+        <span class="read-more">The pattern &rarr;</span>
       </a>
 
       <a href={`${base}patterns/layer-your-verification`} class="pattern-card">
-        <div class="pattern-illustration">
-          <IllustrationLayers />
-        </div>
-        <div class="pattern-text">
-          <h3>2. Layer Your Verification</h3>
-          <p class="pattern-problem">You reviewed the AI's output and it looked fine. Then a colleague found three errors in the first page.</p>
-          <p class="pattern-fix">Run multiple verification passes — each one catches what the others miss. The second pass costs minutes and regularly finds what the first one didn't.</p>
-          <span class="read-more">The pattern &rarr;</span>
-        </div>
+        <div class="pattern-label">Method</div>
+        <h3>Layer Your Verification</h3>
+        <p class="pattern-problem">You reviewed the AI's output and it looked fine. Then a colleague found three errors in the first page.</p>
+        <p class="pattern-fix">Run multiple verification passes — each one catches what the others miss. The second pass costs minutes and regularly finds what the first one didn't.</p>
+        <p class="pattern-tool">Evidence from OPAL: 8 of 10 defects missed by single-pass</p>
+        <span class="read-more">The pattern &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="advisory-section">
+    <h2>Advisory Patterns</h2>
+    <p class="section-intro">Useful now but tied to current model limitations. These may have a shelf life of 12-24 months as models improve.</p>
+
+    <div class="advisory-grid">
+      <a href={`${base}patterns/learn-the-material`} class="advisory-card">
+        <h3>Learn the Material</h3>
+        <p>LLMs have behavioral properties you must design around — confidence inflation, the observation-calibration gap. Some are permanent, some are being fixed.</p>
+        <span class="read-more">Details &rarr;</span>
       </a>
 
-      <a href={`${base}patterns/context-is-architecture`} class="pattern-card">
-        <div class="pattern-illustration">
-          <IllustrationCliff />
-        </div>
-        <div class="pattern-text">
-          <h3>3. Context Is Architecture</h3>
-          <p class="pattern-problem">You wrote great docs but your agent ignores them. You explained the same thing three sessions in a row.</p>
-          <p class="pattern-fix">There's a hard cliff between what agents load automatically and what's invisible. Task-triggered pointers cross it. Descriptive labels don't.</p>
-          <span class="read-more">The pattern &rarr;</span>
-        </div>
-      </a>
-
-      <a href={`${base}patterns/reproduce-dont-assess`} class="pattern-card">
-        <div class="pattern-illustration">
-          <IllustrationReproduce />
-        </div>
-        <div class="pattern-text">
-          <h3>4. Reproduce, Don't Assess</h3>
-          <p class="pattern-problem">You asked the AI to check your equations and it said they looked fine. They weren't.</p>
-          <p class="pattern-fix">Don't ask "is this right?" Ask "compute this from scratch and compare." Assessment found 0 errors in 68 equations. Reproduction found 3.</p>
-          <span class="read-more">The pattern &rarr;</span>
-        </div>
+      <a href={`${base}patterns/reproduce-dont-assess`} class="advisory-card">
+        <h3>Reproduce, Don't Assess</h3>
+        <p>Don't ask "is this right?" Ask "compute this from scratch and compare." Assessment found 0 errors in 68 equations. Reproduction found 3.</p>
+        <span class="read-more">Details &rarr;</span>
       </a>
     </div>
   </section>
 
   <section id="quick-ref" class="quickref-section">
     <h2>Quick Reference</h2>
-    <p class="section-intro">When you hit one of these situations, reach for the corresponding pattern.</p>
 
     <table class="quickref-table">
       <thead>
         <tr><th>Situation</th><th>Pattern</th></tr>
       </thead>
       <tbody>
-        <tr><td>LLM gave me a number</td><td><a href={`${base}patterns/reproduce-dont-assess`}>Reproduce it</a></td></tr>
-        <tr><td>LLM scored or rated something</td><td><a href={`${base}patterns/learn-the-material`}>Don't trust it — separate scoring</a></td></tr>
-        <tr><td>LLM sounds very confident</td><td><a href={`${base}patterns/learn-the-material`}>Check the evidence tier</a></td></tr>
         <tr><td>Agent isn't using my docs</td><td><a href={`${base}patterns/context-is-architecture`}>Check if it's below the cliff</a></td></tr>
-        <tr><td>One review pass found nothing</td><td><a href={`${base}patterns/layer-your-verification`}>Run another layer</a></td></tr>
         <tr><td>Agent keeps forgetting decisions</td><td><a href={`${base}patterns/context-is-architecture`}>Use task-triggered pointers</a></td></tr>
-        <tr><td>AI review says "looks good"</td><td><a href={`${base}patterns/reproduce-dont-assess`}>Compute, don't assess</a></td></tr>
+        <tr><td>One review pass found nothing</td><td><a href={`${base}patterns/layer-your-verification`}>Run another layer</a></td></tr>
         <tr><td>Choosing between approaches</td><td><a href={`${base}patterns/layer-your-verification`}>Have a second agent review the first</a></td></tr>
+        <tr class="advisory-row"><td>LLM gave me a number</td><td><a href={`${base}patterns/reproduce-dont-assess`}>Reproduce it</a></td></tr>
+        <tr class="advisory-row"><td>LLM scored or rated something</td><td><a href={`${base}patterns/learn-the-material`}>Don't trust it — separate scoring</a></td></tr>
+        <tr class="advisory-row"><td>LLM sounds very confident</td><td><a href={`${base}patterns/learn-the-material`}>Check the evidence tier</a></td></tr>
+        <tr class="advisory-row"><td>AI review says "looks good"</td><td><a href={`${base}patterns/reproduce-dont-assess`}>Compute, don't assess</a></td></tr>
       </tbody>
     </table>
+    <p class="table-note">Gray rows are advisory — useful now, may change as models improve.</p>
   </section>
 
   <section id="about" class="about-section">
     <h2>About</h2>
     <div class="about-content">
-      <p>Four patterns from nine real projects (embedded hardware, physics simulation, academic writing, news curation, and more) built over 2025-2026. One engineer's practice — not a validated framework. Honest about limitations, survivorship bias, and sample size.</p>
-      <p>The patterns are worth trying. The framing is worth debating.</p>
+      <p>Patterns from nine real projects (embedded hardware, physics simulation, academic writing, news curation, and more) built over 2025-2026. One engineer's practice — not a validated framework. Honest about limitations, survivorship bias, and sample size.</p>
       <div class="about-cta">
-        <p><a href="https://github.com/ducroq/augmented-engineering">Source, evidence, and case studies on GitHub</a></p>
+        <a href="https://github.com/ducroq/augmented-engineering">Source, evidence, and case studies on GitHub</a>
       </div>
     </div>
   </section>
@@ -105,28 +89,29 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 <style>
   .hero {
     padding: 3rem 0 2rem;
-    max-width: 42rem;
+    max-width: 38rem;
   }
 
   .hero h1 {
-    font-size: 2.8rem;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 0.8rem;
   }
 
   .subtitle {
-    font-size: 1.1rem;
-    color: var(--ink-light);
-    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 0;
+    line-height: 1.6;
   }
 
   .section-intro {
-    color: var(--ink-light);
+    color: var(--text-secondary);
     max-width: 38rem;
     margin-bottom: 1.5rem;
+    font-size: 0.95rem;
   }
 
-  /* Pattern cards */
+  /* Core pattern cards */
   .pattern-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -136,64 +121,104 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   .pattern-card {
     display: block;
     text-decoration: none;
-    color: var(--ink);
-    background: var(--paper);
-    border: 2px solid var(--ink-faint);
-    border-radius: 8px;
-    padding: 1rem;
-    transition: border-color 0.2s, transform 0.2s;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
 
   .pattern-card:hover {
-    border-color: var(--ink);
-    transform: translateY(-2px);
+    border-color: var(--text-secondary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
-  .pattern-illustration {
-    width: 100%;
-    max-height: 200px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .pattern-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--evidence);
+    margin-bottom: 0.5rem;
   }
 
-  .pattern-illustration :global(.illustration) {
-    width: 100%;
-    height: auto;
-    max-height: 200px;
-  }
-
-  .pattern-text {
-    padding: 0.5rem 0.3rem 0;
-  }
-
-  .pattern-text h3 {
-    margin-bottom: 0.3rem;
+  .pattern-card h3 {
+    margin-bottom: 0.5rem;
   }
 
   .pattern-problem {
     font-size: 0.88rem;
-    color: var(--ink);
+    color: var(--text);
     margin-top: 0.3rem;
-    line-height: 1.5;
+    line-height: 1.6;
     font-style: italic;
   }
 
   .pattern-fix {
     font-size: 0.88rem;
-    color: var(--ink-light);
+    color: var(--text-secondary);
     margin-top: 0.3rem;
-    line-height: 1.5;
+    line-height: 1.6;
+  }
+
+  .pattern-tool {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
   }
 
   .read-more {
     display: inline-block;
-    margin-top: 0.5rem;
-    font-family: 'Caveat', cursive;
-    font-size: 1.05rem;
-    color: var(--blue-pencil);
+    margin-top: 0.8rem;
+    font-size: 0.88rem;
+    color: var(--evidence);
     font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* Advisory cards */
+  .advisory-section {
+    margin-top: 3rem;
+  }
+
+  .advisory-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .advisory-card {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.2rem;
+    transition: border-color 0.15s;
+  }
+
+  .advisory-card:hover {
+    border-color: var(--text-secondary);
+  }
+
+  .advisory-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-secondary);
+  }
+
+  .advisory-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-top: 0.3rem;
+  }
+
+  .advisory-card .read-more {
+    font-size: 0.82rem;
+    color: var(--text-muted);
   }
 
   /* Quick reference */
@@ -211,36 +236,44 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   .quickref-table td {
     text-align: left;
     padding: 0.6rem 0.8rem;
-    border-bottom: 1px solid var(--ink-faint);
-  }
-
-  .quickref-table th {
-    font-family: 'Caveat', cursive;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-
-  .quickref-table td {
+    border-bottom: 1px solid var(--border);
     font-size: 0.9rem;
   }
 
+  .quickref-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+
   .quickref-table td:first-child {
-    color: var(--ink);
+    color: var(--text);
     font-weight: 500;
   }
 
-  .quickref-table td:last-child {
-    color: var(--ink-light);
-  }
-
   .quickref-table a {
-    color: var(--blue-pencil);
+    color: var(--evidence);
     text-decoration: none;
   }
 
   .quickref-table a:hover {
     text-decoration: underline;
-    text-decoration-style: wavy;
+  }
+
+  .advisory-row td {
+    color: var(--text-muted) !important;
+  }
+
+  .advisory-row a {
+    color: var(--text-muted) !important;
+  }
+
+  .table-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
   }
 
   /* About */
@@ -250,21 +283,19 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
   .about-content p {
     font-size: 0.95rem;
+    color: var(--text-secondary);
   }
 
   .about-cta {
-    margin-top: 1.2rem;
-    padding: 0.8rem 1.3rem;
-    background: var(--paper-dark);
-    border-radius: 6px;
+    margin-top: 1rem;
   }
 
-  .about-cta p {
-    margin: 0;
+  .about-cta a {
+    font-size: 0.9rem;
+    font-weight: 500;
   }
 
   @media (max-width: 768px) {
-    .pattern-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 2.2rem; }
+    .pattern-grid, .advisory-grid { grid-template-columns: 1fr; }
   }
 </style>
