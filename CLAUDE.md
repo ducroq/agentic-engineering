@@ -4,7 +4,7 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 
 - **Type**: Proposition + case studies + website
 - **Status**: Active (March 2026)
-- **agent-ready-projects**: v1.3.2
+- **agent-ready-projects**: v1.3.4
 
 ## Before You Start
 
@@ -20,6 +20,7 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 | Stuck or debugging | `memory/gotcha-log.md` — problem-fix archive |
 | Making an architectural decision | `docs/decisions/README.md` — ADR index and template |
 | Working on the podcast | `podcast/` + `memory/project_aug_podcast_marketing.md` — scripts, production, strategy |
+| Ending a session | Run `/curate` — reviews gotcha log, promotes patterns, updates memory index |
 
 ## Hard Constraints
 

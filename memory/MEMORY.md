@@ -69,7 +69,7 @@
 - **Case study style**: Pattern-first, loosely coupled to claim registry — not thesis chapters
 - **Material properties split**: Persistent (confidence inflation, observation-calibration gap) vs. transient (scoring regression, plausible-but-wrong severity)
 - **Personal project**: No institutional references (HAN removed from all public-facing docs)
-- **Adopted agent-ready-projects v1.3.2**: Layered memory system for session continuity. v1.3.2 adds: negative results as knowledge, ground truth principle, review agent skeleton, no config-format docs
+- **Adopted agent-ready-projects v1.3.4**: Layered memory system for session continuity. v1.3.4 adds: /curate skill for end-of-session curation, negative results as knowledge, ground truth principle, review agent skeleton
 - **Adopted agent-ready-papers claim registry**: Typed verification with confidence tiers
 - **Feedback loop framing adopted** (2026-03-17): "agent generates → agent reviews → agent validates → engineer decides" — borrowed from practitioner discourse, grounded in our evidence
 - **In-repo memory by default**: Memory files live in `memory/` inside the repo, not in tool auto-memory. Exception only for content that should never be committed. Per ADR-001 in agent-ready-projects.
