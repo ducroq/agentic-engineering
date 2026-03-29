@@ -32,6 +32,16 @@
 **Root cause**: Hardcoded `href="/..."` paths in .astro files don't include the `base` configured in astro.config.mjs. Astro doesn't rewrite hrefs automatically — only asset paths through its build pipeline.
 **Fix**: Use `import.meta.env.BASE_URL` in all components and pages. Normalize with trailing slash since Astro returns `/augmented-engineering` (no trailing slash) which concatenates wrong with `patterns/...`.
 
+### Astro eats Mermaid curly braces (2026-03-29)
+**Problem**: Mermaid diagrams with `{}` (diamond/rhombus nodes) rendered as syntax errors. The `{` and `}` were stripped from the built HTML.
+**Root cause**: Astro interprets `{}` in templates as expression delimiters. Mermaid syntax like `Q1{"Multiple sessions?"}` gets the braces eaten.
+**Fix**: Define diagrams as JS strings in the frontmatter or `<script>` and inject with `set:html` or `textContent`. Never put Mermaid code with `{}` directly in Astro template markup.
+
+### Mermaid can't render in display:none tabs (2026-03-29)
+**Problem**: Switching tabs showed "Syntax error" instead of diagrams. Only the first tab's diagram rendered.
+**Root cause**: Mermaid needs elements to be visible in the DOM to measure and render SVGs. Hidden tabs (`display: none`) can't be rendered.
+**Fix**: Show all tabs on page load, run `mermaid.run().then()`, then hide non-active tabs after rendering completes. Tab switching just toggles display — no re-rendering.
+
 ## Promoted
 
 | Entry | Promoted to | Date |

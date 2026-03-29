@@ -10,7 +10,8 @@
 | `memory/feedback_echo_chamber.md` | Adding new evidence | Circular evidence risk — case studies verifying themselves |
 | `memory/reference_tandemize.md` | Discussing external partnerships | Tandemize.ai potential synergy |
 | `memory/session_2026-03-19_podcast_launch.md` | Context on podcast creation decisions | Marathon session: memory migration, framework v1.2.0 |
-| `docs/decisions/README.md` | Making an architectural decision | ADR index — 4 decisions (podcast + site reframe) |
+| `docs/decisions/README.md` | Making an architectural decision | ADR index — 7 decisions (podcast, site reframe, umbrella pivot) |
+| `docs/VIBE.md` | Working on site design | Visual identity: engineered, honest, practitioner-first |
 
 ## Recently Promoted
 
@@ -36,6 +37,11 @@
 - **Full agent-ready-projects adoption** (2026-03-28): Upgraded v1.1.0 → v1.3.4. Added decision framework, ground truth designations, negative-results constraint, ADR index with README, /curate skill. CLAUDE.md architecture tree updated to match actual repo.
 - **Site reframed as pattern library** (2026-03-28): Per ADR-004. Leads with reader's problem, quick reference decision table, pattern pages restructured. Nine-projects section removed.
 - **Site base path links fixed** (2026-03-29): All internal hrefs now use import.meta.env.BASE_URL. See gotcha-log.
+- **Strategic pivot: tool umbrella** (2026-03-29): ADR-005/006/007. Augmented Engineering is a tool umbrella, not a research proposition. Only durable (structural) patterns are core. Don't build umbrella ahead of tools.
+- **VIBE.md created** (2026-03-29): Visual identity — Inter font, semantic-only color, clean surfaces. Replaces notebook/pencil aesthetic.
+- **Site redesigned per VIBE** (2026-03-29): Dark mode, Inter typography, clean surfaces. Core/advisory pattern split. agent-ready-projects tool page with tabbed Mermaid visual walkthrough (cliff, layers, loop, rhythm). Pill tabs, stadium-shaped nodes, dark-mode-aware classDef colors.
+- **Visual guide added to agent-ready-projects** (2026-03-29): 4-page Mermaid guide in docs/guide/ — linked from README. Also rendered on augmented-engineering site tool page.
+- **Issues filed**: #3 (extend review agents for umbrella), #4 (layered verification tooling as second flagship).
 
 ## Related Repos — Quick Reference
 
@@ -77,3 +83,6 @@
 - **Feedback loop framing adopted** (2026-03-17): "agent generates → agent reviews → agent validates → engineer decides" — borrowed from practitioner discourse, grounded in our evidence
 - **In-repo memory by default**: Memory files live in `memory/` inside the repo, not in tool auto-memory. Exception only for content that should never be committed. Per ADR-001 in agent-ready-projects.
 - **Site is a pattern library, not research portfolio** (ADR-004): Lead with the reader's problem, not the research journey. Evidence supports but doesn't lead. Nine projects are attribution, not content.
+- **Augmented Engineering is a tool umbrella** (ADR-005): The proposition becomes backstory. Tools are the point.
+- **Only durable patterns are core** (ADR-006): Context Is Architecture and Layer Your Verification are core (structural). Learn the Material and Reproduce Don't Assess are advisory (model-dependent, 12-24 month shelf life).
+- **Don't build umbrella ahead of tools** (ADR-007): Minimal umbrella until second flagship exists. agent-ready-projects is the flagship. Layered verification tooling is the candidate second tool (issue #4).
