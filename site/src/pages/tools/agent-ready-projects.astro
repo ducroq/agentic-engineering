@@ -1,0 +1,642 @@
+---
+import Base from '../../layouts/Base.astro';
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
+---
+
+<Base title="agent-ready-projects — Augmented Engineering">
+  <article class="tool-page">
+    <div class="tool-header">
+      <a href={base} class="back-link">&larr; Back</a>
+      <h1><code>agent-ready-projects</code></h1>
+      <p class="tool-subtitle">Structure any project so AI agents work effectively across sessions.</p>
+      <div class="tool-actions">
+        <a href="https://github.com/ducroq/agent-ready-projects" class="btn btn-primary">GitHub</a>
+        <a href="https://github.com/ducroq/agent-ready-projects/blob/master/adopt.md" class="btn btn-secondary">Get started</a>
+      </div>
+    </div>
+
+    <nav class="tab-nav">
+      <button class="tab active" data-tab="cliff">The Cliff</button>
+      <button class="tab" data-tab="layers">The Layers</button>
+      <button class="tab" data-tab="loop">The Loop</button>
+      <button class="tab" data-tab="rhythm">The Rhythm</button>
+    </nav>
+
+    <!-- TAB 1: THE CLIFF -->
+    <section class="tab-content active" id="tab-cliff">
+      <h2>The Auto-Loading Cliff</h2>
+      <p>The single most important concept: there is a hard line between what your agent sees automatically and what's invisible.</p>
+
+      <div class="mermaid-wrap">
+        <pre class="mermaid">
+graph TB
+    subgraph above["Auto-loaded — always visible"]
+        PF["Project file\nCLAUDE.md / AGENTS.md"]
+        MI["Memory index\nMEMORY.md"]
+    end
+
+    subgraph below["Below the cliff — invisible until triggered"]
+        RB["Runbook\ndocs/RUNBOOK.md"]
+        TF["Topic files\nmemory/*.md"]
+        GL["Gotcha log\nmemory/gotcha-log.md"]
+        ADR["ADRs\ndocs/decisions/"]
+    end
+
+    PF -. "task-triggered pointer" .-> RB
+    PF -. "task-triggered pointer" .-> GL
+    MI -. "task-triggered pointer" .-> TF
+    MI -. "task-triggered pointer" .-> ADR
+
+    style above fill:#f0fdf4,stroke:#16803c,stroke-width:2px,color:#1a1a1a
+    style below fill:#fef2f2,stroke:#dc2626,stroke-width:2px,color:#1a1a1a
+        </pre>
+      </div>
+
+      <p>Content above the cliff is always available. Content below is invisible until a <strong>task-triggered pointer</strong> activates it.</p>
+
+      <div class="comparison">
+        <div class="comparison-bad">
+          <h3>Does not cross the cliff</h3>
+          <code>See docs/api-quirks.md</code>
+          <p>A category the agent has to interpret.</p>
+        </div>
+        <div class="comparison-good">
+          <h3>Crosses the cliff</h3>
+          <code>API returns 422 → read docs/api-quirks.md</code>
+          <p>A situation the agent recognizes it's in.</p>
+        </div>
+      </div>
+
+      <div class="key-insight">
+        <strong>The principle:</strong> Documentation quality for AI agents is measured by self-navigation, not accuracy. A perfect doc that no agent reads is worse than an approximate pointer that triggers the right lookup.
+      </div>
+    </section>
+
+    <!-- TAB 2: THE LAYERS -->
+    <section class="tab-content" id="tab-layers">
+      <h2>The Layers</h2>
+      <p>Four layers, each added when the previous one gets crowded. Not every project needs all four.</p>
+
+      <div class="mermaid-wrap">
+        <pre class="mermaid">
+graph TD
+    Start["Your project"] --> Q1{"Multiple sessions?"}
+    Q1 -- No --> Skip["Skip all this.\nIt's overkill."]
+    Q1 -- Yes --> L1["Layer 1: Project File"]
+    L1 --> L4["Layer 4: Gotcha Log"]
+    L4 --> Q2{"Deployment or\noperational complexity?"}
+    Q2 -- Yes --> L2["Layer 2: Runbook"]
+    Q2 -- No --> Q3{"Multiple subsystems\nor growing knowledge?"}
+    L2 --> Q3
+    Q3 -- Yes --> L3["Layer 3: Memory"]
+    Q3 -- No --> Done["Done. Start working."]
+    L3 --> Done
+
+    style Skip fill:#fef2f2,stroke:#dc2626,color:#1a1a1a
+    style Done fill:#f0fdf4,stroke:#16803c,color:#1a1a1a
+    style L1 fill:#f0fdf4,stroke:#16803c,color:#1a1a1a
+    style L2 fill:#eff6ff,stroke:#1d6fa5,color:#1a1a1a
+    style L3 fill:#eff6ff,stroke:#1d6fa5,color:#1a1a1a
+    style L4 fill:#f0fdf4,stroke:#16803c,color:#1a1a1a
+        </pre>
+      </div>
+
+      <div class="layers-grid">
+        <div class="layer-card layer-1">
+          <div class="layer-badge">Layer 1 — always</div>
+          <h3>Project File</h3>
+          <p>Identity, hard constraints, task-triggered pointers, architecture sketch, key paths.</p>
+          <p class="layer-meta">Auto-loaded. ~100 lines max.</p>
+        </div>
+        <div class="layer-card layer-2">
+          <div class="layer-badge">Layer 2 — most projects</div>
+          <h3>Runbook</h3>
+          <p>Local dev setup, deployment steps, common problems, how to add new features.</p>
+          <p class="layer-meta">Triggered from project file.</p>
+        </div>
+        <div class="layer-card layer-3">
+          <div class="layer-badge">Layer 3 — complex projects</div>
+          <h3>Memory</h3>
+          <p>Auto-loaded index pointing to on-demand topic files organized by subsystem.</p>
+          <p class="layer-meta">Index auto-loaded. Topic files triggered.</p>
+        </div>
+        <div class="layer-card layer-4">
+          <div class="layer-badge">Layer 4 — always</div>
+          <h3>Gotcha Log</h3>
+          <p>Problem → Root Cause → Fix. Append-only. Not a daily journal.</p>
+          <p class="layer-meta">Triggered when stuck.</p>
+        </div>
+      </div>
+
+      <h3>Tool mapping</h3>
+      <table>
+        <thead>
+          <tr><th>Layer</th><th>Claude Code</th><th>Codex</th><th>Cursor</th><th>Copilot</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Project file</td><td><code>CLAUDE.md</code></td><td><code>AGENTS.md</code></td><td><code>.cursor/rules/*.mdc</code></td><td><code>.github/copilot-instructions.md</code></td></tr>
+          <tr><td>Memory index</td><td><code>MEMORY.md</code></td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><td>Runbook</td><td colspan="4"><code>docs/RUNBOOK.md</code> (same everywhere)</td></tr>
+          <tr><td>Gotcha log</td><td colspan="4"><code>memory/gotcha-log.md</code> (same everywhere)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- TAB 3: THE LOOP -->
+    <section class="tab-content" id="tab-loop">
+      <h2>The Self-Learning Loop</h2>
+      <p>Context isn't a one-time documentation effort. It's a living system with four phases.</p>
+
+      <div class="mermaid-wrap">
+        <pre class="mermaid">
+stateDiagram-v2
+    [*] --> Capture
+
+    Capture --> Surface: End of session
+    Surface --> Promote: Pattern recurs 2-3x
+    Surface --> Capture: No pattern yet
+    Promote --> Retire: Root cause fixed
+    Promote --> Capture: Promoted, keep watching
+    Retire --> [*]: Knowledge encoded in code
+
+    Capture: CAPTURE\nLog problems as they happen\n(2-3 lines, in the moment)
+    Surface: SURFACE\nAgent reviews, spots patterns\n(1-2 min, end of session)
+    Promote: PROMOTE\nRecurring lessons move up\n(gotcha → topic → index → project file)
+    Retire: RETIRE\nFixed or encoded in code?\n(mark resolved, don't delete)
+        </pre>
+      </div>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <h3>1. Capture</h3>
+          <p><strong>When:</strong> During work, the moment something goes wrong.</p>
+          <p><strong>What:</strong> 2-3 lines in the gotcha log. Cheap now, expensive to reconstruct later.</p>
+        </div>
+        <div class="phase-card">
+          <h3>2. Surface</h3>
+          <p><strong>When:</strong> End of session. 1-2 minutes.</p>
+          <p><strong>What:</strong> Agent reviews, correlates, summarizes, prunes. You approve.</p>
+        </div>
+        <div class="phase-card">
+          <h3>3. Promote</h3>
+          <p><strong>When:</strong> A lesson recurs 2-3 times.</p>
+          <p><strong>What:</strong> Moves up: gotcha log → topic file → memory index → project file.</p>
+        </div>
+        <div class="phase-card">
+          <h3>4. Retire</h3>
+          <p><strong>When:</strong> Root cause fixed or encoded in code.</p>
+          <p><strong>What:</strong> Mark resolved (don't delete). Monthly audits prune stale entries.</p>
+        </div>
+      </div>
+
+      <h3>Example lifecycle</h3>
+      <table>
+        <thead>
+          <tr><th>Session</th><th>What happens</th><th>Where it lives</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>Migration times out. Logged.</td><td>Gotcha log</td></tr>
+          <tr><td>7</td><td>Times out again. Agent flags it.</td><td>Gotcha log</td></tr>
+          <tr><td>8</td><td>Promoted: "if migrations time out, use <code>--lock-timeout=60s</code>"</td><td>Topic file</td></tr>
+          <tr><td>15</td><td>Affects deployments, backfills, and tests too.</td><td>Memory index</td></tr>
+          <tr><td>22</td><td>Database moved to dedicated instance. Fixed.</td><td>Marked <code>[RESOLVED]</code></td></tr>
+        </tbody>
+      </table>
+      <p class="table-note">Total effort: ~2 minutes across 6 sessions.</p>
+    </section>
+
+    <!-- TAB 4: THE RHYTHM -->
+    <section class="tab-content" id="tab-rhythm">
+      <h2>The Rhythm</h2>
+      <p>When to do what. Three timescales, each with a clear trigger.</p>
+
+      <div class="mermaid-wrap">
+        <pre class="mermaid">
+flowchart TD
+    subgraph during["During work"]
+        W["Work happens"]
+        W --> Gotcha["Gotcha? → Log it"]
+        W --> Learn["Learned? → Topic file"]
+        W --> Decide["Decision? → ADR"]
+    end
+
+    subgraph eos["End of session — 1-2 min"]
+        Curate["/curate"]
+        Curate --> Correlate["Correlate related entries"]
+        Curate --> Summarize["Summarize repeated lessons"]
+        Curate --> Prune["Flag stale entries"]
+        Curate --> Promote["Promote recurring patterns"]
+    end
+
+    subgraph monthly["Monthly"]
+        Audit["Agent audits all memory"]
+        Audit --> Retire["Retire fixed/encoded entries"]
+        Audit --> Verify["Verify all paths still exist"]
+    end
+
+    during --> eos
+    eos --> monthly
+    monthly -.-> during
+
+    style during fill:#fefce8,stroke:#a16207,color:#1a1a1a
+    style eos fill:#f0fdf4,stroke:#16803c,color:#1a1a1a
+    style monthly fill:#eff6ff,stroke:#1d6fa5,color:#1a1a1a
+        </pre>
+      </div>
+
+      <div class="rhythm-grid">
+        <div class="rhythm-card">
+          <h3>During work</h3>
+          <p>Log gotchas (seconds), note learnings in topic files, write ADRs for decisions. Raw material — cheap to create in the moment.</p>
+        </div>
+        <div class="rhythm-card">
+          <h3>End of session</h3>
+          <p>Run <code>/curate</code>. The agent reads across files, drafts consolidations, proposes promotions. You review. 1-2 minutes.</p>
+        </div>
+        <div class="rhythm-card">
+          <h3>Monthly</h3>
+          <p>Agent scans all memory, flags resolved and stale entries, proposes batch retirements. You confirm. Pruning should roughly match growth.</p>
+        </div>
+      </div>
+
+      <h3>Success signals</h3>
+      <div class="signals-grid">
+        <div class="signal good">New sessions start productive immediately</div>
+        <div class="signal good">Agents don't re-investigate solved problems</div>
+        <div class="signal good">Same problem rarely appears 3+ times</div>
+        <div class="signal good">Memory files don't grow indefinitely</div>
+        <div class="signal bad">Explaining the same thing every session</div>
+        <div class="signal bad">Project file exceeds 150 lines</div>
+        <div class="signal bad">Same gotcha appears 3+ times without promotion</div>
+        <div class="signal bad">Memory only grows, never shrinks</div>
+      </div>
+    </section>
+
+    <div class="tool-cta">
+      <p>Ready to try it?</p>
+      <a href="https://github.com/ducroq/agent-ready-projects/blob/master/adopt.md" class="btn btn-primary">Get started — paste the adopt prompt into your agent</a>
+    </div>
+  </article>
+</Base>
+
+<script>
+  import mermaid from 'mermaid';
+
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'neutral',
+    themeVariables: {
+      fontFamily: 'Inter, system-ui, sans-serif',
+      fontSize: '14px',
+      primaryColor: '#f0fdf4',
+      primaryBorderColor: '#16803c',
+      lineColor: '#555',
+      textColor: '#1a1a1a',
+    },
+  });
+
+  // Tab navigation
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      const target = document.getElementById(`tab-${tab.dataset.tab}`);
+      if (target) {
+        target.classList.add('active');
+        // Re-render mermaid diagrams in newly visible tab
+        target.querySelectorAll('.mermaid[data-processed]').forEach(el => {
+          el.removeAttribute('data-processed');
+        });
+        mermaid.run();
+      }
+    });
+  });
+</script>
+
+<style>
+  .tool-page {
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .tool-header {
+    padding: 1.5rem 0 2rem;
+  }
+
+  .tool-header h1 {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  .tool-header h1 code {
+    font-family: 'JetBrains Mono', monospace;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  .tool-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-top: 0.3rem;
+  }
+
+  .tool-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: var(--surface);
+  }
+
+  .btn-primary:hover {
+    background: #333;
+  }
+
+  .btn-secondary {
+    background: var(--surface-alt);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--border);
+  }
+
+  /* Tabs */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--border);
+    margin-top: 1rem;
+  }
+
+  .tab {
+    padding: 0.7rem 1.2rem;
+    background: none;
+    border: none;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab:hover {
+    color: var(--text);
+  }
+
+  .tab.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  .tab-content {
+    display: none;
+    padding: 1.5rem 0;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  /* Mermaid */
+  .mermaid-wrap {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+  }
+
+  .mermaid-wrap pre.mermaid {
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    color: var(--text);
+    font-size: 0.85rem;
+  }
+
+  /* Comparison */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .comparison-bad, .comparison-good {
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .comparison-bad {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+  }
+
+  .comparison-good {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+  }
+
+  .comparison h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .comparison-bad h3 { color: #dc2626; }
+  .comparison-good h3 { color: #16803c; }
+
+  .comparison code {
+    display: block;
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+  }
+
+  .comparison p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.3rem;
+  }
+
+  .key-insight {
+    background: var(--surface-alt);
+    border-left: 3px solid var(--evidence);
+    padding: 1rem 1.2rem;
+    border-radius: 0 4px 4px 0;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  /* Layer cards */
+  .layers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .layer-card {
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .layer-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+
+  .layer-1 { border-left: 3px solid #16803c; }
+  .layer-1 .layer-badge { color: #16803c; }
+  .layer-2 { border-left: 3px solid #1d6fa5; }
+  .layer-2 .layer-badge { color: #1d6fa5; }
+  .layer-3 { border-left: 3px solid #1d6fa5; }
+  .layer-3 .layer-badge { color: #1d6fa5; }
+  .layer-4 { border-left: 3px solid #16803c; }
+  .layer-4 .layer-badge { color: #16803c; }
+
+  .layer-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+  .layer-card p { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem; }
+  .layer-meta { font-style: italic; color: var(--text-muted) !important; font-size: 0.8rem !important; }
+
+  /* Phase cards */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .phase-card {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .phase-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .phase-card p { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem; }
+
+  /* Rhythm cards */
+  .rhythm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .rhythm-card {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .rhythm-card h3 { font-size: 0.9rem; margin-bottom: 0.3rem; }
+  .rhythm-card p { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem; }
+
+  /* Signals */
+  .signals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .signal {
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+  }
+
+  .signal.good {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+  }
+
+  .signal.bad {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+
+  td { color: var(--text-secondary); }
+
+  .table-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+
+  /* CTA */
+  .tool-cta {
+    margin-top: 3rem;
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .tool-cta p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .comparison, .layers-grid, .phase-grid { grid-template-columns: 1fr; }
+    .rhythm-grid { grid-template-columns: 1fr; }
+    .signals-grid { grid-template-columns: 1fr; }
+    .tab { padding: 0.5rem 0.8rem; font-size: 0.82rem; }
+  }
+</style>
