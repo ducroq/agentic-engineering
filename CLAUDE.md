@@ -1,9 +1,10 @@
 # Augmented Engineering
 
-What's new when engineers work with AI agents? Four patterns from nine real projects.
+Durable tools and patterns for engineers working with AI agents.
 
-- **Type**: Proposition + case studies + website
+- **Type**: Tool umbrella — tools, durable patterns, advisory content
 - **Status**: Active (March 2026)
+- **Flagship tool**: agent-ready-projects (v1.3.4)
 - **agent-ready-projects**: v1.3.4
 
 ## Before You Start
@@ -16,7 +17,7 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 | Working on a case study | `case-studies/README.md` — template and conventions |
 | Working on research content | `research/README.md` — research questions and methodology |
 | Working on the guide | `guide/README.md` — pattern library structure |
-| Working on the website | `site/` — Astro static site, `npm run dev` to preview |
+| Working on the website | `site/` + `docs/VIBE.md` — Astro static site, visual identity guide, `npm run dev` to preview |
 | Stuck or debugging | `memory/gotcha-log.md` — problem-fix archive |
 | Making an architectural decision | `docs/decisions/README.md` — ADR index and template |
 | Working on the podcast | `podcast/` + `memory/project_aug_podcast_marketing.md` — scripts, production, strategy |
@@ -42,11 +43,14 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 | **REVIEW** | New claim without registry entry, case study touching multiple patterns, website copy |
 | **FAIL** | Speculation presented as fact, missing evidence for ESTABLISHED claim, institutional language |
 
-## The Four Patterns
+## Core Patterns (durable, structural)
 
-1. **Learn the Material** — LLM behavioral properties (some persistent, some transient)
-2. **Layer Your Verification** — Cheap V&V enables routine multi-layer verification
-3. **Context Is Architecture** — Auto-loading cliff, task-triggered pointers
+1. **Context Is Architecture** — Auto-loading cliff, task-triggered pointers → implemented in agent-ready-projects
+2. **Layer Your Verification** — Cheap V&V enables routine multi-layer verification → future tooling (issue #4)
+
+## Advisory Patterns (useful now, model-dependent, 12-24 month shelf life)
+
+3. **Learn the Material** — LLM behavioral properties (some persistent, some transient)
 4. **Reproduce, Don't Assess** — Compute instead of reasoning about equations
 
 ## Architecture
@@ -77,13 +81,16 @@ augmented-engineering/
 │   └── onderzoek/           # Research material
 ├── presentations/           # Slide decks and talk materials
 ├── docs/
-│   └── decisions/           # ADRs (index in README.md)
-├── site/                    # Astro website
+│   ├── decisions/           # ADRs — 7 decisions (index in README.md)
+│   └── VIBE.md              # Visual identity direction
+├── site/                    # Astro website (dark mode, Inter, semantic color)
 │   └── src/
-│       ├── layouts/         # Base layout with graph-paper grid
-│       ├── components/      # SVG illustrations + pattern page template
-│       └── pages/           # Landing + 4 pattern pages
-├── .claude/agents/          # Review agents (7 core + 8 podcast personas)
+│       ├── layouts/         # Base layout
+│       ├── components/      # Pattern page template
+│       └── pages/           # Landing, 4 patterns, tool page with Mermaid
+├── .claude/
+│   ├── agents/              # Review agents (7 core + 8 podcast personas)
+│   └── skills/curate/       # End-of-session curation skill
 └── memory/                  # In-repo memory (not auto-memory, per ADR-001)
     ├── MEMORY.md            # Index — loaded every session
     └── gotcha-log.md        # Problem → Root Cause → Fix archive
@@ -113,6 +120,8 @@ cd site && npm install && npm run dev    # Dev server at localhost:4321
 | Claim confidence levels | `claims/claim-registry.md` | Prose in case studies and proposition |
 | Case study template | `case-studies/README.md` | Individual case studies |
 | Podcast strategy | `memory/project_aug_podcast_marketing.md` | Session notes |
+| Visual identity | `docs/VIBE.md` | Site CSS, component styles |
+| Strategic direction | `docs/decisions/ADR-005,006,007` | CLAUDE.md framing, site structure |
 
 ## Nine Source Projects
 
