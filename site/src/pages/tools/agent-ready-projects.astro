@@ -40,7 +40,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
       <p>Content above the cliff is always available. Content below is invisible until a <strong>task-triggered pointer</strong> activates it.</p>
 
-      <div class="comparison">
+      <div class="comparison stacked">
         <div class="comparison-bad">
           <h3>Does not cross the cliff</h3>
           <code>See docs/api-quirks.md</code>
@@ -557,6 +557,11 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin: 1.5rem 0;
+  }
+
+  .comparison.stacked {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
   }
 
   .comparison-bad, .comparison-good {
