@@ -3,52 +3,7 @@ import Base from '../../layouts/Base.astro';
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
-const diagramCliff = `flowchart LR
-    subgraph visible["Auto-loaded"]
-        PF["Project file"]
-        MI["Memory index"]
-    end
-
-    subgraph invisible["Below the cliff"]
-        RB["Runbook"]
-        TF["Topic files"]
-        GL["Gotcha log"]
-        ADR["ADRs"]
-    end
-
-    PF -. "pointer" .-> RB
-    PF -. "pointer" .-> GL
-    MI -. "pointer" .-> TF
-    MI -. "pointer" .-> ADR`;
-
-const diagramLayers = `flowchart LR
-    L1["Layer 1:<br/>Project File"] --> Q2{"Operational<br/>complexity?"}
-    Q2 -- Yes --> L2["Layer 2:<br/>Runbook"]
-    Q2 -- No --> Q3{"Multiple<br/>subsystems?"}
-    L2 --> Q3
-    Q3 -- Yes --> L3["Layer 3:<br/>Memory"]
-    Q3 -- No --> L4["Layer 4:<br/>Gotcha Log"]
-    L3 --> L4`;
-
-const diagramLoop = `flowchart LR
-    Capture["CAPTURE<br/>Log problems"]
-    Surface["SURFACE<br/>Agent reviews"]
-    Promote["PROMOTE<br/>Move lessons up"]
-    Retire["RETIRE<br/>Remove when fixed"]
-
-    Capture -- "end of session" --> Surface
-    Surface -- "recurs 2-3x" --> Promote
-    Surface -- "no pattern yet" --> Capture
-    Promote -- "root cause fixed" --> Retire
-    Promote -- "keep watching" --> Capture
-    Retire -- "cycle continues" --> Capture`;
-
-const diagramRhythm = `flowchart LR
-    DW["During work<br/>Log gotchas, note learnings,<br/>write ADRs"]
-    EOS["End of session<br/>Run /curate<br/>(1-2 min review)"]
-    MO["Monthly<br/>Agent audits all memory,<br/>retire stale entries"]
-
-    DW --> EOS --> MO -.-> DW`;
+/* Diagram definitions moved to <script> for dark mode classDef support */
 ---
 
 <Base title="agent-ready-projects — Augmented Engineering">
@@ -80,7 +35,7 @@ const diagramRhythm = `flowchart LR
       <p>The single most important concept: there is a hard line between what your agent sees automatically and what's invisible.</p>
 
       <div class="mermaid-wrap">
-        <pre class="mermaid" set:html={diagramCliff}></pre>
+        <pre class="mermaid" id="dia-cliff"></pre>
       </div>
 
       <p>Content above the cliff is always available. Content below is invisible until a <strong>task-triggered pointer</strong> activates it.</p>
@@ -109,7 +64,7 @@ const diagramRhythm = `flowchart LR
       <p>Assuming your project spans multiple sessions (otherwise this system isn't useful), four layers — each added when the previous one gets crowded. Not every project needs all four.</p>
 
       <div class="mermaid-wrap">
-        <pre class="mermaid" set:html={diagramLayers}></pre>
+        <pre class="mermaid" id="dia-layers"></pre>
       </div>
 
       <div class="layers-grid">
@@ -159,7 +114,7 @@ const diagramRhythm = `flowchart LR
       <p>Context isn't a one-time documentation effort. It's a living system with four phases.</p>
 
       <div class="mermaid-wrap">
-        <pre class="mermaid" set:html={diagramLoop}></pre>
+        <pre class="mermaid" id="dia-loop"></pre>
       </div>
 
       <div class="phase-grid">
@@ -207,7 +162,7 @@ const diagramRhythm = `flowchart LR
       <p>When to do what. Three timescales, each with a clear trigger.</p>
 
       <div class="mermaid-wrap">
-        <pre class="mermaid" set:html={diagramRhythm}></pre>
+        <pre class="mermaid" id="dia-rhythm"></pre>
       </div>
 
       <div class="rhythm-grid">
@@ -250,25 +205,119 @@ const diagramRhythm = `flowchart LR
 
   const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+  // Color palettes
+  const c = isDark ? {
+    green:    'fill:#0d3320,stroke:#4ade80,stroke-width:2px,color:#86efac',
+    red:      'fill:#2a0a0a,stroke:#f87171,stroke-width:2px,color:#fca5a5',
+    blue:     'fill:#0c1e3a,stroke:#60a5fa,stroke-width:2px,color:#93c5fd',
+    yellow:   'fill:#1c1508,stroke:#fbbf24,stroke-width:2px,color:#fde68a',
+    greenSub: 'fill:#071a12,stroke:#22c55e,stroke-width:2px,color:#4ade80',
+    redSub:   'fill:#1a0505,stroke:#ef4444,stroke-width:2px,color:#fca5a5',
+  } : {
+    green:    'fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d',
+    red:      'fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d',
+    blue:     'fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a5f',
+    yellow:   'fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12',
+    greenSub: 'fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#166534',
+    redSub:   'fill:#fef2f2,stroke:#ef4444,stroke-width:2px,color:#991b1b',
+  };
+
+  // Inject diagrams with theme-aware colors
+  document.getElementById('dia-cliff').textContent = `flowchart LR
+    subgraph visible["Auto-loaded"]
+        direction TB
+        PF(["Project file"])
+        MI(["Memory index"])
+    end
+    subgraph invisible["Below the cliff"]
+        direction TB
+        RB(["Runbook"])
+        TF(["Topic files"])
+        GL(["Gotcha log"])
+        ADR(["ADRs"])
+    end
+    PF -. "pointer" .-> RB
+    PF -. "pointer" .-> GL
+    MI -. "pointer" .-> TF
+    MI -. "pointer" .-> ADR
+    classDef green ${c.green}
+    classDef red ${c.red}
+    classDef greenSub ${c.greenSub}
+    classDef redSub ${c.redSub}
+    class PF,MI green
+    class RB,TF,GL,ADR red
+    class visible greenSub
+    class invisible redSub`;
+
+  document.getElementById('dia-layers').textContent = `flowchart LR
+    L1(["1. Project File"]) --> Q2{"Operational<br/>complexity?"}
+    Q2 -- Yes --> L2(["2. Runbook"])
+    Q2 -- No --> Q3{"Multiple<br/>subsystems?"}
+    L2 --> Q3
+    Q3 -- Yes --> L3(["3. Memory"])
+    Q3 -- No --> L4(["4. Gotcha Log"])
+    L3 --> L4
+    classDef layer ${c.blue}
+    classDef always ${c.green}
+    classDef decision ${c.yellow}
+    class L1,L4 always
+    class L2,L3 layer
+    class Q2,Q3 decision`;
+
+  document.getElementById('dia-loop').textContent = `flowchart LR
+    C(["CAPTURE<br/>Log problems"])
+    S(["SURFACE<br/>Agent reviews"])
+    P(["PROMOTE<br/>Move lessons up"])
+    R(["RETIRE<br/>Remove when fixed"])
+    C -- "end of session" --> S
+    S -- "recurs 2-3x" --> P
+    S -. "no pattern yet" .-> C
+    P -- "root cause fixed" --> R
+    P -. "keep watching" .-> C
+    R -. "cycle continues" .-> C
+    classDef phase ${c.blue}
+    class C,S,P,R phase`;
+
+  document.getElementById('dia-rhythm').textContent = `flowchart LR
+    DW(["During work<br/>Log gotchas, note learnings"])
+    EOS(["End of session<br/>Run /curate · 1-2 min"])
+    MO(["Monthly<br/>Audit and retire stale entries"])
+    DW -- "session ends" --> EOS
+    EOS -- "month ends" --> MO
+    MO -. "next session" .-> DW
+    classDef step ${c.blue}
+    class DW,EOS,MO step`;
+
   mermaid.initialize({
     startOnLoad: false,
-    theme: isDark ? 'dark' : 'neutral',
+    theme: 'base',
+    flowchart: { curve: 'basis', padding: 16 },
     themeVariables: isDark ? {
       fontFamily: 'Inter, system-ui, sans-serif',
-      fontSize: '14px',
-      primaryColor: '#1a3a2a',
-      primaryBorderColor: '#4ade80',
-      lineColor: '#707070',
-      textColor: '#e0e0e0',
+      fontSize: '13px',
+      primaryColor: '#1e3a5f',
+      primaryBorderColor: '#60a5fa',
+      primaryTextColor: '#e0e0e0',
+      lineColor: '#555',
+      textColor: '#d0d0d0',
       mainBkg: '#1a1a1a',
       nodeBorder: '#555',
+      clusterBkg: '#1a1a1a',
+      clusterBorder: '#444',
+      edgeLabelBackground: '#1a1a1a',
     } : {
       fontFamily: 'Inter, system-ui, sans-serif',
-      fontSize: '14px',
-      primaryColor: '#f0fdf4',
-      primaryBorderColor: '#16803c',
-      lineColor: '#555',
-      textColor: '#1a1a1a',
+      fontSize: '13px',
+      primaryColor: '#dbeafe',
+      primaryBorderColor: '#2563eb',
+      primaryTextColor: '#1e3a5f',
+      lineColor: '#94a3b8',
+      textColor: '#334155',
+      mainBkg: '#ffffff',
+      nodeBorder: '#cbd5e1',
+      clusterBkg: '#f8fafc',
+      clusterBorder: '#e2e8f0',
+      edgeLabelBackground: '#ffffff',
     },
   });
 
@@ -481,6 +530,25 @@ const diagramRhythm = `flowchart LR
   .mermaid-wrap svg {
     max-width: 100%;
     height: auto;
+  }
+
+  /* Polish Mermaid SVG nodes */
+  .mermaid-wrap :global(.node rect),
+  .mermaid-wrap :global(.node polygon),
+  .mermaid-wrap :global(.node circle),
+  .mermaid-wrap :global(.node .label) {
+    rx: 12;
+    ry: 12;
+  }
+
+  .mermaid-wrap :global(.edgeLabel) {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .mermaid-wrap :global(.cluster rect) {
+    rx: 16 !important;
+    ry: 16 !important;
   }
 
   /* Comparison — bolder contrast */
