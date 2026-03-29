@@ -22,14 +22,13 @@ const diagramCliff = `flowchart LR
     MI -. "pointer" .-> ADR`;
 
 const diagramLayers = `flowchart LR
-    L1["Layer 1:<br/>Project File"] --> L4["Layer 4:<br/>Gotcha Log"]
-    L4 --> Q2{"Operational<br/>complexity?"}
+    L1["Layer 1:<br/>Project File"] --> Q2{"Operational<br/>complexity?"}
     Q2 -- Yes --> L2["Layer 2:<br/>Runbook"]
     Q2 -- No --> Q3{"Multiple<br/>subsystems?"}
     L2 --> Q3
     Q3 -- Yes --> L3["Layer 3:<br/>Memory"]
-    Q3 -- No --> Done["Done"]
-    L3 --> Done`;
+    Q3 -- No --> L4["Layer 4:<br/>Gotcha Log"]
+    L3 --> L4`;
 
 const diagramLoop = `flowchart LR
     Capture["CAPTURE<br/>Log problems"]
