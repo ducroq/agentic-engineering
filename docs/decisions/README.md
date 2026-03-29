@@ -10,6 +10,9 @@ Significant choices between approaches, with context, consequences, and alternat
 | [ADR-002](ADR-002-claim-verification-for-podcast.md) | Accepted | Claim verification gates before podcast scripts go to production |
 | [ADR-003](ADR-003-eight-persona-review-battery.md) | Accepted | Eight-persona review battery for podcast script quality |
 | [ADR-004](ADR-004-site-as-pattern-library.md) | Accepted | Reframe website as pattern library, not research portfolio |
+| [ADR-005](ADR-005-umbrella-not-proposition.md) | Accepted | Augmented Engineering is a tool umbrella, not a research proposition |
+| [ADR-006](ADR-006-only-durable-patterns.md) | Accepted | Only structural (durable) patterns are core; model-dependent ones are advisory |
+| [ADR-007](ADR-007-umbrella-follows-tools.md) | Accepted | Don't build the umbrella ahead of the tools |
 
 ## When to Write an ADR
 
