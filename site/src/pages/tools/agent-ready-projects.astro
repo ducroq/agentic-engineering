@@ -180,16 +180,25 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
         </div>
       </div>
 
-      <h3>Success signals</h3>
-      <div class="signals-grid">
-        <div class="signal good">New sessions start productive immediately</div>
-        <div class="signal good">Agents don't re-investigate solved problems</div>
-        <div class="signal good">Same problem rarely appears 3+ times</div>
-        <div class="signal good">Memory files don't grow indefinitely</div>
-        <div class="signal bad">Explaining the same thing every session</div>
-        <div class="signal bad">Project file exceeds 150 lines</div>
-        <div class="signal bad">Same gotcha appears 3+ times without promotion</div>
-        <div class="signal bad">Memory only grows, never shrinks</div>
+      <div class="signals-columns">
+        <div>
+          <h3>Working</h3>
+          <div class="signals-list">
+            <div class="signal good">New sessions start productive immediately</div>
+            <div class="signal good">Agents don't re-investigate solved problems</div>
+            <div class="signal good">Same problem rarely appears 3+ times</div>
+            <div class="signal good">Memory files don't grow indefinitely</div>
+          </div>
+        </div>
+        <div>
+          <h3>Needs attention</h3>
+          <div class="signals-list">
+            <div class="signal bad">Explaining the same thing every session</div>
+            <div class="signal bad">Project file exceeds 150 lines</div>
+            <div class="signal bad">Same gotcha appears 3+ times without promotion</div>
+            <div class="signal bad">Memory only grows, never shrinks</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -683,11 +692,22 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   .rhythm-card p { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem; }
 
   /* Signals — dot prefix style */
-  .signals-grid {
+  .signals-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.4rem;
+    gap: 1.5rem;
     margin: 1rem 0;
+  }
+
+  .signals-columns h3 {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .signals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
   }
 
   .signal {
