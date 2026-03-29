@@ -22,10 +22,7 @@ const diagramCliff = `graph TB
     MI -. "task-triggered pointer" .-> ADR`;
 
 const diagramLayers = `graph TD
-    Start["Your project"] --> Q1{"Multiple sessions?"}
-    Q1 -- No --> Skip["Skip all this.\\nIt's overkill."]
-    Q1 -- Yes --> L1["Layer 1: Project File"]
-    L1 --> L4["Layer 4: Gotcha Log"]
+    L1["Layer 1: Project File"] --> L4["Layer 4: Gotcha Log"]
     L4 --> Q2{"Deployment or\\noperational complexity?"}
     Q2 -- Yes --> L2["Layer 2: Runbook"]
     Q2 -- No --> Q3{"Multiple subsystems\\nor growing knowledge?"}
@@ -127,7 +124,7 @@ const diagramRhythm = `flowchart TD
     <!-- TAB 2: THE LAYERS -->
     <section class="tab-content" id="tab-layers">
       <h2>The Layers</h2>
-      <p>Four layers, each added when the previous one gets crowded. Not every project needs all four.</p>
+      <p>Assuming your project spans multiple sessions (otherwise this system isn't useful), four layers — each added when the previous one gets crowded. Not every project needs all four.</p>
 
       <div class="mermaid-wrap">
         <pre class="mermaid" set:html={diagramLayers}></pre>
