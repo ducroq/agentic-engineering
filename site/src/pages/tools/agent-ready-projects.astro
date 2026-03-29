@@ -2,6 +2,78 @@
 import Base from '../../layouts/Base.astro';
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
+
+const diagramCliff = `graph TB
+    subgraph above["Auto-loaded — always visible"]
+        PF["Project file\\nCLAUDE.md / AGENTS.md"]
+        MI["Memory index\\nMEMORY.md"]
+    end
+
+    subgraph below["Below the cliff — invisible until triggered"]
+        RB["Runbook\\ndocs/RUNBOOK.md"]
+        TF["Topic files\\nmemory/*.md"]
+        GL["Gotcha log\\nmemory/gotcha-log.md"]
+        ADR["ADRs\\ndocs/decisions/"]
+    end
+
+    PF -. "task-triggered pointer" .-> RB
+    PF -. "task-triggered pointer" .-> GL
+    MI -. "task-triggered pointer" .-> TF
+    MI -. "task-triggered pointer" .-> ADR`;
+
+const diagramLayers = `graph TD
+    Start["Your project"] --> Q1{"Multiple sessions?"}
+    Q1 -- No --> Skip["Skip all this.\\nIt's overkill."]
+    Q1 -- Yes --> L1["Layer 1: Project File"]
+    L1 --> L4["Layer 4: Gotcha Log"]
+    L4 --> Q2{"Deployment or\\noperational complexity?"}
+    Q2 -- Yes --> L2["Layer 2: Runbook"]
+    Q2 -- No --> Q3{"Multiple subsystems\\nor growing knowledge?"}
+    L2 --> Q3
+    Q3 -- Yes --> L3["Layer 3: Memory"]
+    Q3 -- No --> Done["Done. Start working."]
+    L3 --> Done`;
+
+const diagramLoop = `stateDiagram-v2
+    [*] --> Capture
+
+    Capture --> Surface: End of session
+    Surface --> Promote: Pattern recurs 2-3x
+    Surface --> Capture: No pattern yet
+    Promote --> Retire: Root cause fixed
+    Promote --> Capture: Promoted, keep watching
+    Retire --> [*]: Knowledge encoded in code
+
+    Capture: CAPTURE\\nLog problems as they happen\\n(2-3 lines, in the moment)
+    Surface: SURFACE\\nAgent reviews, spots patterns\\n(1-2 min, end of session)
+    Promote: PROMOTE\\nRecurring lessons move up\\n(gotcha to topic to index to project file)
+    Retire: RETIRE\\nFixed or encoded in code?\\n(mark resolved, don't delete)`;
+
+const diagramRhythm = `flowchart TD
+    subgraph during["During work"]
+        W["Work happens"]
+        W --> Gotcha["Gotcha? Log it"]
+        W --> Learn["Learned? Topic file"]
+        W --> Decide["Decision? ADR"]
+    end
+
+    subgraph eos["End of session 1-2 min"]
+        Curate["/curate"]
+        Curate --> Correlate["Correlate related entries"]
+        Curate --> Summarize["Summarize repeated lessons"]
+        Curate --> Prune["Flag stale entries"]
+        Curate --> Promote["Promote recurring patterns"]
+    end
+
+    subgraph monthly["Monthly"]
+        Audit["Agent audits all memory"]
+        Audit --> Retire["Retire fixed/encoded entries"]
+        Audit --> Verify["Verify all paths still exist"]
+    end
+
+    during --> eos
+    eos --> monthly
+    monthly -.-> during`;
 ---
 
 <Base title="agent-ready-projects — Augmented Engineering">
@@ -29,25 +101,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
       <p>The single most important concept: there is a hard line between what your agent sees automatically and what's invisible.</p>
 
       <div class="mermaid-wrap">
-        <pre class="mermaid">
-graph TB
-    subgraph above["Auto-loaded — always visible"]
-        PF["Project file\nCLAUDE.md / AGENTS.md"]
-        MI["Memory index\nMEMORY.md"]
-    end
-
-    subgraph below["Below the cliff — invisible until triggered"]
-        RB["Runbook\ndocs/RUNBOOK.md"]
-        TF["Topic files\nmemory/*.md"]
-        GL["Gotcha log\nmemory/gotcha-log.md"]
-        ADR["ADRs\ndocs/decisions/"]
-    end
-
-    PF -. "task-triggered pointer" .-> RB
-    PF -. "task-triggered pointer" .-> GL
-    MI -. "task-triggered pointer" .-> TF
-    MI -. "task-triggered pointer" .-> ADR
-        </pre>
+        <pre class="mermaid" set:html={diagramCliff}></pre>
       </div>
 
       <p>Content above the cliff is always available. Content below is invisible until a <strong>task-triggered pointer</strong> activates it.</p>
@@ -76,20 +130,7 @@ graph TB
       <p>Four layers, each added when the previous one gets crowded. Not every project needs all four.</p>
 
       <div class="mermaid-wrap">
-        <pre class="mermaid">
-graph TD
-    Start["Your project"] --> Q1{"Multiple sessions?"}
-    Q1 -- No --> Skip["Skip all this.\nIt's overkill."]
-    Q1 -- Yes --> L1["Layer 1: Project File"]
-    L1 --> L4["Layer 4: Gotcha Log"]
-    L4 --> Q2{"Deployment or\noperational complexity?"}
-    Q2 -- Yes --> L2["Layer 2: Runbook"]
-    Q2 -- No --> Q3{"Multiple subsystems\nor growing knowledge?"}
-    L2 --> Q3
-    Q3 -- Yes --> L3["Layer 3: Memory"]
-    Q3 -- No --> Done["Done. Start working."]
-    L3 --> Done
-        </pre>
+        <pre class="mermaid" set:html={diagramLayers}></pre>
       </div>
 
       <div class="layers-grid">
@@ -139,22 +180,7 @@ graph TD
       <p>Context isn't a one-time documentation effort. It's a living system with four phases.</p>
 
       <div class="mermaid-wrap">
-        <pre class="mermaid">
-stateDiagram-v2
-    [*] --> Capture
-
-    Capture --> Surface: End of session
-    Surface --> Promote: Pattern recurs 2-3x
-    Surface --> Capture: No pattern yet
-    Promote --> Retire: Root cause fixed
-    Promote --> Capture: Promoted, keep watching
-    Retire --> [*]: Knowledge encoded in code
-
-    Capture: CAPTURE\nLog problems as they happen\n(2-3 lines, in the moment)
-    Surface: SURFACE\nAgent reviews, spots patterns\n(1-2 min, end of session)
-    Promote: PROMOTE\nRecurring lessons move up\n(gotcha → topic → index → project file)
-    Retire: RETIRE\nFixed or encoded in code?\n(mark resolved, don't delete)
-        </pre>
+        <pre class="mermaid" set:html={diagramLoop}></pre>
       </div>
 
       <div class="phase-grid">
@@ -202,33 +228,7 @@ stateDiagram-v2
       <p>When to do what. Three timescales, each with a clear trigger.</p>
 
       <div class="mermaid-wrap">
-        <pre class="mermaid">
-flowchart TD
-    subgraph during["During work"]
-        W["Work happens"]
-        W --> Gotcha["Gotcha? → Log it"]
-        W --> Learn["Learned? → Topic file"]
-        W --> Decide["Decision? → ADR"]
-    end
-
-    subgraph eos["End of session — 1-2 min"]
-        Curate["/curate"]
-        Curate --> Correlate["Correlate related entries"]
-        Curate --> Summarize["Summarize repeated lessons"]
-        Curate --> Prune["Flag stale entries"]
-        Curate --> Promote["Promote recurring patterns"]
-    end
-
-    subgraph monthly["Monthly"]
-        Audit["Agent audits all memory"]
-        Audit --> Retire["Retire fixed/encoded entries"]
-        Audit --> Verify["Verify all paths still exist"]
-    end
-
-    during --> eos
-    eos --> monthly
-    monthly -.-> during
-        </pre>
+        <pre class="mermaid" set:html={diagramRhythm}></pre>
       </div>
 
       <div class="rhythm-grid">
