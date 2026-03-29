@@ -58,6 +58,10 @@ const diagramRhythm = `flowchart LR
       <a href={base} class="back-link">&larr; Back</a>
       <h1><code>agent-ready-projects</code></h1>
       <p class="tool-subtitle">Structure any project so AI agents work effectively across sessions.</p>
+      <div class="tool-meta">
+        <span class="tool-badge">Open source</span>
+        <span class="tool-badge">Works with any AI agent</span>
+      </div>
       <div class="tool-actions">
         <a href="https://github.com/ducroq/agent-ready-projects" class="btn btn-primary">GitHub</a>
         <a href="https://github.com/ducroq/agent-ready-projects/blob/master/adopt.md" class="btn btn-secondary">Get started</a>
@@ -308,18 +312,24 @@ const diagramRhythm = `flowchart LR
   }
 
   .back-link {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 500;
     text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.15s;
   }
 
+  .back-link:hover { color: var(--text); }
+
+  /* Header */
   .tool-header {
-    padding: 1.5rem 0 2rem;
+    padding: 2rem 0 2.5rem;
   }
 
   .tool-header h1 {
-    font-size: 2rem;
-    margin-top: 0.5rem;
+    font-size: 2.2rem;
+    margin-top: 0.8rem;
+    letter-spacing: -0.03em;
   }
 
   .tool-header h1 code {
@@ -333,97 +343,140 @@ const diagramRhythm = `flowchart LR
   .tool-subtitle {
     color: var(--text-secondary);
     font-size: 1.05rem;
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
+    max-width: 32rem;
+  }
+
+  .tool-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tool-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 100px;
+    background: var(--surface-alt);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .tool-version {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
   }
 
   .tool-actions {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.6rem;
     margin-top: 1.2rem;
   }
 
   .btn {
     display: inline-block;
-    padding: 0.5rem 1.2rem;
-    border-radius: 4px;
-    font-size: 0.88rem;
+    padding: 0.55rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.15s;
+    transition: all 0.15s ease;
   }
 
   .btn-primary {
     background: var(--text);
     color: var(--surface);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
   }
 
   .btn-primary:hover {
-    background: var(--text-secondary);
+    opacity: 0.85;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
   }
 
   .btn-secondary {
-    background: var(--surface-alt);
+    background: var(--surface);
     color: var(--text);
     border: 1px solid var(--border);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   }
 
   .btn-secondary:hover {
-    background: var(--border);
+    border-color: var(--text-muted);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
   }
 
-  /* Tabs */
+  /* Tabs — pill style */
   .tab-nav {
     display: flex;
-    gap: 0;
-    border-bottom: 2px solid var(--border);
-    margin-top: 1rem;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    padding: 0.3rem;
+    background: var(--surface-alt);
+    border-radius: 10px;
+    border: 1px solid var(--border);
   }
 
   .tab {
-    padding: 0.7rem 1.2rem;
-    background: none;
+    padding: 0.5rem 1.1rem;
+    background: transparent;
     border: none;
+    border-radius: 8px;
     font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     font-weight: 500;
     color: var(--text-muted);
     cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    transition: color 0.15s, border-color 0.15s;
+    transition: all 0.15s ease;
   }
 
   .tab:hover {
     color: var(--text);
+    background: var(--surface);
   }
 
   .tab.active {
     color: var(--text);
-    border-bottom-color: var(--text);
+    background: var(--surface);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    font-weight: 600;
   }
 
   .tab-content {
     display: none;
-    padding: 1.5rem 0;
+    padding: 2rem 0 1rem;
   }
 
   .tab-content.active {
     display: block;
   }
 
-  /* Mermaid */
+  .tab-content h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+  }
+
+  /* Mermaid diagrams — elevated card */
   .mermaid-wrap {
     margin: 1.5rem 0;
     overflow-x: auto;
   }
 
   .mermaid-wrap pre.mermaid {
-    background: transparent;
+    background: var(--surface-alt);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.5rem;
+    border-radius: 12px;
+    padding: 2rem;
     color: var(--text);
     font-size: 0.85rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   }
 
   .mermaid-wrap svg {
@@ -431,7 +484,7 @@ const diagramRhythm = `flowchart LR
     height: auto;
   }
 
-  /* Comparison */
+  /* Comparison — bolder contrast */
   .comparison {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -440,8 +493,13 @@ const diagramRhythm = `flowchart LR
   }
 
   .comparison-bad, .comparison-good {
-    padding: 1rem;
-    border-radius: 6px;
+    padding: 1.2rem;
+    border-radius: 10px;
+    transition: transform 0.15s ease;
+  }
+
+  .comparison-bad:hover, .comparison-good:hover {
+    transform: translateY(-1px);
   }
 
   .comparison-bad {
@@ -455,11 +513,14 @@ const diagramRhythm = `flowchart LR
   }
 
   .comparison h3 {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
   }
+
+  .comparison-bad h3::before { content: "✕ "; }
+  .comparison-good h3::before { content: "✓ "; }
 
   .comparison-bad h3 { color: var(--bad-text); }
   .comparison-good h3 { color: var(--good-text); }
@@ -467,43 +528,54 @@ const diagramRhythm = `flowchart LR
   .comparison code {
     display: block;
     margin: 0.5rem 0;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.05);
   }
 
   .comparison p {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--text-secondary);
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
   }
 
   .key-insight {
     background: var(--surface-alt);
     border-left: 3px solid var(--evidence);
-    padding: 1rem 1.2rem;
-    border-radius: 0 4px 4px 0;
+    padding: 1.1rem 1.3rem;
+    border-radius: 0 10px 10px 0;
     margin: 1.5rem 0;
     font-size: 0.9rem;
+  }
+
+  /* Cards — shared base */
+  .layer-card, .phase-card, .rhythm-card {
+    padding: 1.1rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .layer-card:hover, .phase-card:hover, .rhythm-card:hover {
+    border-color: var(--text-muted);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
 
   /* Layer cards */
   .layers-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 0.8rem;
     margin: 1.5rem 0;
   }
 
-  .layer-card {
-    padding: 1rem;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-
   .layer-badge {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     margin-bottom: 0.3rem;
   }
 
@@ -516,68 +588,69 @@ const diagramRhythm = `flowchart LR
   .layer-4 { border-left: 3px solid var(--action); }
   .layer-4 .layer-badge { color: var(--action); }
 
-  .layer-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
-  .layer-card p { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem; }
-  .layer-meta { font-style: italic; color: var(--text-muted) !important; font-size: 0.8rem !important; }
+  .layer-card h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .layer-card p { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem; }
+  .layer-meta { font-style: italic; color: var(--text-muted) !important; font-size: 0.78rem !important; }
 
   /* Phase cards */
   .phase-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 0.8rem;
     margin: 1.5rem 0;
   }
 
-  .phase-card {
-    padding: 1rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-  }
-
-  .phase-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
-  .phase-card p { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem; }
+  .phase-card h3 { font-size: 0.9rem; margin-bottom: 0.25rem; }
+  .phase-card p { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem; }
 
   /* Rhythm cards */
   .rhythm-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
+    gap: 0.8rem;
     margin: 1.5rem 0;
   }
 
-  .rhythm-card {
-    padding: 1rem;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-  }
+  .rhythm-card h3 { font-size: 0.88rem; margin-bottom: 0.25rem; }
+  .rhythm-card p { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem; }
 
-  .rhythm-card h3 { font-size: 0.9rem; margin-bottom: 0.3rem; }
-  .rhythm-card p { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem; }
-
-  /* Signals */
+  /* Signals — dot prefix style */
   .signals-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    gap: 0.4rem;
     margin: 1rem 0;
   }
 
   .signal {
-    padding: 0.5rem 0.8rem;
-    border-radius: 4px;
-    font-size: 0.82rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-secondary);
   }
 
-  .signal.good {
-    background: var(--good-bg);
-    border: 1px solid var(--good-border);
-    color: var(--good-text);
+  .signal.good::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--action);
+    margin-right: 0.5rem;
+    vertical-align: middle;
   }
 
-  .signal.bad {
-    background: var(--bad-bg);
-    border: 1px solid var(--bad-border);
-    color: var(--bad-text);
+  .signal.bad::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--caution);
+    margin-right: 0.5rem;
+    vertical-align: middle;
   }
 
   /* Tables */
@@ -585,27 +658,27 @@ const diagramRhythm = `flowchart LR
     width: 100%;
     border-collapse: collapse;
     margin: 1rem 0;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
 
   th, td {
     text-align: left;
-    padding: 0.5rem 0.7rem;
+    padding: 0.55rem 0.75rem;
     border-bottom: 1px solid var(--border);
   }
 
   th {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     color: var(--text-muted);
   }
 
   td { color: var(--text-secondary); }
 
   .table-note {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-muted);
     margin-top: 0.3rem;
   }
@@ -613,21 +686,30 @@ const diagramRhythm = `flowchart LR
   /* CTA */
   .tool-cta {
     margin-top: 3rem;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     text-align: center;
-    border-top: 1px solid var(--border);
+    background: var(--surface-alt);
+    border-radius: 12px;
+    border: 1px solid var(--border);
   }
 
   .tool-cta p {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.15rem;
+    font-weight: 700;
     margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .tool-cta .btn-primary {
+    padding: 0.7rem 2rem;
+    font-size: 0.9rem;
   }
 
   @media (max-width: 768px) {
     .comparison, .layers-grid, .phase-grid { grid-template-columns: 1fr; }
     .rhythm-grid { grid-template-columns: 1fr; }
     .signals-grid { grid-template-columns: 1fr; }
-    .tab { padding: 0.5rem 0.8rem; font-size: 0.82rem; }
+    .tab { padding: 0.4rem 0.7rem; font-size: 0.78rem; }
+    .tool-header h1 { font-size: 1.8rem; }
   }
 </style>
