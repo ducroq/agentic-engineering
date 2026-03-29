@@ -22,16 +22,13 @@
 
 -->
 
-### Auto-memory creates invisible, uncurated knowledge (2026-03-19)
+### Auto-memory creates invisible, uncurated knowledge (2026-03-19) [RESOLVED] [PROMOTED]
 **Problem**: After months of using Claude Code's auto-memory (~/.claude/projects/), 75 memory files had accumulated across 28 projects. Most were unknown to the project owner. Stale entries survived. The "promote and retire" phases of the self-learning loop weren't happening because the memory was invisible.
 **Root cause**: Auto-memory is stored in path-mangled directories outside the repo. Files don't appear in the editor, aren't version controlled, and aren't searchable. The design assumed a clean split between agent-facing (auto-memory) and human-facing (committed) content — but in practice, all memory benefits from human review.
 **Fix**: Moved all memory files in-repo to visible `memory/` directories. Documented as ADR-001 in agent-ready-projects. Updated the framework to recommend in-repo memory by default. Also discovered and fixed a "global file cliff" — project-specific content in the global CLAUDE.md burning context tokens in every repo.
 
 ## Promoted
 
-<!-- Track gotchas that have been promoted to topic files or the memory index.
-
 | Entry | Promoted to | Date |
 |-------|------------|------|
-
--->
+| Auto-memory creates invisible, uncurated knowledge | MEMORY.md (Recently Promoted) + CLAUDE.md hard constraint (in-repo memory) | 2026-03-28 |

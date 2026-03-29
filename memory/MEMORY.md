@@ -6,13 +6,25 @@
 |------|-------------|-------------|
 | `memory/gotcha-log.md` | Stuck or debugging | Problem-fix archive |
 | `claims/claim-registry.md` | Writing any content with factual claims | 17 claims tracked; 59% coverage; P0 at 40% |
+| `memory/project_aug_podcast_marketing.md` | Working on podcast | Series identity, competitive landscape, growth path |
+| `memory/feedback_echo_chamber.md` | Adding new evidence | Circular evidence risk — case studies verifying themselves |
+| `memory/reference_tandemize.md` | Discussing external partnerships | Tandemize.ai potential synergy |
+| `memory/session_2026-03-19_podcast_launch.md` | Context on podcast creation decisions | Marathon session: memory migration, framework v1.2.0 |
+| `docs/decisions/README.md` | Making an architectural decision | ADR index — 3 decisions on podcast dissemination |
+
+## Recently Promoted
+
+<!-- Gotchas promoted to topic files or CLAUDE.md. Format:
+     "if [situation], then [what to do]" — promoted from gotcha-log YYYY-MM-DD -->
+
+- If memory accumulates in auto-memory (~/.claude/projects/), move it in-repo to `memory/` — promoted from gotcha-log 2026-03-19
 
 ## Current State
 
 - **Proposition written** (`PROPOSITION.md`): "What's new when engineers work with AI agents" — four patterns from nine projects
 - **Reviewed by 6 agents** (`REVIEW-SYNTHESIS.md`): convergent feedback applied (inverted framing, split persistent/transient properties, added falsifiability)
 - **Five case studies written** (pattern-first, loosely coupled to claim registry)
-- **Website built** (`site/`): Astro static site with hand-drawn SVG illustrations, graph-paper background
+- **Website reframed as pattern library** (`site/`, 2026-03-28): Killed nine-projects section, leads with reader's problem not research. Quick reference decision table on homepage. Pattern pages restructured: problem → fix → try this → evidence. Per ADR-004.
 - **Four additional source projects explored**: llm-distillery, RenkumSpot, ese_bot, ovr.news (not yet case studies, but evidence in proposition)
 - **Driven-pendulum case study updated** (2026-03-16): Session 7 added — V&V on informal messages (5 errors caught in WhatsApp drafts), 6-agent parallel review (14 issues), human-in-the-loop "short solenoid" terminology catch. Claims E-1, T-1, T-2, C-1, C-2 evidence updated.
 - **Guide by-phase/ populated** (2026-03-17): V-model phase mapping with feedback loop framing and evidence links
@@ -57,7 +69,7 @@
 - **Case study style**: Pattern-first, loosely coupled to claim registry — not thesis chapters
 - **Material properties split**: Persistent (confidence inflation, observation-calibration gap) vs. transient (scoring regression, plausible-but-wrong severity)
 - **Personal project**: No institutional references (HAN removed from all public-facing docs)
-- **Adopted agent-ready-projects v1.1.0**: Layered memory system for session continuity (v1.1.0: tool-agnostic, agent-assisted, worked examples, adoption feedback loop)
+- **Adopted agent-ready-projects v1.3.2**: Layered memory system for session continuity. v1.3.2 adds: negative results as knowledge, ground truth principle, review agent skeleton, no config-format docs
 - **Adopted agent-ready-papers claim registry**: Typed verification with confidence tiers
 - **Feedback loop framing adopted** (2026-03-17): "agent generates → agent reviews → agent validates → engineer decides" — borrowed from practitioner discourse, grounded in our evidence
 - **In-repo memory by default**: Memory files live in `memory/` inside the repo, not in tool auto-memory. Exception only for content that should never be committed. Per ADR-001 in agent-ready-projects.

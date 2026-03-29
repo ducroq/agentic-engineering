@@ -4,7 +4,7 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 
 - **Type**: Proposition + case studies + website
 - **Status**: Active (March 2026)
-- **agent-ready-projects**: v1.1.0
+- **agent-ready-projects**: v1.3.2
 
 ## Before You Start
 
@@ -18,6 +18,8 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 | Working on the guide | `guide/README.md` — pattern library structure |
 | Working on the website | `site/` — Astro static site, `npm run dev` to preview |
 | Stuck or debugging | `memory/gotcha-log.md` — problem-fix archive |
+| Making an architectural decision | `docs/decisions/README.md` — ADR index and template |
+| Working on the podcast | `podcast/` + `memory/project_aug_podcast_marketing.md` — scripts, production, strategy |
 
 ## Hard Constraints
 
@@ -27,6 +29,17 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 - **Honest about limitations**: N=1 researcher, no controlled comparison, survivorship bias — say so
 - **Confidence-calibrated**: Match language to evidence strength (ESTABLISHED → "shows"; EMERGING → "may")
 - **No institutional references**: This is a personal project, not institutional
+- **Negative results are knowledge**: Document what didn't work, with quantified results and why — prevents agents from retrying dead ends
+- **Ground truth**: When multiple artifacts describe the same thing, one is canonical — others defer to it
+- **Never create config-format docs**: No wrangler.toml, docker-compose.yml, or .npmrc as documentation — build tools auto-discover and execute them
+
+## Decision Framework
+
+| Verdict | Criteria |
+|---------|----------|
+| **PASS** | Pattern-first, evidence-backed, confidence-calibrated, no institutional refs |
+| **REVIEW** | New claim without registry entry, case study touching multiple patterns, website copy |
+| **FAIL** | Speculation presented as fact, missing evidence for ESTABLISHED claim, institutional language |
 
 ## The Four Patterns
 
@@ -39,8 +52,9 @@ What's new when engineers work with AI agents? Four patterns from nine real proj
 
 ```
 augmented-engineering/
-├── PROPOSITION.md           # Core argument — read first
+├── PROPOSITION.md           # Core argument — read first (ground truth for the four patterns)
 ├── REVIEW-SYNTHESIS.md      # Critical reviews from 6 perspectives
+├── CHEATSHEET.md            # Practitioner-friendly decision rules
 ├── case-studies/            # Five case studies (pattern-first)
 │   ├── README.md            # Template + conventions
 │   ├── opal.md              # Recursive V&V
@@ -55,23 +69,49 @@ augmented-engineering/
 │   └── by-phase/            # V-model phase mapping (populated)
 ├── claims/
 │   └── claim-registry.md    # 17 claims, 59% coverage
+├── podcast/                 # Augmented Engineering podcast
+│   ├── dialogen/            # Episode scripts
+│   ├── shownotes/           # Show notes with claim verification
+│   ├── productie/           # Production pipeline
+│   └── onderzoek/           # Research material
+├── presentations/           # Slide decks and talk materials
+├── docs/
+│   └── decisions/           # ADRs (index in README.md)
 ├── site/                    # Astro website
 │   └── src/
 │       ├── layouts/         # Base layout with graph-paper grid
 │       ├── components/      # SVG illustrations + pattern page template
 │       └── pages/           # Landing + 4 pattern pages
-├── .claude/agents/          # Review agent prompts
-│   ├── review-systems-engineer.md
-│   ├── review-ml-researcher.md
-│   ├── review-practitioner.md
-│   ├── review-epistemologist.md
-│   ├── review-educator.md
-│   ├── review-devil.md
-│   └── review-orchestrator.md
-└── memory/
-    ├── MEMORY.md
-    └── gotcha-log.md
+├── .claude/agents/          # Review agents (7 core + 8 podcast personas)
+└── memory/                  # In-repo memory (not auto-memory, per ADR-001)
+    ├── MEMORY.md            # Index — loaded every session
+    └── gotcha-log.md        # Problem → Root Cause → Fix archive
 ```
+
+## How to Work Here
+
+```bash
+# Website
+cd site && npm install && npm run dev    # Dev server at localhost:4321
+
+# Review the proposition (6-agent parallel review)
+# Use review-orchestrator agent — it launches all 6 personas
+
+# Review a podcast script (8-persona battery)
+# Use ae-review-orchestrator agent
+
+# Check claim coverage
+# Read claims/claim-registry.md — look for P0 claims below 100%
+```
+
+## Ground Truth Designations
+
+| Topic | Canonical artifact | Others defer to it |
+|-------|-------------------|-------------------|
+| The four patterns | `PROPOSITION.md` | Case studies, guide, website, podcast |
+| Claim confidence levels | `claims/claim-registry.md` | Prose in case studies and proposition |
+| Case study template | `case-studies/README.md` | Individual case studies |
+| Podcast strategy | `memory/project_aug_podcast_marketing.md` | Session notes |
 
 ## Nine Source Projects
 
