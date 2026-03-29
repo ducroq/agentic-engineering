@@ -47,9 +47,6 @@ graph TB
     PF -. "task-triggered pointer" .-> GL
     MI -. "task-triggered pointer" .-> TF
     MI -. "task-triggered pointer" .-> ADR
-
-    style above fill:#f0fdf4,stroke:#16803c,stroke-width:2px,color:#1a1a1a
-    style below fill:#fef2f2,stroke:#dc2626,stroke-width:2px,color:#1a1a1a
         </pre>
       </div>
 
@@ -92,13 +89,6 @@ graph TD
     Q3 -- Yes --> L3["Layer 3: Memory"]
     Q3 -- No --> Done["Done. Start working."]
     L3 --> Done
-
-    style Skip fill:#fef2f2,stroke:#dc2626,color:#1a1a1a
-    style Done fill:#f0fdf4,stroke:#16803c,color:#1a1a1a
-    style L1 fill:#f0fdf4,stroke:#16803c,color:#1a1a1a
-    style L2 fill:#eff6ff,stroke:#1d6fa5,color:#1a1a1a
-    style L3 fill:#eff6ff,stroke:#1d6fa5,color:#1a1a1a
-    style L4 fill:#f0fdf4,stroke:#16803c,color:#1a1a1a
         </pre>
       </div>
 
@@ -238,10 +228,6 @@ flowchart TD
     during --> eos
     eos --> monthly
     monthly -.-> during
-
-    style during fill:#fefce8,stroke:#a16207,color:#1a1a1a
-    style eos fill:#f0fdf4,stroke:#16803c,color:#1a1a1a
-    style monthly fill:#eff6ff,stroke:#1d6fa5,color:#1a1a1a
         </pre>
       </div>
 
@@ -383,7 +369,7 @@ flowchart TD
   }
 
   .btn-primary:hover {
-    background: #333;
+    background: var(--text-secondary);
   }
 
   .btn-secondary {
@@ -443,12 +429,17 @@ flowchart TD
   }
 
   .mermaid-wrap pre.mermaid {
-    background: var(--surface-alt);
+    background: transparent;
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 1.5rem;
     color: var(--text);
     font-size: 0.85rem;
+  }
+
+  .mermaid-wrap svg {
+    max-width: 100%;
+    height: auto;
   }
 
   /* Comparison */
