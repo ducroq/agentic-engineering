@@ -271,8 +271,21 @@ const diagramRhythm = `flowchart TD
 
   const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+  // Show all tabs temporarily so Mermaid can measure and render SVGs
+  document.querySelectorAll('.tab-content').forEach(c => {
+    c.style.display = 'block';
+    c.style.visibility = 'hidden';
+    c.style.position = 'absolute';
+  });
+  // Keep the active one visible
+  const activeTab = document.querySelector('.tab-content.active');
+  if (activeTab) {
+    activeTab.style.visibility = 'visible';
+    activeTab.style.position = 'static';
+  }
+
   mermaid.initialize({
-    startOnLoad: true,
+    startOnLoad: false,
     theme: isDark ? 'dark' : 'neutral',
     themeVariables: isDark ? {
       fontFamily: 'Inter, system-ui, sans-serif',
@@ -293,21 +306,24 @@ const diagramRhythm = `flowchart TD
     },
   });
 
-  // Tab navigation
+  // Render all diagrams while all tabs are visible
+  await mermaid.run();
+
+  // Now hide non-active tabs normally
+  document.querySelectorAll('.tab-content').forEach(c => {
+    c.style.display = '';
+    c.style.visibility = '';
+    c.style.position = '';
+  });
+
+  // Tab navigation — just toggle visibility, no re-rendering needed
   document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
       tab.classList.add('active');
       const target = document.getElementById(`tab-${tab.dataset.tab}`);
-      if (target) {
-        target.classList.add('active');
-        // Re-render mermaid diagrams in newly visible tab
-        target.querySelectorAll('.mermaid[data-processed]').forEach(el => {
-          el.removeAttribute('data-processed');
-        });
-        mermaid.run();
-      }
+      if (target) target.classList.add('active');
     });
   });
 </script>
