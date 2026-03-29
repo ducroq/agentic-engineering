@@ -10,26 +10,36 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     <p class="subtitle">Durable patterns that don't depend on which model you're using or how fast they improve. Built from practice across nine real projects.</p>
   </header>
 
+  <section id="tools" class="tools-section">
+    <h2>Tools</h2>
+
+    <a href="https://github.com/ducroq/agent-ready-projects" class="tool-card">
+      <div class="tool-header">
+        <h3>agent-ready-projects</h3>
+        <span class="tool-version">v1.3.4</span>
+      </div>
+      <p>Structure any project so AI agents work effectively across sessions. Layered context, task-triggered pointers, self-learning loop. Works with Claude Code, Cursor, Copilot, Codex, Windsurf, Aider.</p>
+      <p class="tool-install">Paste the <strong>adopt prompt</strong> into your AI agent and it sets everything up.</p>
+      <span class="read-more">GitHub &rarr;</span>
+    </a>
+  </section>
+
   <section id="patterns" class="patterns-section">
     <h2>Core Patterns</h2>
     <p class="section-intro">Structural patterns tied to how tools and verification work — not to current model limitations.</p>
 
     <div class="pattern-grid">
       <a href={`${base}patterns/context-is-architecture`} class="pattern-card">
-        <div class="pattern-label">Tool</div>
         <h3>Context Is Architecture</h3>
         <p class="pattern-problem">Your agent ignores your docs. You explain the same thing three sessions in a row.</p>
         <p class="pattern-fix">There's a hard cliff between what agents load automatically and what's invisible. Task-triggered pointers cross it. Descriptive labels don't.</p>
-        <p class="pattern-tool">Implemented in <strong>agent-ready-projects</strong></p>
         <span class="read-more">The pattern &rarr;</span>
       </a>
 
       <a href={`${base}patterns/layer-your-verification`} class="pattern-card">
-        <div class="pattern-label">Method</div>
         <h3>Layer Your Verification</h3>
         <p class="pattern-problem">You reviewed the AI's output and it looked fine. Then a colleague found three errors in the first page.</p>
         <p class="pattern-fix">Run multiple verification passes — each one catches what the others miss. The second pass costs minutes and regularly finds what the first one didn't.</p>
-        <p class="pattern-tool">Evidence from OPAL: 8 of 10 defects missed by single-pass</p>
         <span class="read-more">The pattern &rarr;</span>
       </a>
     </div>
@@ -109,6 +119,54 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     max-width: 38rem;
     margin-bottom: 1.5rem;
     font-size: 0.95rem;
+  }
+
+  /* Tool card */
+  .tools-section {
+    margin-top: 2rem;
+  }
+
+  .tool-card {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--surface);
+    border: 2px solid var(--text);
+    border-radius: 6px;
+    padding: 1.5rem;
+    max-width: 38rem;
+    transition: box-shadow 0.15s;
+  }
+
+  .tool-card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .tool-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+
+  .tool-header h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+  }
+
+  .tool-version {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .tool-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .tool-install {
+    margin-top: 0.5rem;
   }
 
   /* Core pattern cards */
