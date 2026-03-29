@@ -5,15 +5,15 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
 const diagramCliff = `graph TB
     subgraph above["Auto-loaded — always visible"]
-        PF["Project file\\nCLAUDE.md / AGENTS.md"]
-        MI["Memory index\\nMEMORY.md"]
+        PF["Project file<br/>CLAUDE.md / AGENTS.md"]
+        MI["Memory index<br/>MEMORY.md"]
     end
 
     subgraph below["Below the cliff — invisible until triggered"]
-        RB["Runbook\\ndocs/RUNBOOK.md"]
-        TF["Topic files\\nmemory/*.md"]
-        GL["Gotcha log\\nmemory/gotcha-log.md"]
-        ADR["ADRs\\ndocs/decisions/"]
+        RB["Runbook<br/>docs/RUNBOOK.md"]
+        TF["Topic files<br/>memory/*.md"]
+        GL["Gotcha log<br/>memory/gotcha-log.md"]
+        ADR["ADRs<br/>docs/decisions/"]
     end
 
     PF -. "task-triggered pointer" .-> RB
@@ -23,9 +23,9 @@ const diagramCliff = `graph TB
 
 const diagramLayers = `graph TD
     L1["Layer 1: Project File"] --> L4["Layer 4: Gotcha Log"]
-    L4 --> Q2{"Deployment or\\noperational complexity?"}
+    L4 --> Q2{"Deployment or<br/>operational complexity?"}
     Q2 -- Yes --> L2["Layer 2: Runbook"]
-    Q2 -- No --> Q3{"Multiple subsystems\\nor growing knowledge?"}
+    Q2 -- No --> Q3{"Multiple subsystems<br/>or growing knowledge?"}
     L2 --> Q3
     Q3 -- Yes --> L3["Layer 3: Memory"]
     Q3 -- No --> Done["Done. Start working."]
@@ -41,10 +41,10 @@ const diagramLoop = `stateDiagram-v2
     Promote --> Capture: Promoted, keep watching
     Retire --> [*]: Knowledge encoded in code
 
-    Capture: CAPTURE\\nLog problems as they happen\\n(2-3 lines, in the moment)
-    Surface: SURFACE\\nAgent reviews, spots patterns\\n(1-2 min, end of session)
-    Promote: PROMOTE\\nRecurring lessons move up\\n(gotcha to topic to index to project file)
-    Retire: RETIRE\\nFixed or encoded in code?\\n(mark resolved, don't delete)`;
+    Capture: CAPTURE<br/>Log problems as they happen<br/>(2-3 lines, in the moment)
+    Surface: SURFACE<br/>Agent reviews, spots patterns<br/>(1-2 min, end of session)
+    Promote: PROMOTE<br/>Recurring lessons move up<br/>(gotcha to topic to index to project file)
+    Retire: RETIRE<br/>Fixed or encoded in code?<br/>(mark resolved, don't delete)`;
 
 const diagramRhythm = `flowchart TD
     subgraph during["During work"]
