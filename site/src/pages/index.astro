@@ -4,6 +4,8 @@ import IllustrationMaterial from '../components/IllustrationMaterial.astro';
 import IllustrationLayers from '../components/IllustrationLayers.astro';
 import IllustrationCliff from '../components/IllustrationCliff.astro';
 import IllustrationReproduce from '../components/IllustrationReproduce.astro';
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 ---
 
 <Base title="Augmented Engineering — Patterns for working with AI agents">
@@ -17,7 +19,7 @@ import IllustrationReproduce from '../components/IllustrationReproduce.astro';
     <h2>The Patterns</h2>
 
     <div class="pattern-grid">
-      <a href="/patterns/learn-the-material" class="pattern-card">
+      <a href={`${base}patterns/learn-the-material`} class="pattern-card">
         <div class="pattern-illustration">
           <IllustrationMaterial />
         </div>
@@ -29,7 +31,7 @@ import IllustrationReproduce from '../components/IllustrationReproduce.astro';
         </div>
       </a>
 
-      <a href="/patterns/layer-your-verification" class="pattern-card">
+      <a href={`${base}patterns/layer-your-verification`} class="pattern-card">
         <div class="pattern-illustration">
           <IllustrationLayers />
         </div>
@@ -41,7 +43,7 @@ import IllustrationReproduce from '../components/IllustrationReproduce.astro';
         </div>
       </a>
 
-      <a href="/patterns/context-is-architecture" class="pattern-card">
+      <a href={`${base}patterns/context-is-architecture`} class="pattern-card">
         <div class="pattern-illustration">
           <IllustrationCliff />
         </div>
@@ -53,7 +55,7 @@ import IllustrationReproduce from '../components/IllustrationReproduce.astro';
         </div>
       </a>
 
-      <a href="/patterns/reproduce-dont-assess" class="pattern-card">
+      <a href={`${base}patterns/reproduce-dont-assess`} class="pattern-card">
         <div class="pattern-illustration">
           <IllustrationReproduce />
         </div>
@@ -76,14 +78,14 @@ import IllustrationReproduce from '../components/IllustrationReproduce.astro';
         <tr><th>Situation</th><th>Pattern</th></tr>
       </thead>
       <tbody>
-        <tr><td>LLM gave me a number</td><td><a href="/patterns/reproduce-dont-assess">Reproduce it</a></td></tr>
-        <tr><td>LLM scored or rated something</td><td><a href="/patterns/learn-the-material">Don't trust it — separate scoring</a></td></tr>
-        <tr><td>LLM sounds very confident</td><td><a href="/patterns/learn-the-material">Check the evidence tier</a></td></tr>
-        <tr><td>Agent isn't using my docs</td><td><a href="/patterns/context-is-architecture">Check if it's below the cliff</a></td></tr>
-        <tr><td>One review pass found nothing</td><td><a href="/patterns/layer-your-verification">Run another layer</a></td></tr>
-        <tr><td>Agent keeps forgetting decisions</td><td><a href="/patterns/context-is-architecture">Use task-triggered pointers</a></td></tr>
-        <tr><td>AI review says "looks good"</td><td><a href="/patterns/reproduce-dont-assess">Compute, don't assess</a></td></tr>
-        <tr><td>Choosing between approaches</td><td><a href="/patterns/layer-your-verification">Have a second agent review the first</a></td></tr>
+        <tr><td>LLM gave me a number</td><td><a href={`${base}patterns/reproduce-dont-assess`}>Reproduce it</a></td></tr>
+        <tr><td>LLM scored or rated something</td><td><a href={`${base}patterns/learn-the-material`}>Don't trust it — separate scoring</a></td></tr>
+        <tr><td>LLM sounds very confident</td><td><a href={`${base}patterns/learn-the-material`}>Check the evidence tier</a></td></tr>
+        <tr><td>Agent isn't using my docs</td><td><a href={`${base}patterns/context-is-architecture`}>Check if it's below the cliff</a></td></tr>
+        <tr><td>One review pass found nothing</td><td><a href={`${base}patterns/layer-your-verification`}>Run another layer</a></td></tr>
+        <tr><td>Agent keeps forgetting decisions</td><td><a href={`${base}patterns/context-is-architecture`}>Use task-triggered pointers</a></td></tr>
+        <tr><td>AI review says "looks good"</td><td><a href={`${base}patterns/reproduce-dont-assess`}>Compute, don't assess</a></td></tr>
+        <tr><td>Choosing between approaches</td><td><a href={`${base}patterns/layer-your-verification`}>Have a second agent review the first</a></td></tr>
       </tbody>
     </table>
   </section>

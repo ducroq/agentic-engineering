@@ -5,12 +5,14 @@ interface Props {
 }
 
 const { title, description = "Four patterns for working effectively with AI coding agents. Actionable, evidence-backed, honest about limitations." } = Astro.props;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
@@ -21,16 +23,16 @@ const { title, description = "Four patterns for working effectively with AI codi
   <body>
     <div class="paper-texture"></div>
     <nav class="site-nav">
-      <a href="/" class="nav-home">
+      <a href={base} class="nav-home">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
           <path d="M3 14 L14 4 L25 14 M7 13 L7 24 L21 24 L21 13" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
         <span>Augmented Engineering</span>
       </a>
       <div class="nav-links">
-        <a href="/#patterns">Patterns</a>
-        <a href="/#quick-ref">Quick Reference</a>
-        <a href="/#about">About</a>
+        <a href={`${base}#patterns`}>Patterns</a>
+        <a href={`${base}#quick-ref`}>Quick Reference</a>
+        <a href={`${base}#about`}>About</a>
       </div>
     </nav>
     <main>

@@ -5,6 +5,8 @@ interface Props {
   subtitle: string;
 }
 const { number, title, subtitle } = Astro.props;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 ---
 
 <article class="pattern-page">
@@ -15,7 +17,7 @@ const { number, title, subtitle } = Astro.props;
   </div>
   <slot />
   <div class="pattern-nav">
-    <a href="/">&larr; Back to all patterns</a>
+    <a href={base}>&larr; Back to all patterns</a>
   </div>
 </article>
 
