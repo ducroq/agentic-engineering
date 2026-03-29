@@ -55,6 +55,48 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     --evidence: #1d6fa5;
     --caution: #b45309;
     --max-width: 54rem;
+
+    /* Semantic colors for cards */
+    --good-bg: #f0fdf4;
+    --good-border: #bbf7d0;
+    --good-text: #166534;
+    --bad-bg: #fef2f2;
+    --bad-border: #fecaca;
+    --bad-text: #991b1b;
+    --caution-bg: #fffbeb;
+    --info-bg: #eff6ff;
+    --info-border: #1d6fa5;
+
+    /* Code blocks */
+    --code-bg: #1a1a1a;
+    --code-text: #e0e0e0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #e0e0e0;
+      --text-secondary: #a0a0a0;
+      --text-muted: #707070;
+      --border: #333;
+      --surface: #111111;
+      --surface-alt: #1a1a1a;
+      --action: #4ade80;
+      --evidence: #60a5fa;
+      --caution: #fbbf24;
+
+      --good-bg: #052e16;
+      --good-border: #166534;
+      --good-text: #86efac;
+      --bad-bg: #2a0a0a;
+      --bad-border: #7f1d1d;
+      --bad-text: #fca5a5;
+      --caution-bg: #1c1508;
+      --info-bg: #0c1a2e;
+      --info-border: #60a5fa;
+
+      --code-bg: #0a0a0a;
+      --code-text: #d0d0d0;
+    }
   }
 
   * {
@@ -160,8 +202,8 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   }
 
   pre {
-    background: #1a1a1a;
-    color: #e0e0e0;
+    background: var(--code-bg);
+    color: var(--code-text);
     padding: 1.2rem 1.5rem;
     border-radius: 6px;
     overflow-x: auto;

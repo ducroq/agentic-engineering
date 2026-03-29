@@ -283,10 +283,21 @@ flowchart TD
 <script>
   import mermaid from 'mermaid';
 
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
   mermaid.initialize({
     startOnLoad: true,
-    theme: 'neutral',
-    themeVariables: {
+    theme: isDark ? 'dark' : 'neutral',
+    themeVariables: isDark ? {
+      fontFamily: 'Inter, system-ui, sans-serif',
+      fontSize: '14px',
+      primaryColor: '#1a3a2a',
+      primaryBorderColor: '#4ade80',
+      lineColor: '#707070',
+      textColor: '#e0e0e0',
+      mainBkg: '#1a1a1a',
+      nodeBorder: '#555',
+    } : {
       fontFamily: 'Inter, system-ui, sans-serif',
       fontSize: '14px',
       primaryColor: '#f0fdf4',
@@ -454,13 +465,13 @@ flowchart TD
   }
 
   .comparison-bad {
-    background: #fef2f2;
-    border: 1px solid #fecaca;
+    background: var(--bad-bg);
+    border: 1px solid var(--bad-border);
   }
 
   .comparison-good {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
+    background: var(--good-bg);
+    border: 1px solid var(--good-border);
   }
 
   .comparison h3 {
@@ -470,8 +481,8 @@ flowchart TD
     margin-bottom: 0.5rem;
   }
 
-  .comparison-bad h3 { color: #dc2626; }
-  .comparison-good h3 { color: #16803c; }
+  .comparison-bad h3 { color: var(--bad-text); }
+  .comparison-good h3 { color: var(--good-text); }
 
   .comparison code {
     display: block;
@@ -516,14 +527,14 @@ flowchart TD
     margin-bottom: 0.3rem;
   }
 
-  .layer-1 { border-left: 3px solid #16803c; }
-  .layer-1 .layer-badge { color: #16803c; }
-  .layer-2 { border-left: 3px solid #1d6fa5; }
-  .layer-2 .layer-badge { color: #1d6fa5; }
-  .layer-3 { border-left: 3px solid #1d6fa5; }
-  .layer-3 .layer-badge { color: #1d6fa5; }
-  .layer-4 { border-left: 3px solid #16803c; }
-  .layer-4 .layer-badge { color: #16803c; }
+  .layer-1 { border-left: 3px solid var(--action); }
+  .layer-1 .layer-badge { color: var(--action); }
+  .layer-2 { border-left: 3px solid var(--evidence); }
+  .layer-2 .layer-badge { color: var(--evidence); }
+  .layer-3 { border-left: 3px solid var(--evidence); }
+  .layer-3 .layer-badge { color: var(--evidence); }
+  .layer-4 { border-left: 3px solid var(--action); }
+  .layer-4 .layer-badge { color: var(--action); }
 
   .layer-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
   .layer-card p { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.2rem; }
@@ -578,15 +589,15 @@ flowchart TD
   }
 
   .signal.good {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-    color: #166534;
+    background: var(--good-bg);
+    border: 1px solid var(--good-border);
+    color: var(--good-text);
   }
 
   .signal.bad {
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #991b1b;
+    background: var(--bad-bg);
+    border: 1px solid var(--bad-border);
+    color: var(--bad-text);
   }
 
   /* Tables */
