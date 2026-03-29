@@ -3,72 +3,53 @@ import Base from '../../layouts/Base.astro';
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
-const diagramCliff = `flowchart TB
-    subgraph above["Auto-loaded — always visible"]
-        PF["Project file<br/>CLAUDE.md / AGENTS.md"]
-        MI["Memory index<br/>MEMORY.md"]
+const diagramCliff = `flowchart LR
+    subgraph visible["Auto-loaded"]
+        PF["Project file"]
+        MI["Memory index"]
     end
 
-    subgraph below["Below the cliff — invisible until triggered"]
-        RB["Runbook<br/>docs/RUNBOOK.md"]
-        TF["Topic files<br/>memory/*.md"]
-        GL["Gotcha log<br/>memory/gotcha-log.md"]
-        ADR["ADRs<br/>docs/decisions/"]
+    subgraph invisible["Below the cliff"]
+        RB["Runbook"]
+        TF["Topic files"]
+        GL["Gotcha log"]
+        ADR["ADRs"]
     end
 
-    PF -. "task-triggered pointer" .-> RB
-    PF -. "task-triggered pointer" .-> GL
-    MI -. "task-triggered pointer" .-> TF
-    MI -. "task-triggered pointer" .-> ADR`;
+    PF -. "pointer" .-> RB
+    PF -. "pointer" .-> GL
+    MI -. "pointer" .-> TF
+    MI -. "pointer" .-> ADR`;
 
-const diagramLayers = `flowchart TD
-    L1["Layer 1: Project File"] --> L4["Layer 4: Gotcha Log"]
-    L4 --> Q2{"Deployment or<br/>operational complexity?"}
-    Q2 -- Yes --> L2["Layer 2: Runbook"]
-    Q2 -- No --> Q3{"Multiple subsystems<br/>or growing knowledge?"}
+const diagramLayers = `flowchart LR
+    L1["Layer 1:<br/>Project File"] --> L4["Layer 4:<br/>Gotcha Log"]
+    L4 --> Q2{"Operational<br/>complexity?"}
+    Q2 -- Yes --> L2["Layer 2:<br/>Runbook"]
+    Q2 -- No --> Q3{"Multiple<br/>subsystems?"}
     L2 --> Q3
-    Q3 -- Yes --> L3["Layer 3: Memory"]
-    Q3 -- No --> Done["Done. Start working."]
+    Q3 -- Yes --> L3["Layer 3:<br/>Memory"]
+    Q3 -- No --> Done["Done"]
     L3 --> Done`;
 
-const diagramLoop = `flowchart TD
-    Capture["CAPTURE<br/>Log problems as they happen<br/>(2-3 lines, in the moment)"]
-    Surface["SURFACE<br/>Agent reviews, spots patterns<br/>(1-2 min, end of session)"]
-    Promote["PROMOTE<br/>Recurring lessons move up<br/>(gotcha to topic to index to project file)"]
-    Retire["RETIRE<br/>Fixed or encoded in code?<br/>(mark resolved, don't delete)"]
+const diagramLoop = `flowchart LR
+    Capture["CAPTURE<br/>Log problems"]
+    Surface["SURFACE<br/>Agent reviews"]
+    Promote["PROMOTE<br/>Move lessons up"]
+    Retire["RETIRE<br/>Remove when fixed"]
 
-    Capture -- "End of session" --> Surface
-    Surface -- "Pattern recurs 2-3x" --> Promote
-    Surface -- "No pattern yet" --> Capture
-    Promote -- "Root cause fixed" --> Retire
-    Promote -- "Promoted, keep watching" --> Capture
-    Retire -- "Encoded in code" --> Capture`;
+    Capture -- "end of session" --> Surface
+    Surface -- "recurs 2-3x" --> Promote
+    Surface -- "no pattern yet" --> Capture
+    Promote -- "root cause fixed" --> Retire
+    Promote -- "keep watching" --> Capture
+    Retire -- "cycle continues" --> Capture`;
 
-const diagramRhythm = `flowchart TD
-    subgraph during["During work"]
-        W["Work happens"]
-        W --> Gotcha["Gotcha? Log it"]
-        W --> Learn["Learned? Topic file"]
-        W --> Decide["Decision? ADR"]
-    end
+const diagramRhythm = `flowchart LR
+    DW["During work<br/>Log gotchas, note learnings,<br/>write ADRs"]
+    EOS["End of session<br/>Run /curate<br/>(1-2 min review)"]
+    MO["Monthly<br/>Agent audits all memory,<br/>retire stale entries"]
 
-    subgraph eos["End of session 1-2 min"]
-        Curate["/curate"]
-        Curate --> Correlate["Correlate related entries"]
-        Curate --> Summarize["Summarize repeated lessons"]
-        Curate --> Prune["Flag stale entries"]
-        Curate --> Promote["Promote recurring patterns"]
-    end
-
-    subgraph monthly["Monthly"]
-        Audit["Agent audits all memory"]
-        Audit --> Retire["Retire fixed/encoded entries"]
-        Audit --> Verify["Verify all paths still exist"]
-    end
-
-    during --> eos
-    eos --> monthly
-    monthly -.-> during`;
+    DW --> EOS --> MO -.-> DW`;
 ---
 
 <Base title="agent-ready-projects — Augmented Engineering">
