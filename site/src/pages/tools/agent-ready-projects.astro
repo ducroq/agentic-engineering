@@ -126,7 +126,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
         <div class="phase-card">
           <h3>2. Surface</h3>
           <p><strong>When:</strong> End of session. 1-2 minutes.</p>
-          <p><strong>What:</strong> Agent reviews, correlates, summarizes, prunes. You approve.</p>
+          <p><strong>What:</strong> Agent checks for stale references and context rot from previous sessions, then reviews current session work. You approve.</p>
         </div>
         <div class="phase-card">
           <h3>3. Promote</h3>
@@ -172,11 +172,11 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
         </div>
         <div class="rhythm-card">
           <h3>End of session</h3>
-          <p>Run <code>/curate</code>. The agent reads across files, drafts consolidations, proposes promotions. You review. 1-2 minutes.</p>
+          <p>Run <code>/curate</code>. The agent checks for stale references and context rot, then reviews current session work, drafts consolidations, proposes promotions. You review. 1-2 minutes.</p>
         </div>
         <div class="rhythm-card">
           <h3>Monthly</h3>
-          <p>Agent scans all memory, flags resolved and stale entries, proposes batch retirements. You confirm. Pruning should roughly match growth.</p>
+          <p>Deep audit: agent scans all memory for drift, proposes batch retirements, checks ground truth designations still hold. Pruning should roughly match growth.</p>
         </div>
       </div>
 
@@ -197,6 +197,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
             <div class="signal bad">Project file exceeds 150 lines</div>
             <div class="signal bad">Same gotcha appears 3+ times without promotion</div>
             <div class="signal bad">Memory only grows, never shrinks</div>
+            <div class="signal bad">References point to files that no longer exist</div>
           </div>
         </div>
       </div>

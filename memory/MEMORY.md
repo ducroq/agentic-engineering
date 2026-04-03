@@ -19,6 +19,7 @@
      "if [situation], then [what to do]" — promoted from gotcha-log YYYY-MM-DD -->
 
 - If memory accumulates in auto-memory (~/.claude/projects/), move it in-repo to `memory/` — promoted from gotcha-log 2026-03-19
+- If embedding non-HTML DSLs (Mermaid, diagrams) in Astro, never place them in template markup — use JS strings with `set:html` or `textContent`, and prefix links with `import.meta.env.BASE_URL` — promoted from gotcha-log 2026-04-03
 
 ## Current State
 
@@ -34,7 +35,7 @@
 - **ADR-001 written in agent-ready-projects** (2026-03-19): In-repo memory over auto-memory — moved 28 projects (~75 files) from hidden auto-memory to visible in-repo `memory/` directories. Framework guidance updated.
 - **Augmented Engineering podcast created** (2026-03-19): Series "Augmented Engineering: the craft, not the hype" — ep 0 (introduction) and ep 1 (context engineering) scripted. 8-persona review battery created. ADR-001 written for dialogue writing style in podcast-generator.
 - **Global CLAUDE.md cliff discovered and fixed** (2026-03-19): Project-specific content (voice library, TTS engines) moved from global instructions to podcast-generator's CLAUDE.md. Added "global file cliff" guidance to framework.
-- **Full agent-ready-projects adoption** (2026-03-28): Upgraded v1.1.0 → v1.3.4. Added decision framework, ground truth designations, negative-results constraint, ADR index with README, /curate skill. CLAUDE.md architecture tree updated to match actual repo.
+- **Full agent-ready-projects adoption** (2026-03-28): Upgraded v1.1.0 → v1.4.0. Added decision framework, ground truth designations, negative-results constraint, ADR index with README, /curate skill. CLAUDE.md architecture tree updated to match actual repo.
 - **Site reframed as pattern library** (2026-03-28): Per ADR-004. Leads with reader's problem, quick reference decision table, pattern pages restructured. Nine-projects section removed.
 - **Site base path links fixed** (2026-03-29): All internal hrefs now use import.meta.env.BASE_URL. See gotcha-log.
 - **Strategic pivot: tool umbrella** (2026-03-29): ADR-005/006/007. Augmented Engineering is a tool umbrella, not a research proposition. Only durable (structural) patterns are core. Don't build umbrella ahead of tools.
@@ -42,6 +43,9 @@
 - **Site redesigned per VIBE** (2026-03-29): Dark mode, Inter typography, clean surfaces. Core/advisory pattern split. agent-ready-projects tool page with tabbed Mermaid visual walkthrough (cliff, layers, loop, rhythm). Pill tabs, stadium-shaped nodes, dark-mode-aware classDef colors.
 - **Visual guide added to agent-ready-projects** (2026-03-29): 4-page Mermaid guide in docs/guide/ — linked from README. Also rendered on augmented-engineering site tool page.
 - **Issues filed**: #3 (extend review agents for umbrella), #4 (layered verification tooling as second flagship).
+- **Freshness check added to /curate** (2026-04-03): Step 0 checks dead references, stale memory (30+ days), lingering gotchas (14+ days), and ground truth drift. Reports only — engineer decides. Inspired by community "dreaming" discussion; adopted as human-triggered staleness detection, not autonomous overnight loops. Upstream to agent-ready-projects v1.4.0.
+- **Site tool page updated** (2026-04-03): Loop/Rhythm tabs reflect freshness check. Added "stale references" warning signal.
+- **Three Astro gotchas resolved and promoted** (2026-04-03): Base path, curly braces, display:none — all workarounds applied in code, promoted as Astro pattern.
 
 ## Related Repos — Quick Reference
 
@@ -78,7 +82,7 @@
 - **Case study style**: Pattern-first, loosely coupled to claim registry — not thesis chapters
 - **Material properties split**: Persistent (confidence inflation, observation-calibration gap) vs. transient (scoring regression, plausible-but-wrong severity)
 - **Personal project**: No institutional references (HAN removed from all public-facing docs)
-- **Adopted agent-ready-projects v1.3.4**: Layered memory system for session continuity. v1.3.4 adds: /curate skill for end-of-session curation, negative results as knowledge, ground truth principle, review agent skeleton
+- **Adopted agent-ready-projects v1.4.0**: Layered memory system for session continuity. v1.4.0 adds: /curate skill for end-of-session curation, negative results as knowledge, ground truth principle, review agent skeleton
 - **Adopted agent-ready-papers claim registry**: Typed verification with confidence tiers
 - **Feedback loop framing adopted** (2026-03-17): "agent generates → agent reviews → agent validates → engineer decides" — borrowed from practitioner discourse, grounded in our evidence
 - **In-repo memory by default**: Memory files live in `memory/` inside the repo, not in tool auto-memory. Exception only for content that should never be committed. Per ADR-001 in agent-ready-projects.
