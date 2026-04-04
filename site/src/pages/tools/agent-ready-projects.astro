@@ -168,7 +168,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
       <div class="rhythm-grid">
         <div class="rhythm-card">
           <h3>During work</h3>
-          <p>Log gotchas (seconds), note learnings in topic files, write ADRs for decisions. Use <strong>stage checklists</strong> (architect, test, implement, QA) as definition-of-done gates.</p>
+          <p>Log gotchas (seconds), note learnings in topic files, write ADRs for decisions. Use <strong>stage checklists</strong> as definition-of-done gates between workflow stages.</p>
         </div>
         <div class="rhythm-card">
           <h3>End of session</h3>
@@ -177,6 +177,28 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
         <div class="rhythm-card">
           <h3>Monthly</h3>
           <p>Deep audit: agent scans all memory for drift, proposes batch retirements, checks ground truth designations still hold. Pruning should roughly match growth.</p>
+        </div>
+      </div>
+
+      <h3>Stage checklists</h3>
+      <p>Lightweight definition-of-done gates (10-15 items each). Not enterprise compliance — just "am I actually done?"</p>
+
+      <div class="mermaid-wrap">
+        <pre class="mermaid" id="dia-workflow"></pre>
+      </div>
+
+      <div class="checklist-highlights">
+        <div class="checklist-card">
+          <h4>QA: Git Reality Check</h4>
+          <p>Compare <code>git diff --stat</code> against claimed changes. Flag files changed but undocumented, or documented but unchanged.</p>
+        </div>
+        <div class="checklist-card">
+          <h4>QA: Minimum Findings</h4>
+          <p>At least 3 observations per review, classified by severity. No "looks good" without listing what was checked.</p>
+        </div>
+        <div class="checklist-card">
+          <h4>Deploy: Test in Context</h4>
+          <p>Verify through the actual execution context (systemd, Docker, CI) — not manual invocation. Sandboxes impose constraints that local runs bypass.</p>
         </div>
       </div>
 
@@ -297,6 +319,24 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     MO -. "next session" .-> DW
     classDef step ${c.blue}
     class DW,EOS,MO step`;
+
+  document.getElementById('dia-workflow').textContent = `flowchart LR
+    A(["Architect"])
+    AC{{"✓"}}
+    T(["Test"])
+    TC{{"✓"}}
+    I(["Implement"])
+    IC{{"✓"}}
+    Q(["QA"])
+    QC{{"✓"}}
+    M(["Merge"])
+    A --> AC --> T --> TC --> I --> IC --> Q --> QC --> M
+    classDef stage ${c.blue}
+    classDef gate ${c.green}
+    classDef done ${c.green}
+    class A,T,I,Q stage
+    class AC,TC,IC,QC gate
+    class M done`;
 
   mermaid.initialize({
     startOnLoad: false,
@@ -742,6 +782,40 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     vertical-align: middle;
   }
 
+  /* Checklist highlights */
+  .checklist-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.8rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .checklist-card {
+    padding: 1rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .checklist-card:hover {
+    border-color: var(--text-muted);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .checklist-card h4 {
+    font-size: 0.82rem;
+    margin-bottom: 0.3rem;
+    color: var(--text);
+  }
+
+  .checklist-card p {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 0.2rem;
+    line-height: 1.5;
+  }
+
   /* Tables */
   table {
     width: 100%;
@@ -797,6 +871,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
   @media (max-width: 768px) {
     .comparison, .layers-grid, .phase-grid { grid-template-columns: 1fr; }
     .rhythm-grid { grid-template-columns: 1fr; }
+    .checklist-highlights { grid-template-columns: 1fr; }
     .signals-grid { grid-template-columns: 1fr; }
     .tab { padding: 0.4rem 0.7rem; font-size: 0.78rem; }
     .tool-header h1 { font-size: 1.8rem; }
