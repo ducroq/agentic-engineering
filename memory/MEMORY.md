@@ -46,6 +46,7 @@
 - **Freshness check added to /curate** (2026-04-03): Step 0 checks dead references, stale memory (30+ days), lingering gotchas (14+ days), and ground truth drift. Reports only — engineer decides. Inspired by community "dreaming" discussion; adopted as human-triggered staleness detection, not autonomous overnight loops. Upstream to agent-ready-projects v1.4.0.
 - **Site tool page updated** (2026-04-03): Loop/Rhythm tabs reflect freshness check. Added "stale references" warning signal.
 - **Three Astro gotchas resolved and promoted** (2026-04-03): Base path, curly braces, display:none — all workarounds applied in code, promoted as Astro pattern.
+- **agent-ready-projects v1.5.0** (2026-04-04): Validation checklists, adversarial QA, git-reality validation, deployment context gotcha. Site homepage version bumped.
 
 ## Related Repos — Quick Reference
 
@@ -82,7 +83,7 @@
 - **Case study style**: Pattern-first, loosely coupled to claim registry — not thesis chapters
 - **Material properties split**: Persistent (confidence inflation, observation-calibration gap) vs. transient (scoring regression, plausible-but-wrong severity)
 - **Personal project**: No institutional references (HAN removed from all public-facing docs)
-- **Adopted agent-ready-projects v1.4.0**: Layered memory system for session continuity. v1.4.0 adds: /curate skill for end-of-session curation, negative results as knowledge, ground truth principle, review agent skeleton
+- **Adopted agent-ready-projects v1.5.0**: Layered memory system for session continuity. v1.5.0 adds: validation checklists (architect, test, implement, QA), adversarial QA with git-reality validation and minimum findings requirement, deployment context gotcha
 - **Adopted agent-ready-papers claim registry**: Typed verification with confidence tiers
 - **Feedback loop framing adopted** (2026-03-17): "agent generates → agent reviews → agent validates → engineer decides" — borrowed from practitioner discourse, grounded in our evidence
 - **In-repo memory by default**: Memory files live in `memory/` inside the repo, not in tool auto-memory. Exception only for content that should never be committed. Per ADR-001 in agent-ready-projects.
