@@ -27,6 +27,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
       <button class="tab" data-tab="layers">The Layers</button>
       <button class="tab" data-tab="loop">The Loop</button>
       <button class="tab" data-tab="rhythm">The Rhythm</button>
+      <button class="tab" data-tab="gates">The Gates</button>
     </nav>
 
     <!-- TAB 1: THE CLIFF -->
@@ -168,7 +169,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
       <div class="rhythm-grid">
         <div class="rhythm-card">
           <h3>During work</h3>
-          <p>Log gotchas (seconds), note learnings in topic files, write ADRs for decisions. Use <strong>stage checklists</strong> as definition-of-done gates between workflow stages.</p>
+          <p>Log gotchas (seconds), note learnings in topic files, write ADRs for decisions. Use <a href="#" class="tab-link" data-target="gates">stage checklists</a> as definition-of-done gates.</p>
         </div>
         <div class="rhythm-card">
           <h3>End of session</h3>
@@ -177,28 +178,6 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
         <div class="rhythm-card">
           <h3>Monthly</h3>
           <p>Deep audit: agent scans all memory for drift, proposes batch retirements, checks ground truth designations still hold. Pruning should roughly match growth.</p>
-        </div>
-      </div>
-
-      <h3>Stage checklists</h3>
-      <p>Lightweight definition-of-done gates (10-15 items each). Not enterprise compliance — just "am I actually done?"</p>
-
-      <div class="mermaid-wrap">
-        <pre class="mermaid" id="dia-workflow"></pre>
-      </div>
-
-      <div class="checklist-highlights">
-        <div class="checklist-card">
-          <h4>QA: Git Reality Check</h4>
-          <p>Compare <code>git diff --stat</code> against claimed changes. Flag files changed but undocumented, or documented but unchanged.</p>
-        </div>
-        <div class="checklist-card">
-          <h4>QA: Minimum Findings</h4>
-          <p>At least 3 observations per review, classified by severity. No "looks good" without listing what was checked.</p>
-        </div>
-        <div class="checklist-card">
-          <h4>Deploy: Test in Context</h4>
-          <p>Verify through the actual execution context (systemd, Docker, CI) — not manual invocation. Sandboxes impose constraints that local runs bypass.</p>
         </div>
       </div>
 
@@ -222,6 +201,37 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
             <div class="signal bad">References point to files that no longer exist</div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: THE GATES -->
+    <section class="tab-content" id="tab-gates">
+      <h2>The Gates</h2>
+      <p>Lightweight definition-of-done checklists (10-15 items each) between workflow stages. Not enterprise compliance — just "am I actually done?"</p>
+
+      <div class="mermaid-wrap">
+        <pre class="mermaid" id="dia-workflow"></pre>
+      </div>
+
+      <p>Tests are written first, then implementation satisfies them. Each &#10003; is a checklist the agent runs before moving to the next stage.</p>
+
+      <div class="checklist-highlights">
+        <div class="checklist-card">
+          <h4>QA: Git Reality Check</h4>
+          <p>Compare <code>git diff --stat</code> against claimed changes. Flag files changed but undocumented, or documented but unchanged.</p>
+        </div>
+        <div class="checklist-card">
+          <h4>QA: Minimum Findings</h4>
+          <p>At least 3 observations per review, classified by severity. No "looks good" without listing what was checked.</p>
+        </div>
+        <div class="checklist-card">
+          <h4>Deployment Readiness</h4>
+          <p>Verify through the actual execution context (systemd, Docker, CI) — not manual invocation. Production runtimes impose constraints that local runs bypass.</p>
+        </div>
+      </div>
+
+      <div class="key-insight">
+        <strong>The principle:</strong> Checklists are most valuable at stage boundaries — when the agent claims "I'm done" but hasn't verified against the definition of done. The QA checklist enforces adversarial review: no rubber-stamp approvals.
       </div>
     </section>
 
@@ -333,10 +343,8 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     A --> AC --> T --> TC --> I --> IC --> Q --> QC --> M
     classDef stage ${c.blue}
     classDef gate ${c.green}
-    classDef done ${c.green}
     class A,T,I,Q stage
-    class AC,TC,IC,QC gate
-    class M done`;
+    class AC,TC,IC,QC,M gate`;
 
   mermaid.initialize({
     startOnLoad: false,
@@ -371,34 +379,53 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     },
   });
 
-  // Show all tabs so Mermaid can render in visible DOM
+  // Show all tabs so Mermaid can render in visible DOM (hidden to prevent flash)
   const allTabs = document.querySelectorAll('.tab-content');
-  allTabs.forEach(c => { c.style.display = 'block'; });
+  allTabs.forEach(c => {
+    c.style.visibility = 'hidden';
+    c.style.position = 'absolute';
+    c.style.display = 'block';
+  });
 
   // Render all diagrams
   mermaid.run().then(() => {
-    // After render, hide non-active tabs
+    // After render, restore and hide non-active tabs
     allTabs.forEach(c => {
+      c.style.visibility = '';
+      c.style.position = '';
       if (!c.classList.contains('active')) {
         c.style.display = 'none';
       }
     });
   });
 
+  // Tab switching helper
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    allTabs.forEach(c => {
+      c.classList.remove('active');
+      c.style.display = 'none';
+    });
+    const btn = document.querySelector(`.tab[data-tab="${tabName}"]`);
+    if (btn) btn.classList.add('active');
+    const target = document.getElementById(`tab-${tabName}`);
+    if (target) {
+      target.classList.add('active');
+      target.style.display = 'block';
+    }
+    document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   // Tab navigation
   document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      allTabs.forEach(c => {
-        c.classList.remove('active');
-        c.style.display = 'none';
-      });
-      tab.classList.add('active');
-      const target = document.getElementById(`tab-${tab.dataset.tab}`);
-      if (target) {
-        target.classList.add('active');
-        target.style.display = 'block';
-      }
+    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+  });
+
+  // In-content tab links (e.g., "stage checklists" link in Rhythm → Gates tab)
+  document.querySelectorAll('.tab-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchTab(link.dataset.target);
     });
   });
 </script>
@@ -442,7 +469,6 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     color: var(--text-secondary);
     font-size: 1.05rem;
     margin-top: 0.4rem;
-    white-space: nowrap;
   }
 
   .tool-meta {
@@ -816,6 +842,17 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     line-height: 1.5;
   }
 
+  /* In-content tab links */
+  .tab-link {
+    color: var(--evidence);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .tab-link:hover {
+    text-decoration: underline;
+  }
+
   /* Tables */
   table {
     width: 100%;
@@ -872,7 +909,7 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     .comparison, .layers-grid, .phase-grid { grid-template-columns: 1fr; }
     .rhythm-grid { grid-template-columns: 1fr; }
     .checklist-highlights { grid-template-columns: 1fr; }
-    .signals-grid { grid-template-columns: 1fr; }
+    .signals-columns { grid-template-columns: 1fr; }
     .tab { padding: 0.4rem 0.7rem; font-size: 0.78rem; }
     .tool-header h1 { font-size: 1.8rem; }
   }
